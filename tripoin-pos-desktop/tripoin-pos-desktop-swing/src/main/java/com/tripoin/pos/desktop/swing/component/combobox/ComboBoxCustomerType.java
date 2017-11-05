@@ -18,7 +18,7 @@ public class ComboBoxCustomerType extends JComboBox<String> implements IComponen
     @Override
     public void initComponents() {
         this.setModel(
-                new DefaultComboBoxModel(
+                new DefaultComboBoxModel<>(
                         new String[]{
                                 "Walkin Customer",
                                 "Member",

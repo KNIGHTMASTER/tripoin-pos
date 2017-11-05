@@ -23,7 +23,7 @@ public class ComboBoxLanguage extends JComboBox<String> implements IComponentIni
     @Override
     public void initComponents() {
         this.setModel(
-                new DefaultComboBoxModel(
+                new DefaultComboBoxModel<>(
                         new String[]{
                                 "English (Default)",
                                 "Bahasa Indonesia",

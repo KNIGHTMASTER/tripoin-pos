@@ -1,6 +1,6 @@
-package com.tripoin.pos.rest.desktop.model;
+package com.tripoin.pos.shared.data.model;
 
-import id.co.telkomsigma.core.data.AAuditTrail;
+import com.tripoin.scaffolding.data.AAuditTrail;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,7 +13,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "mst_company")
 public class Company extends AAuditTrail {
-
+    /**
+     *
+     *
+     */
+    private static final long serialVersionUID = -4144907972179173016L;
 
     @Override
     public String tableName() {

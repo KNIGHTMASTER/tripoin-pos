@@ -26,15 +26,33 @@ public class InternalFramePos extends SideBarInternalFrame {
     @Autowired
     private PanelTransaction panelTransaction;
 
-
     @PostConstruct
     @Override
     public void initComponents() {
         super.initComponents();
 
-        this.setLayout(new BorderLayout());
-        this.add(panelCatalog, BorderLayout.CENTER);
-        this.add(panelTransaction, BorderLayout.WEST);
+        this.setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 2;
+        gbc.weightx = 65;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.anchor = GridBagConstraints.EAST;
+        this.add(panelCatalog, gbc);
+
+        gbc.gridx = gbc.gridy = 0;
+        gbc.gridwidth = gbc.gridheight = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.weightx = gbc.weighty = 35;
+        this.add(panelTransaction, gbc);
+
+
+        this.pack();
     }
 
     @Override

@@ -22,6 +22,7 @@ public class PanelTransaction extends JPanel implements IComponentInitializer {
     @PostConstruct
     @Override
     public void initComponents() {
+        this.setBackground(Color.RED);
         this.setLayout(new BorderLayout());
         this.add(panelTransactionNorth, BorderLayout.NORTH);
     }

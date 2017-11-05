@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.view.panel.tab.settings.database;
 
 import com.tripoin.pos.desktop.swing.controller.panel.ControllerPanelTabSettingDatabase;
-import com.tripoin.pos.desktop.swing.dto.param.DataSourceParam;
+import com.tripoin.pos.shared.data.DataSourceParam;
 import id.co.telkomsigma.tgf.util.IComponentAction;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import id.co.telkomsigma.tgf.util.UIConstant.Common.Punctuation;

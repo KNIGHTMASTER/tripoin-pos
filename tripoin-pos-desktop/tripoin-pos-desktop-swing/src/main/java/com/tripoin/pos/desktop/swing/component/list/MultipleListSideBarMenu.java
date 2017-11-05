@@ -62,9 +62,14 @@ public abstract class MultipleListSideBarMenu extends JList<String> implements I
                         }
                     } else {
                         if (desktopPaneMain.getComponentCount() <= 0){
-                            selectedSideBar.resetComponent();
-                            desktopPaneMain.add(selectedSideBar);
-                            selectedSideBar.setVisible(true);
+                            try {
+                                selectedSideBar.resetComponent();
+                                desktopPaneMain.add(selectedSideBar);
+                                selectedSideBar.setVisible(true);
+                            }catch (Exception e1) {
+                                selectedSideBar.resetComponent();
+                                selectedSideBar.setVisible(true);
+                            }
                         }else {
                             selectedSideBar.showNewComponent(desktopPaneMain.getComponentCount());
                             desktopPaneMain.add(selectedSideBar);

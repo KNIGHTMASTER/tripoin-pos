@@ -16,6 +16,7 @@
     <modules>
         <module>tripoin-pos-desktop</module>
         <module>tripoin-pos-rest</module>
+        <module>tripoin-pos-shared-data</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

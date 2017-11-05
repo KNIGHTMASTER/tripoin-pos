@@ -1,6 +1,6 @@
-package com.tripoin.pos.desktop.swing.util;
+package com.tripoin.pos.rest.desktop.util;
 
-import com.tripoin.pos.desktop.swing.dto.param.DataSourceParam;
+import com.tripoin.pos.shared.data.DataSourceParam;
 import id.co.telkomsigma.tgf.util.IParameterizedComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class TesterDS implements IParameterizedComponent<DataSourceParam> {
     private static final Logger LOGGER = LoggerFactory.getLogger(TesterDS.class);
 
     public int testMysqlConnection() {
-        int result = 0;
+        int result;
         try {
             Class.forName(mysqlDriver);
         } catch (ClassNotFoundException e) {

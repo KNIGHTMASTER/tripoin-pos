@@ -2,6 +2,7 @@ package com.tripoin.pos.desktop.swing.view.internalframe;
 
 import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
+import com.tripoin.pos.desktop.swing.component.base.TripoinSwingManager;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,6 +28,9 @@ public abstract class SideBarInternalFrame extends JInternalFrame implements ICo
     @Autowired
     private IResourceBundleLocator rb;
 
+    @Autowired
+    private TripoinSwingManager tripoinSwingManager;
+
     private int yDefaultAxis = 180;
     private int xDefaultAxis = 70;
     @Override
@@ -39,6 +43,8 @@ public abstract class SideBarInternalFrame extends JInternalFrame implements ICo
         this.setIconifiable(true);
 
         resetComponent();
+
+        tripoinSwingManager.setLAF(this);
     }
 
     public void resetComponent() {
@@ -54,6 +60,7 @@ public abstract class SideBarInternalFrame extends JInternalFrame implements ICo
             centralizePositionComponent.setIFrameToPosition(this, x, y);
         }
     }
+
 
     public abstract String getTitleResourceBundle();
 }

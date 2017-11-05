@@ -27,6 +27,7 @@ public class PanelTransactionNorth extends JPanel implements IComponentInitializ
     public void initComponents() {
         this.setLayout(new GridLayout(3, 1));
         JLabel lblChooseCustomer = new JLabel("Choose Customer");
+        lblChooseCustomer.setFont(new Font("Serif", Font.PLAIN, 30));
 
         JTextField textFieldProductCode = new JTextField("Product Code");
         textFieldProductCode.addFocusListener(new FocusListener() {
@@ -37,11 +38,12 @@ public class PanelTransactionNorth extends JPanel implements IComponentInitializ
 
             @Override
             public void focusLost(FocusEvent e) {
-                if (textFieldProductCode.getText() == null){
+                if (textFieldProductCode.getText() == null || (textFieldProductCode.getText().trim()).length() <=0 ){
                     textFieldProductCode.setText("Product Code");
                 }
             }
         });
+        this.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 20));
         this.add(lblChooseCustomer);
         this.add(comboBoxCustomerType);
         this.add(textFieldProductCode);

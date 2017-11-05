@@ -11,7 +11,7 @@ import javax.swing.*;
  * @author <a href="fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component
-public class ComboBoxTheme extends JComboBox implements IComponentInitializer {
+public class ComboBoxTheme extends JComboBox<String> implements IComponentInitializer {
 
     /**
      *
@@ -23,25 +23,25 @@ public class ComboBoxTheme extends JComboBox implements IComponentInitializer {
     @Override
     public void initComponents() {
         this.setModel(
-                new DefaultComboBoxModel(
+                new DefaultComboBoxModel<>(
                         new String[]{
-                            "Nimbus",
-                            "Windows Classic",
-                            "Windows",
-                            "Acryl",
-                            "Aero",
-                            "Aluminium",
-                            "Bernstein",
-                            "Fast",
-                            "Graphite",
-                            "HiFi",
-                            "Luna",
-                            "Metal",
-                            "McWin",
-                            "Mint",
-                            "Noire",
-                            "Smart",
-                            "Texture"
+                                "Nimbus",
+                                "Windows Classic",
+                                "Windows",
+                                "Acryl",
+                                "Aero",
+                                "Aluminium",
+                                "Bernstein",
+                                "Fast",
+                                "Graphite",
+                                "HiFi",
+                                "Luna",
+                                "Metal",
+                                "McWin",
+                                "Mint",
+                                "Noire",
+                                "Smart",
+                                "Texture"
                         }
                 )
         );

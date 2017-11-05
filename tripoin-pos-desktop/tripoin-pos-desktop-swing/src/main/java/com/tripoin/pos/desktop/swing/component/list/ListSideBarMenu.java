@@ -45,12 +45,14 @@ public abstract class ListSideBarMenu extends JList<String> implements IComponen
                         if (desktopPaneMain.getComponentCount() <= 0) {
                             System.out.println("1");
                             desktopPaneMain.add(getPreventionInternalFrame());
+                            getPreventionInternalFrame().toFront();
                         } else {
                             for (java.awt.Component component : desktopPaneMain.getComponents()) {
                                 System.out.println("2");
                                 if (component.getName().equals(getPreventionComponentName())) {
                                     System.out.println("3");
                                     getPreventionInternalFrame().setVisible(true);
+                                    getPreventionInternalFrame().toFront();
                                     break;
                                 } else {
                                     if (getPreventionInternalFrame().isClosed()) {
@@ -75,11 +77,13 @@ public abstract class ListSideBarMenu extends JList<String> implements IComponen
                             getPreventionInternalFrame().resetComponent();
                             desktopPaneMain.add(getPreventionInternalFrame());
                             getPreventionInternalFrame().setVisible(true);
+                            getPreventionInternalFrame().toFront();
                         }else {
                             System.out.println("6");
                             getPreventionInternalFrame().showNewComponent(desktopPaneMain.getComponentCount());
                             desktopPaneMain.add(getPreventionInternalFrame());
                             getPreventionInternalFrame().setVisible(true);
+                            getPreventionInternalFrame().toFront();
                         }
                     }
                     this.clearSelection();

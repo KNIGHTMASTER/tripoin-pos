@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created on 10/30/17.
@@ -17,6 +18,7 @@ public class PanelCatalog extends JPanel implements IComponentInitializer {
     @PostConstruct
     @Override
     public void initComponents() {
+        this.setBackground(Color.BLUE);
         this.add(new JLabel("katalog"));
     }
 }

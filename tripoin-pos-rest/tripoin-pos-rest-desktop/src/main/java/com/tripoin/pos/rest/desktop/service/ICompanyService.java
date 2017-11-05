@@ -1,7 +1,7 @@
 package com.tripoin.pos.rest.desktop.service;
 
-import com.tripoin.pos.rest.desktop.model.Company;
-import id.co.telkomsigma.scaffolding.service.IScaffoldingService;
+import com.tripoin.pos.shared.data.model.Company;
+import com.tripoin.scaffolding.service.IScaffoldingService;
 
 /**
  * Created on 10/30/17.

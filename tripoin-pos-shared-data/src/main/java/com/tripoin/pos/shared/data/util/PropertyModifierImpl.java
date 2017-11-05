@@ -1,6 +1,6 @@
-package com.tripoin.pos.desktop.swing.util;
+package com.tripoin.pos.shared.data.util;
 
-import com.tripoin.pos.desktop.swing.dto.param.DataSourceParam;
+import com.tripoin.pos.shared.data.DataSourceParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

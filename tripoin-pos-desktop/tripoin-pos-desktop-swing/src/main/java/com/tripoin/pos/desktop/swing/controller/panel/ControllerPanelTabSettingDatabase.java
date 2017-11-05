@@ -1,9 +1,9 @@
 package com.tripoin.pos.desktop.swing.controller.panel;
 
+import com.tripoin.pos.desktop.swing.client.ITesterDSClient;
 import com.tripoin.pos.desktop.swing.component.dialog.DialogProgress;
-import com.tripoin.pos.desktop.swing.dto.param.DataSourceParam;
-import com.tripoin.pos.desktop.swing.util.IPropertyModifier;
-import com.tripoin.pos.desktop.swing.util.TesterDS;
+import com.tripoin.pos.shared.data.DataSourceParam;
+import com.tripoin.pos.shared.data.util.IPropertyModifier;
 import id.co.telkomsigma.tgf.util.IParameterizedComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,24 +22,23 @@ import java.util.concurrent.ExecutionException;
 public class ControllerPanelTabSettingDatabase implements IParameterizedComponent<DataSourceParam> {
 
     @Autowired
-    private TesterDS testerDS;
-
-    @Autowired
     private DialogProgress dialogProgress;
 
     @Autowired
     private IPropertyModifier propertyModifier;
+
+    @Autowired
+    private ITesterDSClient testerDSClient;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ControllerPanelTabSettingDatabase.class);
 
     private DataSourceParam dataSourceParam;
 
     public void btTestPanelTabSettingDatabase() throws ExecutionException, InterruptedException {
-        testerDS.setParam(getParam());
         SwingWorker<?,?> worker = new SwingWorker<Integer,Integer>(){
             @Override
             protected Integer doInBackground() throws InterruptedException{
-                return testerDS.testMysqlConnection();
+                return testerDSClient.getTestResult();
             }
 
             @Override

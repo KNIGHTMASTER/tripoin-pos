@@ -37,9 +37,28 @@
 
         <dependency>
             <groupId>com.tripoin</groupId>
-            <artifactId>tripoin-scaffolding-service</artifactId>
+            <artifactId>tripoin-scaffolding-endpoint</artifactId>
+            <version>1.0.0</version>
+            <!--<exclusions>
+                <exclusion>
+                    <groupId>com.tripoin</groupId>
+                    <artifactId>tripoin-scaffolding-data</artifactId>
+                </exclusion>
+            </exclusions>-->
+        </dependency>
+
+        <dependency>
+            <groupId>com.tripoin</groupId>
+            <artifactId>tripoin-pos-shared-data</artifactId>
             <version>1.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>id.co.telkomsigma.tgf</groupId>
+            <artifactId>util</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -2,7 +2,7 @@ package com.tripoin.pos.desktop.swing.view.panel.tab.settings.database;
 
 import com.tripoin.pos.desktop.swing.component.button.panel.tab.settings.database.ButtonSavePanelTabSettingDatabase;
 import com.tripoin.pos.desktop.swing.component.button.panel.tab.settings.database.ButtonTestPanelTabSettingDatabase;
-import com.tripoin.pos.desktop.swing.util.IPropertyModifier;
+import com.tripoin.pos.shared.data.util.IPropertyModifier;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

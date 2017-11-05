@@ -1,4 +1,4 @@
-package com.tripoin.pos.desktop.swing.dto.param;
+package com.tripoin.pos.shared.data;
 
 import java.io.Serializable;
 

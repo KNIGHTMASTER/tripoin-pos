@@ -1,7 +1,7 @@
 package com.tripoin.pos.rest.desktop.dao;
 
-import com.tripoin.pos.rest.desktop.model.Company;
-import id.co.telkomsigma.scaffolding.dao.IScaffoldingDAO;
+import com.tripoin.pos.shared.data.model.Company;
+import com.tripoin.scaffolding.dao.IScaffoldingDAO;
 
 /**
  * Created on 10/30/17.
