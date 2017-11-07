@@ -1,5 +1,8 @@
 package com.tripoin.pos.desktop.swing.component.table;
 
+import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
+import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
+
 /**
  * Created on 5/30/17.
  *
@@ -8,7 +11,7 @@ package com.tripoin.pos.desktop.swing.component.table;
  */
 public interface ITableListener {
 
-    void refreshTable() /*throws ETCServiceException*/;
+    ResponseGenericPaginationDTO refreshTable(int p_Size, int p_TargetPage, AScaffoldingTable.FindMode p_FindMode, String p_TextToSearch);
 
-    void refreshTableWithWorker();
+    ResponseGenericPaginationDTO refreshTableWithWorker(int p_Size, int p_TargetPage, AScaffoldingTable.FindMode p_FindMode, String p_TextToSearch);
 }

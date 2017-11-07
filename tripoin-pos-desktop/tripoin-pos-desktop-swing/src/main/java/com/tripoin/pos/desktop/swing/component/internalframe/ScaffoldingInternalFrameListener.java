@@ -1,6 +1,9 @@
 package com.tripoin.pos.desktop.swing.component.internalframe;
 
+import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
 import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
+import com.tripoin.pos.desktop.swing.view.panel.internalframe.scaffolding.AScaffoldingPanel;
+import id.co.telkomsigma.tgf.util.UIConstant;
 
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
@@ -9,10 +12,13 @@ import javax.swing.event.InternalFrameListener;
  * Created on 11/3/17.
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
+ *
  */
 public abstract class ScaffoldingInternalFrameListener implements InternalFrameListener {
 
-    public abstract AScaffoldingTable getScaffoldingTable();
+    public abstract AScaffoldingPanel getScaffoldingPanel();
+
+    public abstract ComboBoxDisplayNumberOfData getComboBoxDisplayNumberOfData();
 
     @Override
     public void internalFrameOpened(InternalFrameEvent e) {
@@ -41,7 +47,12 @@ public abstract class ScaffoldingInternalFrameListener implements InternalFrameL
 
     @Override
     public void internalFrameActivated(InternalFrameEvent e) {
-        getScaffoldingTable().refreshTableWithWorker();
+        getScaffoldingPanel().refreshContent(
+                getComboBoxDisplayNumberOfData().getSelectedValue(getComboBoxDisplayNumberOfData().getSelectedIndex()),
+                0,
+                AScaffoldingTable.FindMode.DEFAULT,
+                UIConstant.Common.Punctuation.EMPTY
+        );
     }
 
     @Override

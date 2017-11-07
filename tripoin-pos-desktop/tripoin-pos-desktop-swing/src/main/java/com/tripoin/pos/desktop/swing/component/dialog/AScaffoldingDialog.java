@@ -5,6 +5,7 @@ import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
 import com.tripoin.pos.desktop.swing.component.button.base.ButtonClear;
 import com.tripoin.pos.desktop.swing.component.button.base.ButtonSave;
+import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
 import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import com.tripoin.pos.desktop.swing.component.textfield.DisabledTextField;
 import com.tripoin.pos.desktop.swing.controller.panel.AControllerScaffolding;
@@ -50,6 +51,9 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
 
     @Autowired
     private ButtonClear buttonClear;
+
+    @Autowired
+    private ComboBoxDisplayNumberOfData comboBoxDisplayNumberOfData;
 
     protected int preferredHeight;
 
@@ -200,6 +204,7 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
             controllerScaffoldingParam.setData(getDATAtoInsert());
             controllerScaffoldingParam.setScaffoldingDialog(this);
             controllerScaffoldingParam.setScaffoldingTable(getScaffoldingTable());
+            controllerScaffoldingParam.setComboBoxDisplayNumberOfData(comboBoxDisplayNumberOfData);
             getControllerScaffolding().setParam(controllerScaffoldingParam);
             if (enabledTextFields.size() == getNumberOfComponent()){
                 getControllerScaffolding().update();

@@ -3,6 +3,7 @@ package com.tripoin.pos.desktop.swing.component.dialog;
 import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent;
 import com.tripoin.pos.desktop.swing.component.base.IComponentMenuCallable;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
+import com.tripoin.pos.desktop.swing.component.base.TripoinSwingManager;
 import com.tripoin.pos.desktop.swing.controller.dialog.ControllerDialogServer;
 import com.tripoin.pos.desktop.swing.view.tab.TabSettings;
 import id.co.telkomsigma.tgf.util.IComponentAction;
@@ -43,6 +44,9 @@ public class DialogServer extends JDialog implements IComponentInitializer, ICom
     @Autowired
     private IResourceBundleLocator rb;
 
+    @Autowired
+    private TripoinSwingManager tripoinSwingManager;
+
     @Value("${splashscreen.icon.imageurl}")
     private String dialogServerIcon;
 
@@ -62,6 +66,8 @@ public class DialogServer extends JDialog implements IComponentInitializer, ICom
         this.add(tabSettings);
 
         isInitialized = true;
+
+        tripoinSwingManager.setLAF(this);
     }
     
     @Override

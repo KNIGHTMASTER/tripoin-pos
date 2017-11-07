@@ -12,7 +12,7 @@ public class DefaultModelAutoComplete implements AutoComplete {
     private final ArrayList<String> dataList;
 
     public DefaultModelAutoComplete(String[] dataList) {
-        this.dataList = new ArrayList<>(Arrays.<String>asList(dataList));
+        this.dataList = new ArrayList<>(Arrays.asList(dataList));
     }
 
     public boolean add(String e) {

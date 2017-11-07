@@ -33,4 +33,16 @@ public class ComboBoxDisplayNumberOfData extends JComboBox<String> implements IC
                 )
         );
     }
+
+    public int getSelectedValue(int p_Index){
+        int result = 0;
+        switch (p_Index) {
+            case 0 : result = 10; break;
+            case 1 : result = 25; break;
+            case 2 : result = 50; break;
+            case 3 : result = 100; break;
+            default:
+        }
+        return result;
+    }
 }

@@ -21,6 +21,7 @@ public class ButtonDelete extends SimpleButton {
     @Override
     public void initComponents() {
         this.setMnemonic('D');
+        this.setEnabled(false);
         super.initComponents();
     }
 

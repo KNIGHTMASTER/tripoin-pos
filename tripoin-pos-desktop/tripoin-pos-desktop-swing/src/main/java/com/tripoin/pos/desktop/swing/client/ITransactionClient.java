@@ -4,6 +4,8 @@ import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.RequestDeleteById;
 import retrofit2.Call;
 
+import java.util.List;
+
 /**
  * Created on 11/5/17.
  *
@@ -17,4 +19,6 @@ public interface ITransactionClient<DATA> {
     Call<ResponseData> update(DATA p_DATA);
 
     Call<ResponseData> delete(RequestDeleteById p_RequestDeleteById);
+
+    Call<ResponseData> deleteCollectionById(List<String> p_ListOfIdToDelete);
 }

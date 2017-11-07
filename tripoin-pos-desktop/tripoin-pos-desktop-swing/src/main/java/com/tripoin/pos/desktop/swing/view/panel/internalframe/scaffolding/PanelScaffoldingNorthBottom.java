@@ -61,4 +61,16 @@ public class PanelScaffoldingNorthBottom extends JPanel implements IComponentIni
     public TextField getTxtSearch() {
         return txtSearch;
     }
+
+    public ComboBoxDisplayNumberOfData getComboBoxDisplayNumberOfData() {
+        return comboBoxDisplayNumberOfData;
+    }
+
+    public LabelScaffoldingSearch getLabelScaffoldingSearch() {
+        return labelScaffoldingSearch;
+    }
+
+    public ComboBoxFilter getComboBoxFilter() {
+        return comboBoxFilter;
+    }
 }

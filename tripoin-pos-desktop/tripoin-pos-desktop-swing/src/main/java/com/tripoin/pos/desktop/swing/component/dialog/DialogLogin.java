@@ -2,6 +2,7 @@ package com.tripoin.pos.desktop.swing.component.dialog;
 
 import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
+import com.tripoin.pos.desktop.swing.component.base.TripoinSwingManager;
 import com.tripoin.pos.desktop.swing.controller.dialog.ControllerDialogLogin;
 import com.tripoin.pos.desktop.swing.view.frame.MainFrame;
 import com.tripoin.pos.desktop.swing.view.panel.login.DialogLoginPanelBottom;
@@ -39,6 +40,9 @@ public class DialogLogin extends JDialog implements IComponentInitializer, IComp
     @Autowired
     private IResourceBundleLocator rb;
 
+    @Autowired
+    private TripoinSwingManager tripoinSwingManager;
+
     @Value("${splashscreen.icon.imageurl}")
     private String dialogLoginIcon;
 
@@ -65,6 +69,8 @@ public class DialogLogin extends JDialog implements IComponentInitializer, IComp
 
         initAction();
         isInitiated = true;
+
+        tripoinSwingManager.setLAF(this);
     }                
     
     @Override

@@ -1,9 +1,12 @@
 package com.tripoin.pos.desktop.swing.dto.param;
 
 import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
+import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
 import com.tripoin.pos.desktop.swing.component.dialog.AScaffoldingDialog;
 import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
+import com.tripoin.pos.desktop.swing.view.panel.internalframe.scaffolding.PanelPaginationButton;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -19,13 +22,50 @@ public class ControllerScaffoldingParam<DATA> {
     private Point point;
     private AScaffoldingDialog scaffoldingDialog;
     private DATA data;
-    private int selectedTableRow;
+    private Integer selectedTableRow;
+    private int [] selectedTableRows;
 
-    public int getSelectedTableRow() {
+    private ComboBoxDisplayNumberOfData comboBoxDisplayNumberOfData;
+    private JLabel labelIndex;
+    private PanelPaginationButton panelPaginationButton;
+
+    public ComboBoxDisplayNumberOfData getComboBoxDisplayNumberOfData() {
+        return comboBoxDisplayNumberOfData;
+    }
+
+    public void setComboBoxDisplayNumberOfData(ComboBoxDisplayNumberOfData comboBoxDisplayNumberOfData) {
+        this.comboBoxDisplayNumberOfData = comboBoxDisplayNumberOfData;
+    }
+
+    public JLabel getLabelIndex() {
+        return labelIndex;
+    }
+
+    public void setLabelIndex(JLabel labelIndex) {
+        this.labelIndex = labelIndex;
+    }
+
+    public PanelPaginationButton getPanelPaginationButton() {
+        return panelPaginationButton;
+    }
+
+    public void setPanelPaginationButton(PanelPaginationButton panelPaginationButton) {
+        this.panelPaginationButton = panelPaginationButton;
+    }
+
+    public int[] getSelectedTableRows() {
+        return selectedTableRows;
+    }
+
+    public void setSelectedTableRows(int[] selectedTableRows) {
+        this.selectedTableRows = selectedTableRows;
+    }
+
+    public Integer getSelectedTableRow() {
         return selectedTableRow;
     }
 
-    public void setSelectedTableRow(int selectedTableRow) {
+    public void setSelectedTableRow(Integer selectedTableRow) {
         this.selectedTableRow = selectedTableRow;
     }
 

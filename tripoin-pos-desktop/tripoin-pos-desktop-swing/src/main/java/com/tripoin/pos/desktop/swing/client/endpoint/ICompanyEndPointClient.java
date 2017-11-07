@@ -1,13 +1,15 @@
 package com.tripoin.pos.desktop.swing.client.endpoint;
 
 import com.tripoin.pos.shared.data.CompanyTableDTO;
+import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
-import com.tripoin.scaffolding.data.dto.request.RequestDeleteById;
-import com.tripoin.scaffolding.data.dto.request.RequestFindById;
+import com.tripoin.scaffolding.data.dto.request.*;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;
 import com.tripoin.scaffolding.data.dto.response.GenericSingleDATAResponseDTO;
 import retrofit2.Call;
 import retrofit2.http.*;
+
+import java.util.List;
 
 /**
  *
@@ -24,15 +26,27 @@ public interface ICompanyEndPointClient {
     @GET("company/100004")
     Call<GenericListResponseDTO<CompanyTableDTO>> findAll();
 
+    @POST("company/100005")
+    Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationAll(@Body RequestPaginationAllDTO p_RequestPaginationAllDTO);
+
+    @POST("company/100031")
+    Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationByCodeOrderById(@Body RequestPaginationByCodeDTO p_RequestPaginationByCodeDTO);
+
+    @POST("company/100032")
+    Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationByNameOrderById(@Body RequestPaginationByNameDTO p_RequestPaginationByNameDTO);
+
     @POST("company/100006")
     Call<GenericSingleDATAResponseDTO<CompanyTableDTO>> findById(@Body RequestFindById p_RequestFindById);
-
-    @HTTP(method = "DELETE", path = "company/100026", hasBody = true)
-    Call<ResponseData> delete(@Body RequestDeleteById p_IdToDelete);
 
     @POST("company/100023")
     Call<ResponseData> insert(@Body CompanyTableDTO p_CompanyTableDTO);
 
     @PUT("company/100022")
     Call<ResponseData> update(@Body CompanyTableDTO p_CompanyTableDTO);
+
+    @HTTP(method = "DELETE", path = "company/100026", hasBody = true)
+    Call<ResponseData> delete(@Body RequestDeleteById p_IdToDelete);
+
+    @HTTP(method = "DELETE", path = "company/100029", hasBody = true)
+    Call<ResponseData> deleteCollection(@Body List<String> p_ListOfIdToDelete);
 }

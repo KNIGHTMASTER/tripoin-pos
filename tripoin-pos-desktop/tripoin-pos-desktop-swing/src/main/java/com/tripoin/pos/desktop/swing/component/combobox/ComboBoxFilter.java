@@ -1,5 +1,6 @@
 package com.tripoin.pos.desktop.swing.component.combobox;
 
+import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import org.springframework.stereotype.Component;
 
@@ -30,5 +31,13 @@ public class ComboBoxFilter extends JComboBox<String> implements IComponentIniti
                         }
                 )
         );
+    }
+
+    public AScaffoldingTable.FindMode getSelectedMode(int p_Index){
+        switch (p_Index) {
+            case 0 : return AScaffoldingTable.FindMode.CODE;
+            case 1 : return AScaffoldingTable.FindMode.NAME;
+            default: return AScaffoldingTable.FindMode.DEFAULT;
+        }
     }
 }

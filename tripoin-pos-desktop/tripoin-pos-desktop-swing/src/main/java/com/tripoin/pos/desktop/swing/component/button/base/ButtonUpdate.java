@@ -21,6 +21,7 @@ public class ButtonUpdate extends SimpleButton {
     @Override
     public void initComponents() {
         this.setMnemonic('U');
+        this.setEnabled(false);
         super.initComponents();
     }
 

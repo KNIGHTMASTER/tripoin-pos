@@ -43,8 +43,4 @@ public class TableCompany extends AScaffoldingTable<CompanyTableDTO> implements 
 
         super.initComponents();
     }
-
-    public ICompanyClient getCompanyClient() {
-        return companyClient;
-    }
 }

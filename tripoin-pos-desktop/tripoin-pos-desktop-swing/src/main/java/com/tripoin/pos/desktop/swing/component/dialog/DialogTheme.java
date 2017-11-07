@@ -2,6 +2,7 @@ package com.tripoin.pos.desktop.swing.component.dialog;
 
 import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
+import com.tripoin.pos.desktop.swing.component.base.TripoinSwingManager;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxTheme;
 import com.tripoin.pos.desktop.swing.controller.dialog.ControllerDialogTheme;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
@@ -32,6 +33,9 @@ public class DialogTheme extends JDialog implements IComponentInitializer {
 
     @Autowired
     private IResourceBundleLocator rb;
+
+    @Autowired
+    private TripoinSwingManager tripoinSwingManager;
 
     @Value("${splashscreen.icon.imageurl}")
     private String dialogThemeIcon;
@@ -64,6 +68,8 @@ public class DialogTheme extends JDialog implements IComponentInitializer {
         
         comboBoxTheme.addActionListener(evt -> themeChooser.start(comboBoxTheme, component));
         isInitiated = true;
+
+        tripoinSwingManager.setLAF(this);
     }
 
     public boolean isIsInitiated() {

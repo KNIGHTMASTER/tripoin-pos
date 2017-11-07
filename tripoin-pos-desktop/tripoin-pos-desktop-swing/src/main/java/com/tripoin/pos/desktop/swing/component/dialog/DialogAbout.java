@@ -2,6 +2,7 @@ package com.tripoin.pos.desktop.swing.component.dialog;
 
 import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
+import com.tripoin.pos.desktop.swing.component.base.TripoinSwingManager;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,6 +29,9 @@ public class DialogAbout extends JDialog implements IComponentInitializer {
 
     @Autowired
     private ICentralizePositionComponent centralizePositionComponent;
+
+    @Autowired
+    private TripoinSwingManager tripoinSwingManager;
 
     @Value("${splashscreen.icon.imageurl}")
     private String iconDialogAbout;
@@ -71,6 +75,7 @@ public class DialogAbout extends JDialog implements IComponentInitializer {
         this.getContentPane().add(panelLeft, BorderLayout.WEST);
 
         this.setResizable(false);
+        tripoinSwingManager.setLAF(this);
     }
 
     

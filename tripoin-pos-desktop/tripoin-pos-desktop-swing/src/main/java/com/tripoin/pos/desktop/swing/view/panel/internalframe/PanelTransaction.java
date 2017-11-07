@@ -15,6 +15,11 @@ import java.awt.*;
  */
 @Component
 public class PanelTransaction extends JPanel implements IComponentInitializer {
+    /**
+     *
+     *
+     */
+    private static final long serialVersionUID = -6662193437727910549L;
 
     @Autowired
     private PanelTransactionNorth panelTransactionNorth;

@@ -24,7 +24,7 @@ public abstract class LabelScaffoldingTitle extends JLabel implements IComponent
 
     @Override
     public void initComponents() {
-        this.setFont(new Font("Serif", Font.PLAIN, 22));
+        this.setFont(new Font("Serif", Font.PLAIN, 25));
         this.setText(rb.getValue(getCaption()));
     }
 

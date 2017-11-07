@@ -39,4 +39,8 @@ public class PanelScaffoldingNorth extends JPanel implements IComponentInitializ
     public PanelScaffoldingNorthTop getPanelScaffoldingNorthTop() {
         return panelScaffoldingNorthTop;
     }
+
+    public PanelScaffoldingNorthBottom getPanelScaffoldingNorthBottom() {
+        return panelScaffoldingNorthBottom;
+    }
 }

@@ -14,6 +14,11 @@ import java.awt.*;
  */
 @Component
 public class PanelCatalog extends JPanel implements IComponentInitializer {
+    /**
+     *
+     *
+     */
+    private static final long serialVersionUID = -5452046179225624338L;
 
     @PostConstruct
     @Override

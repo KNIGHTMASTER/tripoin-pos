@@ -2,6 +2,7 @@ package com.tripoin.pos.desktop.swing.component.popup;
 
 import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
+import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
 import com.tripoin.pos.desktop.swing.component.dialog.AScaffoldingDialog;
 import com.tripoin.pos.desktop.swing.component.menuitem.MenuItemDelete;
 import com.tripoin.pos.desktop.swing.component.menuitem.MenuItemDetail;
@@ -46,7 +47,10 @@ public abstract class AScaffoldingPopUp extends JPopupMenu implements IComponent
     private IResourceBundleLocator rb;
 
     @Autowired
-    private AControllerScaffolding AControllerScaffolding;
+    private AControllerScaffolding controllerScaffolding;
+
+    @Autowired
+    private ComboBoxDisplayNumberOfData comboBoxDisplayNumberOfData;
 
     private Point point = null;
     protected AScaffoldingTable scaffoldingTable;
@@ -73,26 +77,44 @@ public abstract class AScaffoldingPopUp extends JPopupMenu implements IComponent
         param.setScaffoldingClient(getScaffoldingClient());
         param.setScaffoldingTable(scaffoldingTable);
         param.setScaffoldingDialog(getScaffoldingDialog());
-        AControllerScaffolding.setParam(param);
+        controllerScaffolding.setParam(param);
 
-        menuItemRefresh.addActionListener(e -> AControllerScaffolding.refresh());
+        menuItemRefresh.addActionListener(e -> {
+            param.setComboBoxDisplayNumberOfData(comboBoxDisplayNumberOfData);
+            controllerScaffolding.setParam(param);
+            controllerScaffolding.refresh();
+        });
 
         menuItemDetail.addActionListener(e -> {
             param.setPoint(point);
-            AControllerScaffolding.setParam(param);
-            AControllerScaffolding.showDetailDialog();
+            controllerScaffolding.setParam(param);
+            controllerScaffolding.showDetailDialog();
         });
 
         menuItemDelete.addActionListener(e -> {
-            param.setPoint(point);
-            AControllerScaffolding.setParam(param);
-            AControllerScaffolding.delete();
+            int row = scaffoldingTable.getSelectedRows().length;
+            if (row <= -1){
+                JOptionPane.showMessageDialog(null, "Please choose a record on table");
+            }else if (row == 1 ){
+                param.setSelectedTableRow(1);
+                param.setPoint(point);
+                param.setComboBoxDisplayNumberOfData(comboBoxDisplayNumberOfData);
+                controllerScaffolding.setParam(param);
+                controllerScaffolding.delete();
+            }else if (row > 1){
+                param.setSelectedTableRow(null);
+                param.setSelectedTableRows(scaffoldingTable.getSelectedRows());
+                param.setPoint(point);
+                param.setComboBoxDisplayNumberOfData(comboBoxDisplayNumberOfData);
+                controllerScaffolding.setParam(param);
+                controllerScaffolding.delete();
+            }
         });
 
         menuItemUpdate.addActionListener(e -> {
             param.setPoint(point);
-            AControllerScaffolding.setParam(param);
-            AControllerScaffolding.showUpdateDialog();
+            controllerScaffolding.setParam(param);
+            controllerScaffolding.showUpdateDialog();
         });
     }
 
