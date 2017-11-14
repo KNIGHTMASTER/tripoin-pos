@@ -1,10 +1,7 @@
 package com.tripoin.pos.desktop.swing.view.panel.internalframe.scaffolding;
 
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,34 +10,28 @@ import java.awt.*;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-@Component
-public class PanelScaffoldingNorth extends JPanel implements IComponentInitializer {
+public abstract class PanelScaffoldingNorth extends JPanel implements IComponentInitializer {
     /**
      *
      *
      */
     private static final long serialVersionUID = -6769450010111493264L;
 
-    @Autowired
-    private PanelScaffoldingNorthBottom panelScaffoldingNorthBottom;
+    protected PanelScaffoldingNorthTop panelScaffoldingNorthTop;
+    protected PanelScaffoldingNorthBottom panelScaffoldingNorthBottom;
 
-    @Autowired
-    private PanelScaffoldingNorthTop panelScaffoldingNorthTop;
-
-    @PostConstruct
     @Override
     public void initComponents() {
+        panelScaffoldingNorthTop = getPanelScaffoldingNorthTop();
+        panelScaffoldingNorthTop.initComponents();
+        panelScaffoldingNorthBottom = getPanelScaffoldingNorthBottom();
+        panelScaffoldingNorthBottom.initComponents();
+
         this.setLayout(new GridLayout(2, 1));
         this.add(panelScaffoldingNorthTop);
         this.add(panelScaffoldingNorthBottom);
-
     }
 
-    public PanelScaffoldingNorthTop getPanelScaffoldingNorthTop() {
-        return panelScaffoldingNorthTop;
-    }
-
-    public PanelScaffoldingNorthBottom getPanelScaffoldingNorthBottom() {
-        return panelScaffoldingNorthBottom;
-    }
+    public abstract PanelScaffoldingNorthTop getPanelScaffoldingNorthTop();
+    public abstract PanelScaffoldingNorthBottom getPanelScaffoldingNorthBottom();
 }

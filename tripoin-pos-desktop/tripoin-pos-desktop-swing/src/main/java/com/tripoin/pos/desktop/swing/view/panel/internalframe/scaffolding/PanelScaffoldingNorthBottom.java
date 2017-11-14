@@ -5,10 +5,7 @@ import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxFilter;
 import com.tripoin.pos.desktop.swing.component.label.LabelScaffoldingDisplay;
 import com.tripoin.pos.desktop.swing.component.label.LabelScaffoldingSearch;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,40 +14,32 @@ import java.awt.*;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-@Component
-public class PanelScaffoldingNorthBottom extends JPanel implements IComponentInitializer {
+public abstract class PanelScaffoldingNorthBottom extends JPanel implements IComponentInitializer {
     /**
      *
      *
      */
     private static final long serialVersionUID = -5182990025311642595L;
 
-    @Autowired
-    private LabelScaffoldingDisplay labelScaffoldingDisplay;
+    protected ComboBoxDisplayNumberOfData comboBoxDisplayNumberOfData;
+    protected ComboBoxFilter comboBoxFilter;
+    protected TextField txtSearch;
 
-    @Autowired
-    private ComboBoxDisplayNumberOfData comboBoxDisplayNumberOfData;
-
-    @Autowired
-    private LabelScaffoldingSearch labelScaffoldingSearch;
-
-    @Autowired
-    private ComboBoxFilter comboBoxFilter;
-
-    private TextField txtSearch = new TextField();
-
-    @PostConstruct
     @Override
     public void initComponents() {
+        txtSearch = new TextField();
+        comboBoxDisplayNumberOfData = getComboBoxDisplayNumberOfData();
+        comboBoxFilter = getComboBoxFilter();
+
         JPanel panelLeft = new JPanel();
         panelLeft.setLayout(new GridLayout(1, 2));
-        panelLeft.add(labelScaffoldingDisplay);
+        panelLeft.add(getLabelScaffoldingDisplay());
         panelLeft.add(comboBoxDisplayNumberOfData);
 
         JPanel panelRight = new JPanel();
         panelRight.setLayout(new GridLayout(1, 3));
-        panelRight.add(labelScaffoldingSearch);
-        panelRight.add(comboBoxFilter);
+        panelRight.add(getLabelScaffoldingSearch());
+        panelRight.add(getComboBoxFilter());
         panelRight.add(txtSearch);
 
         this.setLayout(new BorderLayout());
@@ -62,15 +51,11 @@ public class PanelScaffoldingNorthBottom extends JPanel implements IComponentIni
         return txtSearch;
     }
 
-    public ComboBoxDisplayNumberOfData getComboBoxDisplayNumberOfData() {
-        return comboBoxDisplayNumberOfData;
-    }
+    public abstract LabelScaffoldingDisplay getLabelScaffoldingDisplay();
 
-    public LabelScaffoldingSearch getLabelScaffoldingSearch() {
-        return labelScaffoldingSearch;
-    }
+    public abstract ComboBoxDisplayNumberOfData getComboBoxDisplayNumberOfData();
 
-    public ComboBoxFilter getComboBoxFilter() {
-        return comboBoxFilter;
-    }
+    public abstract LabelScaffoldingSearch getLabelScaffoldingSearch();
+
+    public abstract ComboBoxFilter getComboBoxFilter();
 }

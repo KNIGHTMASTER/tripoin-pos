@@ -1,7 +1,5 @@
 package com.tripoin.pos.desktop.swing.component.button.base;
 
-import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.swing.*;
 
@@ -9,8 +7,7 @@ import javax.swing.*;
  * 
  * @author <a href="fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-@Component
-public class ButtonSave extends SimpleButton {
+public abstract class ButtonSave extends SimpleButton {
 
     /**
      *

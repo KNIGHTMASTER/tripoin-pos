@@ -8,7 +8,7 @@ import com.tripoin.pos.desktop.swing.component.button.base.ButtonSave;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
 import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import com.tripoin.pos.desktop.swing.component.textfield.DisabledTextField;
-import com.tripoin.pos.desktop.swing.controller.panel.AControllerScaffolding;
+import com.tripoin.pos.desktop.swing.controller.panel.AScaffoldingController;
 import com.tripoin.pos.desktop.swing.dto.param.ControllerScaffoldingParam;
 import com.tripoin.scaffolding.data.dto.response.GenericSingleDATAResponseDTO;
 import id.co.telkomsigma.tgf.util.IComponentAction;
@@ -17,8 +17,6 @@ import id.co.telkomsigma.tgf.util.IParameterizedComponent;
 import id.co.telkomsigma.tgf.util.UIConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,22 +35,6 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
      */
     private static final long serialVersionUID = -1978503025665914102L;
 
-    @Autowired
-    private ICentralizePositionComponent centralizePositionComponent;
-
-    @Autowired
-    protected IResourceBundleLocator rb;
-
-    @Value("${splashscreen.icon.imageurl}")
-    private String scaffoldingDetailIcon;
-
-    @Autowired
-    private ButtonSave buttonSave;
-
-    @Autowired
-    private ButtonClear buttonClear;
-
-    @Autowired
     private ComboBoxDisplayNumberOfData comboBoxDisplayNumberOfData;
 
     protected int preferredHeight;
@@ -71,15 +53,39 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
 
     private GenericSingleDATAResponseDTO<DATA> data;
 
+    private ButtonClear buttonClear;
+    private ButtonSave buttonSave;
+
     @Override
     public void initComponents() {
+        comboBoxDisplayNumberOfData = new ComboBoxDisplayNumberOfData();
+        comboBoxDisplayNumberOfData.initComponents();
+
+        buttonClear = new ButtonClear() {
+            private static final long serialVersionUID = -8096061925657746600L;
+
+            @Override
+            public IResourceBundleLocator getRb() {
+                return AScaffoldingDialog.this.getRb();
+            }
+        };
+
+        buttonSave = new ButtonSave() {
+            private static final long serialVersionUID = -4667702327720732362L;
+
+            @Override
+            public IResourceBundleLocator getRb() {
+                return AScaffoldingDialog.this.getRb();
+            }
+        };
+
         Toolkit kit = Toolkit.getDefaultToolkit();
-        Image dialogIcon = kit.getImage(getClass().getClassLoader().getResource(scaffoldingDetailIcon));
+        Image dialogIcon = kit.getImage(getClass().getClassLoader().getResource(getScaffoldingDialogIcon()));
         this.setIconImage(dialogIcon);
         this.setModal(true);
         this.setResizable(true);
         this.setSize(preferredWidth, preferredHeight);
-        centralizePositionComponent.setDialogToCenter(this);
+        getCentralizePositionComponent().setDialogToCenter(this);
 
         panelLeft = new JPanel();
         panelRight = new JPanel();
@@ -145,7 +151,7 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
 
         switch (mode) {
             case DETAIL:
-                this.setTitle(rb.getValue(getTitles()[0]));
+                this.setTitle(getRb().getValue(getTitles()[0]));
                 setButtonEnable(false);
                 panelLeft.setLayout(new GridLayout(getNumberOfComponent(), 1));
                 for (int a=0; a<getNumberOfComponent(); a++){
@@ -159,7 +165,7 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
                 break;
             case INSERT:
                 this.setSize(preferredWidth, preferredHeight-30);
-                this.setTitle(rb.getValue(getTitles()[1]));
+                this.setTitle(getRb().getValue(getTitles()[1]));
                 setButtonEnable(true);
                 panelLeft.setLayout(new GridLayout(getNumberOfComponent()-1, 1));
                 for (int a=0; a<getNumberOfComponent()-1; a++){
@@ -169,12 +175,10 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
                 panelRight.setLayout(new GridLayout(getNumberOfComponent()-1, 1));
                 List<TextField> tempTextFields = getEnabledModeFields();
                 tempTextFields.remove(0);
-                for (TextField textField : tempTextFields){
-                    panelRight.add(textField);
-                }
+                tempTextFields.forEach(panelRight::add);
                 break;
             case UPDATE:
-                this.setTitle(rb.getValue(getTitles()[2]));
+                this.setTitle(getRb().getValue(getTitles()[2]));
                 setButtonEnable(true);
                 panelLeft.setLayout(new GridLayout(getNumberOfComponent(), 1));
                 for (int a=0; a<getNumberOfComponent(); a++){
@@ -255,23 +259,13 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
 
     public abstract String [] getParamContentArray();
 
-    public abstract AControllerScaffolding getControllerScaffolding();
+    public abstract AScaffoldingController getControllerScaffolding();
 
     public abstract AScaffoldingTable getScaffoldingTable();
 
-    public ButtonSave getButtonSave() {
-        return buttonSave;
-    }
+    public abstract IResourceBundleLocator getRb();
 
-    public void setButtonSave(ButtonSave buttonSave) {
-        this.buttonSave = buttonSave;
-    }
+    public abstract ICentralizePositionComponent getCentralizePositionComponent();
 
-    public ButtonClear getButtonClear() {
-        return buttonClear;
-    }
-
-    public void setButtonClear(ButtonClear buttonClear) {
-        this.buttonClear = buttonClear;
-    }
+    public abstract String getScaffoldingDialogIcon();
 }

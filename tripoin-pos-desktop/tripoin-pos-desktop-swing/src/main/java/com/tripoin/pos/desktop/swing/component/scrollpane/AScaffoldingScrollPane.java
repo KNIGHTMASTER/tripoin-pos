@@ -17,7 +17,7 @@ public class AScaffoldingScrollPane extends JScrollPane implements IComponentIni
      */
     private static final long serialVersionUID = 3925046385966946640L;
 
-    protected AScaffoldingTable scaffoldingTable;
+    public AScaffoldingTable scaffoldingTable;
 
     @Override
     public void initComponents() {

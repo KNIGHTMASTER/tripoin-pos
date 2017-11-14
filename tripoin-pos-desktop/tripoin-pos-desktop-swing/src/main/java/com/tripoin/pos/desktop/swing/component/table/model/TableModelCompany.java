@@ -22,13 +22,14 @@ public class TableModelCompany extends AScaffoldingTableModel<CompanyTableDTO> {
             case 0 : return dataList.get(rowIndex).getId();
             case 1 : return dataList.get(rowIndex).getCode();
             case 2 : return dataList.get(rowIndex).getName();
+            case 3 : return dataList.get(rowIndex).getRemarks();
             default: return null;
         }
     }
 
     @Override
     public String[] getColumnNames() {
-        return new String[] {"Id", "Code", "Name"};
+        return new String[] {"Id", "Code", "Name", "Remarks"};
     }
 
 }

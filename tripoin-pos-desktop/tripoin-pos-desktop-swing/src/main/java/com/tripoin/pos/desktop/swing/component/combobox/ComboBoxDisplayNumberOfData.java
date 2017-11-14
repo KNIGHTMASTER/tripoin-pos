@@ -3,7 +3,6 @@ package com.tripoin.pos.desktop.swing.component.combobox;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 
 /**
@@ -19,7 +18,6 @@ public class ComboBoxDisplayNumberOfData extends JComboBox<String> implements IC
      */
     private static final long serialVersionUID = 7406884693673187302L;
 
-    @PostConstruct
     @Override
     public void initComponents() {
         this.setModel(

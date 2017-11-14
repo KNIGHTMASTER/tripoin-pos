@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.controller.panel.company;
 
-import com.tripoin.pos.desktop.swing.controller.panel.AControllerScaffolding;
+import com.tripoin.pos.desktop.swing.controller.panel.AScaffoldingController;
 import com.tripoin.pos.shared.data.CompanyTableDTO;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +10,6 @@ import org.springframework.stereotype.Service;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Service
-public class AControllerScaffoldingCompany extends AControllerScaffolding<CompanyTableDTO> {
+public class ScaffoldingControllerCompany extends AScaffoldingController<CompanyTableDTO> {
 
 }

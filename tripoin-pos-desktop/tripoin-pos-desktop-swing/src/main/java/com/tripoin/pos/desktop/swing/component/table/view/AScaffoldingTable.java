@@ -39,7 +39,7 @@ public abstract class AScaffoldingTable<RESPONSE> extends JTable implements ICom
 
     protected AScaffoldingTableModel scaffoldingTableModel;
 
-    protected AScaffoldingTableListener scaffoldingTableListener;
+    public AScaffoldingTableListener scaffoldingTableListener;
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(AScaffoldingTable.class);
 
@@ -48,6 +48,17 @@ public abstract class AScaffoldingTable<RESPONSE> extends JTable implements ICom
 
     @Override
     public void initComponents() {
+        /*scaffoldingTableListener = new AScaffoldingTableListener() {
+            @Override
+            public AScaffoldingPopUp getScaffoldingPopUp() {
+                return null;
+            }
+        };*/
+        if (scaffoldingTableListener == null){
+            System.out.println("list = null");
+        }
+        scaffoldingTableListener.initComponents();
+
         this.setAutoCreateRowSorter(true);
         initAction();
     }
@@ -137,5 +148,9 @@ public abstract class AScaffoldingTable<RESPONSE> extends JTable implements ICom
     @Override
     public void initAction() {
         this.addMouseListener(scaffoldingTableListener);
+    }
+
+    public void setScaffoldingTableListener(AScaffoldingTableListener scaffoldingTableListener) {
+        this.scaffoldingTableListener = scaffoldingTableListener;
     }
 }

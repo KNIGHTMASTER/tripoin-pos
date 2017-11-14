@@ -1,16 +1,12 @@
 package com.tripoin.pos.desktop.swing.component.button.base;
 
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 
 /**
  * 
  * @author <a href="fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-@Component
-public class ButtonClear extends SimpleButton {
+public abstract class ButtonClear extends SimpleButton {
 
     /**
      *
@@ -18,7 +14,10 @@ public class ButtonClear extends SimpleButton {
      */
     private static final long serialVersionUID = -1441161236689632531L;
 
-    @PostConstruct
+    public ButtonClear(){
+        initComponents();
+    }
+
     @Override
     public void initComponents() {
         this.setMnemonic('C');

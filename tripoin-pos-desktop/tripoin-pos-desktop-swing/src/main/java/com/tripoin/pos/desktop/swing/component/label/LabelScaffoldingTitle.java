@@ -20,7 +20,7 @@ public abstract class LabelScaffoldingTitle extends JLabel implements IComponent
     private static final long serialVersionUID = 332587950901187861L;
 
     @Autowired
-    IResourceBundleLocator rb;
+    protected IResourceBundleLocator rb;
 
     @Override
     public void initComponents() {

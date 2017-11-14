@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.component.table.listener;
 
 import com.tripoin.pos.desktop.swing.component.popup.AScaffoldingPopUp;
-import org.springframework.beans.factory.annotation.Autowired;
+import id.co.telkomsigma.tgf.util.IComponentInitializer;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -12,10 +12,14 @@ import java.awt.event.MouseEvent;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-public abstract class AScaffoldingTableListener extends MouseAdapter {
+public abstract class AScaffoldingTableListener extends MouseAdapter implements IComponentInitializer {
 
-    @Autowired
-    AScaffoldingPopUp scaffoldingPopUp;
+    public AScaffoldingPopUp scaffoldingPopUp;
+
+    @Override
+    public void initComponents() {
+        scaffoldingPopUp = getScaffoldingPopUp();
+    }
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -27,4 +31,6 @@ public abstract class AScaffoldingTableListener extends MouseAdapter {
             }
         }
     }
+
+    public abstract AScaffoldingPopUp getScaffoldingPopUp();
 }

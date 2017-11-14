@@ -19,6 +19,7 @@ public class CompanyTableDTO extends ExtractableValueDTO implements Serializable
     private Long id;
     private String code;
     private String name;
+    private String remarks;
 
     public Long getId() {
         return id;
@@ -44,6 +45,14 @@ public class CompanyTableDTO extends ExtractableValueDTO implements Serializable
         this.name = name;
     }
 
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
     @Override
     public String toString() {
         return "CompanyTableDTO{" +
@@ -55,6 +64,6 @@ public class CompanyTableDTO extends ExtractableValueDTO implements Serializable
 
     @Override
     public String [] extractValues(){
-        return new String[] {String.valueOf(id), code, name};
+        return new String[] {String.valueOf(id), code, name, remarks};
     }
 }

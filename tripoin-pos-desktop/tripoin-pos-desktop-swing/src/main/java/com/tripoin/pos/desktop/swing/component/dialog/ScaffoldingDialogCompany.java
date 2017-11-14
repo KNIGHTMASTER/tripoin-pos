@@ -1,17 +1,8 @@
 package com.tripoin.pos.desktop.swing.component.dialog;
 
-import com.tripoin.pos.desktop.swing.client.ICompanyClient;
-import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
-import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
-import com.tripoin.pos.desktop.swing.component.table.view.TableCompany;
 import com.tripoin.pos.desktop.swing.component.textfield.DisabledTextField;
-import com.tripoin.pos.desktop.swing.controller.panel.AControllerScaffolding;
-import com.tripoin.pos.desktop.swing.controller.panel.company.AControllerScaffoldingCompany;
 import com.tripoin.pos.shared.data.CompanyTableDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,24 +12,13 @@ import java.util.List;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-@Component
-public class ScaffoldingDialogCompany extends AScaffoldingDialog<CompanyTableDTO> {
+public abstract class ScaffoldingDialogCompany extends AScaffoldingDialog<CompanyTableDTO> {
     /**
      *
      *
      */
     private static final long serialVersionUID = 2593952653246461722L;
 
-    @Autowired
-    private AControllerScaffoldingCompany controllerScaffoldingCompany;
-
-    @Autowired
-    private ICompanyClient companyClient;
-
-    @Autowired
-    private TableCompany tableCompany;
-
-    @PostConstruct
     @Override
     public void initComponents() {
         preferredHeight = 180;
@@ -86,11 +66,6 @@ public class ScaffoldingDialogCompany extends AScaffoldingDialog<CompanyTableDTO
     }
 
     @Override
-    public IScaffoldingClient getScaffoldingClient() {
-        return companyClient;
-    }
-
-    @Override
     public CompanyTableDTO getDATAtoInsert() {
         CompanyTableDTO companyTableDTO = new CompanyTableDTO();
         if (enabledTextFields.size() == getNumberOfComponent()) {
@@ -117,15 +92,5 @@ public class ScaffoldingDialogCompany extends AScaffoldingDialog<CompanyTableDTO
     @Override
     public String[] getParamContentArray() {
         return new String[] {String.valueOf(getParamContent().getId()), getParamContent().getCode(), getParamContent().getName()};
-    }
-
-    @Override
-    public AControllerScaffolding getControllerScaffolding() {
-        return controllerScaffoldingCompany;
-    }
-
-    @Override
-    public AScaffoldingTable getScaffoldingTable() {
-        return tableCompany;
     }
 }

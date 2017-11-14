@@ -1,9 +1,13 @@
 package com.tripoin.pos.shared.data.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tripoin.scaffolding.data.AAuditTrail;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.Set;
 
 /**
  * Created on 10/30/17.
@@ -18,6 +22,18 @@ public class Company extends AAuditTrail {
      *
      */
     private static final long serialVersionUID = -4144907972179173016L;
+
+    private Set<Branch> branch;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    public Set<Branch> getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Set<Branch> branch) {
+        this.branch = branch;
+    }
 
     @Override
     public String tableName() {

@@ -2,10 +2,7 @@ package com.tripoin.pos.desktop.swing.component.label;
 
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 
 /**
@@ -13,20 +10,17 @@ import javax.swing.*;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-@Component
-public class LabelScaffoldingDisplay extends JLabel implements IComponentInitializer {
+public abstract class LabelScaffoldingDisplay extends JLabel implements IComponentInitializer {
     /**
      *
      *
      */
     private static final long serialVersionUID = -1398055428650053672L;
 
-    @Autowired
-    IResourceBundleLocator rb;
-
-    @PostConstruct
     @Override
     public void initComponents() {
-        this.setText(rb.getValue("ui.scaffolding.label.show"));
+        this.setText(getRb().getValue("ui.scaffolding.label.show"));
     }
+
+    public abstract IResourceBundleLocator getRb();
 }

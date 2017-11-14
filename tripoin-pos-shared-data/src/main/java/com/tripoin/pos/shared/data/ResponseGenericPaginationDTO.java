@@ -108,4 +108,19 @@ public class ResponseGenericPaginationDTO<DATA> implements Serializable {
     public void setContent(List<DATA> content) {
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseGenericPaginationDTO{" +
+                "first=" + first +
+                ", numberOfElements=" + numberOfElements +
+                ", size=" + size +
+                ", number=" + number +
+                ", last=" + last +
+                ", totalElements=" + totalElements +
+                ", totalPages=" + totalPages +
+                ", sort=" + sort +
+                ", content=" + content +
+                '}';
+    }
 }

@@ -26,7 +26,7 @@ import java.util.List;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  * @param <RESPONSE>
  */
-public abstract class AControllerScaffolding<RESPONSE> implements IParameterizedComponent<ControllerScaffoldingParam> {
+public abstract class AScaffoldingController<RESPONSE> implements IParameterizedComponent<ControllerScaffoldingParam> {
 
     @Autowired
     private DialogAutoCloseAlert dialogAutoCloseAlert;
@@ -179,21 +179,26 @@ public abstract class AControllerScaffolding<RESPONSE> implements IParameterized
 
     public void refreshTable(ResponseGenericPaginationDTO responseGenericPaginationDTO){
         int selectedCombo = getParam().getComboBoxDisplayNumberOfData().getSelectedValue(getParam().getComboBoxDisplayNumberOfData().getSelectedIndex());
-        int startIndex = (selectedCombo * responseGenericPaginationDTO.getNumber()) - responseGenericPaginationDTO.getNumber() + 1;
-        getParam().getLabelIndex().setText("Showing 1 - "+startIndex+" from "+responseGenericPaginationDTO.getTotalElements()+" Record");
+        if (responseGenericPaginationDTO.getNumber() >= responseGenericPaginationDTO.getTotalPages()) {
+            responseGenericPaginationDTO.setNumber(responseGenericPaginationDTO.getTotalPages()-1);
+        }
+        int firstIndex = responseGenericPaginationDTO.getNumber() * selectedCombo + 1;
+        int lastIndex = responseGenericPaginationDTO.getNumber() * selectedCombo + responseGenericPaginationDTO.getNumberOfElements();
+
+        getParam().getLabelIndex().setText("Showing " + firstIndex + " - " + lastIndex + " from " + responseGenericPaginationDTO.getTotalElements() + " Record");
         if (responseGenericPaginationDTO.getFirst()){
-            getParam().getPanelPaginationButton().getButtonFirstPage().setEnabled(false);
-            getParam().getPanelPaginationButton().getButtonPrevPage().setEnabled(false);
+            getParam().getPanelPaginationButton().buttonFirstPage.setEnabled(false);
+            getParam().getPanelPaginationButton().buttonPrevPage.setEnabled(false);
         }else {
-            getParam().getPanelPaginationButton().getButtonFirstPage().setEnabled(true);
-            getParam().getPanelPaginationButton().getButtonPrevPage().setEnabled(true);
+            getParam().getPanelPaginationButton().buttonFirstPage.setEnabled(true);
+            getParam().getPanelPaginationButton().buttonPrevPage.setEnabled(true);
         }
         if (responseGenericPaginationDTO.getLast()){
-            getParam().getPanelPaginationButton().getButtonLastPage().setEnabled(false);
-            getParam().getPanelPaginationButton().getButtonNextPage().setEnabled(false);
+            getParam().getPanelPaginationButton().buttonLastPage.setEnabled(false);
+            getParam().getPanelPaginationButton().buttonNextPage.setEnabled(false);
         }else {
-            getParam().getPanelPaginationButton().getButtonLastPage().setEnabled(true);
-            getParam().getPanelPaginationButton().getButtonNextPage().setEnabled(true);
+            getParam().getPanelPaginationButton().buttonLastPage.setEnabled(true);
+            getParam().getPanelPaginationButton().buttonNextPage.setEnabled(true);
         }
     }
 

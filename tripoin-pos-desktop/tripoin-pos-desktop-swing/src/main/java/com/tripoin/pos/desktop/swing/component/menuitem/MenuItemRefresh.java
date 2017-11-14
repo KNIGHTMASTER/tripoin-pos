@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component
-public class MenuItemRefresh extends AMenuItem {
+public abstract class MenuItemRefresh extends AMenuItem {
     /**
      *
      *

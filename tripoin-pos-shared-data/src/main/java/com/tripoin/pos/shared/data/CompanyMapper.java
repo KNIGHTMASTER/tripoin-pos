@@ -18,6 +18,7 @@ public class CompanyMapper extends ADATAMapper<Company, CompanyTableDTO> {
         companyTableDTO.setId(companyRawDTO.getId());
         companyTableDTO.setCode(companyRawDTO.getCode());
         companyTableDTO.setName(companyRawDTO.getName());
+        companyTableDTO.setRemarks(companyRawDTO.getRemarks());
         return companyTableDTO;
     }
 }

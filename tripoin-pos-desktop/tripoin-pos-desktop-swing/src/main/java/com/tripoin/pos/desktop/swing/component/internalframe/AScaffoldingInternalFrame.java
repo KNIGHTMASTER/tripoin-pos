@@ -5,7 +5,6 @@ import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import com.tripoin.pos.desktop.swing.view.internalframe.SideBarInternalFrame;
 import com.tripoin.pos.desktop.swing.view.panel.internalframe.scaffolding.AScaffoldingPanel;
 import id.co.telkomsigma.tgf.util.IComponentAction;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.awt.*;
 
@@ -21,7 +20,6 @@ public abstract class AScaffoldingInternalFrame extends SideBarInternalFrame imp
      */
     private static final long serialVersionUID = -9150039503020378664L;
 
-    @Autowired
     private ComboBoxDisplayNumberOfData comboBoxDisplayNumberOfData;
 
     protected AScaffoldingPanel scaffoldingPanel;
@@ -29,6 +27,9 @@ public abstract class AScaffoldingInternalFrame extends SideBarInternalFrame imp
 
     @Override
     public void initComponents() {
+        comboBoxDisplayNumberOfData = new ComboBoxDisplayNumberOfData();
+        comboBoxDisplayNumberOfData.initComponents();
+
         super.initComponents();
         this.setLayout(new BorderLayout());
         this.add(scaffoldingPanel, BorderLayout.CENTER);

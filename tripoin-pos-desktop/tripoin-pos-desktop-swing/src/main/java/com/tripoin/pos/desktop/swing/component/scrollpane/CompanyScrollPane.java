@@ -1,5 +1,6 @@
 package com.tripoin.pos.desktop.swing.component.scrollpane;
 
+import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import com.tripoin.pos.desktop.swing.component.table.view.TableCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,7 +30,8 @@ public class CompanyScrollPane extends AScaffoldingScrollPane {
         super.initComponents();
     }
 
-    public TableCompany getTableCompany() {
+    @Override
+    public AScaffoldingTable getScaffoldingTable() {
         return tableCompany;
     }
 }
