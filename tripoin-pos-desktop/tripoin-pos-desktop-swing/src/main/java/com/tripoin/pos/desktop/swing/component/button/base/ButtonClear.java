@@ -14,10 +14,6 @@ public abstract class ButtonClear extends SimpleButton {
      */
     private static final long serialVersionUID = -1441161236689632531L;
 
-    public ButtonClear(){
-        initComponents();
-    }
-
     @Override
     public void initComponents() {
         this.setMnemonic('C');

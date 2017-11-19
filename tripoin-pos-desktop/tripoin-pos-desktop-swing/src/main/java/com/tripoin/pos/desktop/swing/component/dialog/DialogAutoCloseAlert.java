@@ -27,6 +27,14 @@ public class DialogAutoCloseAlert extends JDialog implements IComponentInitializ
     @Value("${dialog.alert.autoclose.delay.time}")
     private int delay;
 
+    public DialogAutoCloseAlert() {
+    }
+
+    public DialogAutoCloseAlert(MODE p_Mode) {
+        setMode(p_Mode);
+        initComponents();
+    }
+
     @Override
     public void initComponents() {
         Timer timer = new Timer(delay, e -> {
@@ -43,14 +51,27 @@ public class DialogAutoCloseAlert extends JDialog implements IComponentInitializ
     }
 
     public void setMode(MODE p_MODE) {
+        JPanel panelBackground = new JPanel();
+        panelBackground.setLayout(new BorderLayout());
         JLabel lblInfo = new JLabel();
+        panelBackground.add(lblInfo, BorderLayout.CENTER);
+
         switch (p_MODE) {
-            case INFO: lblInfo.setText("Info");break;
-            case ERROR: lblInfo.setText("Error");break;
-            case WARNING: lblInfo.setText("Warning");break;
+            case INFO:
+                lblInfo.setText("Info");
+                panelBackground.setBackground(Color.BLUE);
+                break;
+            case ERROR:
+                lblInfo.setText("Error");
+                panelBackground.setBackground(Color.RED);
+                break;
+            case WARNING:
+                lblInfo.setText("Warning");
+                panelBackground.setBackground(Color.YELLOW);
+                break;
             default:
         }
         this.setLayout(new BorderLayout());
-        this.add(lblInfo);
+        this.add(panelBackground);
     }
 }

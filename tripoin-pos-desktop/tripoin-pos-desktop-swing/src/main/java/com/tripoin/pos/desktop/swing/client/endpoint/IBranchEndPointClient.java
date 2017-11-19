@@ -49,4 +49,7 @@ public interface IBranchEndPointClient {
 
     @HTTP(method = "DELETE", path = "branch/100029", hasBody = true)
     Call<ResponseData> deleteCollection(@Body List<String> p_ListOfIdToDelete);
+
+    @GET("branch/100017")
+    Call<GenericListResponseDTO> selectLOV();
 }

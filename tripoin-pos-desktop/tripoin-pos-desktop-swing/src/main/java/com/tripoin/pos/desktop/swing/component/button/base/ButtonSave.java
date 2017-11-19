@@ -1,6 +1,5 @@
 package com.tripoin.pos.desktop.swing.component.button.base;
 
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 
 /**
@@ -15,7 +14,6 @@ public abstract class ButtonSave extends SimpleButton {
      */
     private static final long serialVersionUID = -1441161236689632531L;
 
-    @PostConstruct
     @Override
     public void initComponents() {
         this.setMnemonic('S');

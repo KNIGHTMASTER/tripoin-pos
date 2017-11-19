@@ -7,7 +7,6 @@ import com.tripoin.pos.desktop.swing.component.button.base.ButtonClear;
 import com.tripoin.pos.desktop.swing.component.button.base.ButtonSave;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
 import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
-import com.tripoin.pos.desktop.swing.component.textfield.DisabledTextField;
 import com.tripoin.pos.desktop.swing.controller.panel.AScaffoldingController;
 import com.tripoin.pos.desktop.swing.dto.param.ControllerScaffoldingParam;
 import com.tripoin.scaffolding.data.dto.response.GenericSingleDATAResponseDTO;
@@ -43,9 +42,9 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(AScaffoldingDialog.class);
 
-    protected List<DisabledTextField> disabledTextFields;
+    protected List<Component> disabledTextFields;
 
-    protected List<TextField> enabledTextFields;
+    protected List<Component> enabledTextFields;
 
     private JPanel panelRight;
 
@@ -69,6 +68,7 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
                 return AScaffoldingDialog.this.getRb();
             }
         };
+        buttonClear.initComponents();
 
         buttonSave = new ButtonSave() {
             private static final long serialVersionUID = -4667702327720732362L;
@@ -78,6 +78,7 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
                 return AScaffoldingDialog.this.getRb();
             }
         };
+        buttonSave.initComponents();
 
         Toolkit kit = Toolkit.getDefaultToolkit();
         Image dialogIcon = kit.getImage(getClass().getClassLoader().getResource(getScaffoldingDialogIcon()));
@@ -111,9 +112,16 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
     }
 
     public void setFieldsDetail() {
+        disabledTextFields = getDisabledModeFields();
         for (int a = 0; a < getParamContentArray().length; a++) {
             if (disabledTextFields.size() > 0) {
-                disabledTextFields.get(a).setText(getParamContentArray()[a]);
+                if (disabledTextFields.get(a) instanceof JTextField) {
+                    ((JTextField) disabledTextFields.get(a)).setText(getParamContentArray()[a]);
+                } else if (disabledTextFields.get(a) instanceof JTextArea) {
+                    ((JTextArea) disabledTextFields.get(a)).setText(getParamContentArray()[a]);
+                } else if (disabledTextFields.get(a) instanceof JComboBox) {
+                    ((JComboBox) disabledTextFields.get(a)).setSelectedItem(getParamContentArray()[a]);
+                }
             }
         }
     }
@@ -123,7 +131,14 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
         for (int a=0; a<getParamContentArray().length; a++) {
             try{
                 if (enabledTextFields.size() > 0) {
-                    enabledTextFields.get(a).setText(getParamContentArray()[a]);
+                    if (enabledTextFields.get(a) instanceof JTextField) {
+                        ((JTextField) enabledTextFields.get(a)).setText(getParamContentArray()[a]);
+                    }else if (enabledTextFields.get(a) instanceof  JTextArea) {
+                        ((JTextArea) enabledTextFields.get(a)).setText(getParamContentArray()[a]);
+                    }else if (enabledTextFields.get(a) instanceof  JComboBox) {
+                        System.out.println("PARAM CONTENT "+getParamContentArray()[a]);
+                        ((JComboBox)enabledTextFields.get(a)).setSelectedItem(getParamContentArray()[a]);
+                    }
                 }
             }catch (Exception e){
                 LOGGER.debug("enabled text fields has been ignored");
@@ -159,8 +174,10 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
                 }
 
                 panelRight.setLayout(new GridLayout(getNumberOfComponent(), 1));
-                for (DisabledTextField disabledTextField : getDisabledModeFields()){
-                    panelRight.add(disabledTextField);
+                if (disabledTextFields.size() > 0){
+                    for (Component disabledTextField : disabledTextFields) {
+                        panelRight.add(disabledTextField);
+                    }
                 }
                 break;
             case INSERT:
@@ -173,7 +190,7 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
                 }
 
                 panelRight.setLayout(new GridLayout(getNumberOfComponent()-1, 1));
-                List<TextField> tempTextFields = getEnabledModeFields();
+                List<Component> tempTextFields = getEnabledModeFields();
                 tempTextFields.remove(0);
                 tempTextFields.forEach(panelRight::add);
                 break;
@@ -187,11 +204,11 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
 
                 panelRight.setLayout(new GridLayout(getNumberOfComponent(), 1));
                 if (enabledTextFields.size() > 0){
-                    TextField fieldId = enabledTextFields.get(0);
+                    JTextField fieldId = ((JTextField)enabledTextFields.get(0));
                     fieldId.setEditable(false);
                     panelRight.add(fieldId);
-                    for (TextField enabledTextField : enabledTextFields.subList(1, enabledTextFields.size())) {
-                        panelRight.add(enabledTextField);
+                    for (int a=1; a<enabledTextFields.size(); a++){
+                        panelRight.add(enabledTextFields.get(a));
                     }
                 }
                 break;
@@ -219,8 +236,15 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
     }
 
     protected void clearDialogFields() {
-        for (TextField textField : enabledTextFields){
+        /*for (TextField textField : enabledTextFields){
             textField.setText(UIConstant.Common.Punctuation.EMPTY);
+        }*/
+        for (Component enabledTextField : enabledTextFields) {
+            if (enabledTextField instanceof JTextField) {
+                ((JTextField) enabledTextField).setText(UIConstant.Common.Punctuation.EMPTY);
+            } else if (enabledTextField instanceof JTextArea) {
+                ((JTextArea) enabledTextField).setText(UIConstant.Common.Punctuation.EMPTY);
+            }
         }
         enabledTextFields.get(0).requestFocus();
     }
@@ -249,9 +273,9 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
      */
     public abstract String[] getTitles();
 
-    public abstract List<DisabledTextField> getDisabledModeFields();
+    public abstract List<Component> getDisabledModeFields();
 
-    public abstract List<TextField> getEnabledModeFields();
+    public abstract List<Component> getEnabledModeFields();
 
     public abstract int getNumberOfComponent();
 

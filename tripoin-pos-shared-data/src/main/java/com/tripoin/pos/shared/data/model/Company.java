@@ -3,10 +3,7 @@ package com.tripoin.pos.shared.data.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tripoin.scaffolding.data.AAuditTrail;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 /**
@@ -26,7 +23,7 @@ public class Company extends AAuditTrail {
     private Set<Branch> branch;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Set<Branch> getBranch() {
         return branch;
     }

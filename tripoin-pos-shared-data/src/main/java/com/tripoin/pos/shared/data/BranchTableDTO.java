@@ -20,6 +20,7 @@ public class BranchTableDTO extends ExtractableValueDTO implements Serializable 
     private String code;
     private String name;
     private String remarks;
+    private CompanyTableDTO company;
 
     public Long getId() {
         return id;
@@ -53,8 +54,26 @@ public class BranchTableDTO extends ExtractableValueDTO implements Serializable 
         this.remarks = remarks;
     }
 
+    public CompanyTableDTO getCompany() {
+        return company;
+    }
+
+    public void setCompany(CompanyTableDTO company) {
+        this.company = company;
+    }
+
     @Override
     public String[] extractValues() {
-        return new String[]{String.valueOf(id), code, name, remarks};
+        return new String[]{String.valueOf(id), code, name, remarks, String.valueOf(company.getId())};
+    }
+
+    @Override
+    public String toString() {
+        return "BranchTableDTO{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", remarks='" + remarks + '\'' +
+                '}';
     }
 }

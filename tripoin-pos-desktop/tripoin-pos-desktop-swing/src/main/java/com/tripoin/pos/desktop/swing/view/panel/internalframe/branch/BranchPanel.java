@@ -5,6 +5,7 @@ import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
 import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
+import com.tripoin.pos.desktop.swing.component.combobox.CompanyLOV;
 import com.tripoin.pos.desktop.swing.component.dialog.AScaffoldingDialog;
 import com.tripoin.pos.desktop.swing.component.dialog.ScaffoldingDialogBranch;
 import com.tripoin.pos.desktop.swing.component.label.LabelScaffoldingBranch;
@@ -51,11 +52,19 @@ public class BranchPanel extends AScaffoldingPanel implements IComponentInitiali
     @Value("${splashscreen.icon.imageurl}")
     private String scaffoldingDialogIcon;
 
+    @Autowired
+    private CompanyLOV companyLOV;
+
     @PostConstruct
     @Override
     public void initComponents() {
         scaffoldingScrollPane = branchScrollPane;
         scaffoldingDialog = new ScaffoldingDialogBranch() {
+            @Override
+            public CompanyLOV getCompanyLOV() {
+                return BranchPanel.this.companyLOV;
+            }
+
             private static final long serialVersionUID = -2243165273326500179L;
 
             @Override

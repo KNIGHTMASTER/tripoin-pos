@@ -1,8 +1,10 @@
 package com.tripoin.pos.desktop.swing.component.dialog;
 
+import com.tripoin.pos.desktop.swing.component.textarea.DisabledTextArea;
 import com.tripoin.pos.desktop.swing.component.textfield.DisabledTextField;
 import com.tripoin.pos.shared.data.CompanyTableDTO;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,8 +23,8 @@ public abstract class ScaffoldingDialogCompany extends AScaffoldingDialog<Compan
 
     @Override
     public void initComponents() {
-        preferredHeight = 180;
-        preferredWidth = 330;
+        preferredHeight = 200;
+        preferredWidth = 400;
         super.initComponents();
     }
 
@@ -36,31 +38,35 @@ public abstract class ScaffoldingDialogCompany extends AScaffoldingDialog<Compan
     }
 
     @Override
-    public List<DisabledTextField> getDisabledModeFields() {
+    public List<Component> getDisabledModeFields() {
         disabledTextFields = new LinkedList<>();
 
         DisabledTextField txtId = new DisabledTextField();
         DisabledTextField txtCode = new DisabledTextField();
         DisabledTextField txtName = new DisabledTextField();
+        DisabledTextArea txtRemarks = new DisabledTextArea();
 
         disabledTextFields.add(txtId);
         disabledTextFields.add(txtCode);
         disabledTextFields.add(txtName);
+        disabledTextFields.add(txtRemarks);
 
         return disabledTextFields;
     }
 
     @Override
-    public List<TextField> getEnabledModeFields() {
+    public List<Component> getEnabledModeFields() {
         enabledTextFields = new LinkedList<>();
 
-        TextField txtId = new TextField();
-        TextField txtCode = new TextField();
-        TextField txtName = new TextField();
+        JTextField txtId = new JTextField();
+        JTextField txtCode = new JTextField();
+        JTextField txtName = new JTextField();
+        JTextArea txtRemarks = new JTextArea();
 
         enabledTextFields.add(txtId);
         enabledTextFields.add(txtCode);
         enabledTextFields.add(txtName);
+        enabledTextFields.add(txtRemarks);
 
         return enabledTextFields;
     }
@@ -69,28 +75,30 @@ public abstract class ScaffoldingDialogCompany extends AScaffoldingDialog<Compan
     public CompanyTableDTO getDATAtoInsert() {
         CompanyTableDTO companyTableDTO = new CompanyTableDTO();
         if (enabledTextFields.size() == getNumberOfComponent()) {
-            companyTableDTO.setId(Long.valueOf(enabledTextFields.get(0).getText()));
-            companyTableDTO.setCode(enabledTextFields.get(1).getText());
-            companyTableDTO.setName(enabledTextFields.get(2).getText());
+            companyTableDTO.setId(Long.valueOf(((JTextField) enabledTextFields.get(0)).getText()));
+            companyTableDTO.setCode(((JTextField) enabledTextFields.get(1)).getText());
+            companyTableDTO.setName(((JTextField)enabledTextFields.get(2)).getText());
+            companyTableDTO.setRemarks(((JTextArea) enabledTextFields.get(3)).getText());
         }else {
-            companyTableDTO.setCode(enabledTextFields.get(0).getText());
-            companyTableDTO.setName(enabledTextFields.get(1).getText());
+            companyTableDTO.setCode(((JTextField)enabledTextFields.get(0)).getText());
+            companyTableDTO.setName(((JTextField) enabledTextFields.get(1)).getText());
+            companyTableDTO.setRemarks(((JTextArea) enabledTextFields.get(2)).getText());
         }
         return companyTableDTO;
     }
 
     @Override
     public int getNumberOfComponent() {
-        return 3;
+        return 4;
     }
 
     @Override
     public String[] getLabelComponentText() {
-        return new String[] {"Id", "Code", "Name"};
+        return new String[] {"Id", "Code", "Name", "Remarks"};
     }
 
     @Override
     public String[] getParamContentArray() {
-        return new String[] {String.valueOf(getParamContent().getId()), getParamContent().getCode(), getParamContent().getName()};
+        return new String[] {String.valueOf(getParamContent().getId()), getParamContent().getCode(), getParamContent().getName(), getParamContent().getRemarks()};
     }
 }

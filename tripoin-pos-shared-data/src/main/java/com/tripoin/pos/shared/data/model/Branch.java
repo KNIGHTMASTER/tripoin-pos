@@ -22,7 +22,7 @@ public class Branch extends AAuditTrail {
     private Company company;
 
     @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     public Company getCompany() {
         return company;
@@ -36,4 +36,5 @@ public class Branch extends AAuditTrail {
     public String tableName() {
         return "mst_branch";
     }
+
 }

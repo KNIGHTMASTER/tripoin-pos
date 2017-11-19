@@ -49,4 +49,7 @@ public interface ICompanyEndPointClient {
 
     @HTTP(method = "DELETE", path = "company/100029", hasBody = true)
     Call<ResponseData> deleteCollection(@Body List<String> p_ListOfIdToDelete);
+
+    @GET("company/100017")
+    Call<GenericListResponseDTO> selectLOV();
 }

@@ -75,4 +75,9 @@ public class CompanyClientImpl extends ARetrofitRestClient implements ICompanyCl
     public Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationByNameOrderById(RequestPaginationByNameDTO p_RequestPaginationByNameDTO) {
         return companyClient.findPaginationByNameOrderById(p_RequestPaginationByNameDTO);
     }
+
+    @Override
+    public Call<GenericListResponseDTO> selectLOV() {
+        return companyClient.selectLOV();
+    }
 }

@@ -13,6 +13,11 @@ import javax.swing.*;
  */
 @Component
 public class ComboBoxCustomerType extends JComboBox<String> implements IComponentInitializer {
+    /**
+     *
+     *
+     */
+    private static final long serialVersionUID = -1231472971038671164L;
 
     @PostConstruct
     @Override

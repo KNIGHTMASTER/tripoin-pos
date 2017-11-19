@@ -103,12 +103,13 @@ public abstract class AScaffoldingController<RESPONSE> implements IParameterized
         GenericSingleDATAResponseDTO<RESPONSE> response;
         try {
             response = responseCall.execute().body();
-            getParam().getScaffoldingDialog().setModeDialog(ScaffoldingDialogMode.DETAIL);
             getParam().getScaffoldingDialog().setParam(response);
             getParam().getScaffoldingDialog().setFieldsDetail();
+            getParam().getScaffoldingDialog().setModeDialog(ScaffoldingDialogMode.DETAIL);
             getParam().getScaffoldingDialog().setVisible(true);
-        } catch (IOException e1) {
-            e1.printStackTrace();
+        } catch (Exception e1) {
+            dialogAutoCloseAlert.setMode(DialogAutoCloseAlert.MODE.ERROR);
+            dialogAutoCloseAlert.initComponents();
         }
     }
 

@@ -47,6 +47,11 @@ public class BranchClientImpl extends ARetrofitRestClient implements IBranchClie
     }
 
     @Override
+    public Call<GenericListResponseDTO> selectLOV() {
+        return branchClient.selectLOV();
+    }
+
+    @Override
     public Call<ResponseData> delete(RequestDeleteById p_RequestDeleteById) {
         return branchClient.delete(p_RequestDeleteById);
     }

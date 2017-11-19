@@ -26,4 +26,6 @@ public interface IInquiryClient<RESPONSE> {
     Call<ResponseGenericPaginationDTO<RESPONSE>> findPaginationByNameOrderById(RequestPaginationByNameDTO p_RequestPaginationByNameDTO);
 
     Call<GenericSingleDATAResponseDTO<RESPONSE>> findById(RequestFindById p_RequestFindById);
+
+    Call<GenericListResponseDTO> selectLOV();
 }
