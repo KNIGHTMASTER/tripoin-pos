@@ -2,7 +2,7 @@ package com.tripoin.pos.desktop.swing.component.table.view;
 
 import com.tripoin.pos.desktop.swing.client.IBranchClient;
 import com.tripoin.pos.desktop.swing.component.table.model.TableModelBranch;
-import com.tripoin.pos.shared.data.BranchTableDTO;
+import com.tripoin.pos.shared.data.dto.response.BranchResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component
-public class TableBranch extends AScaffoldingTable<BranchTableDTO> {
+public class TableBranch extends AScaffoldingTable<BranchResponseDTO> {
     /**
      *
      *

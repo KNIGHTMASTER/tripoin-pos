@@ -2,7 +2,7 @@ package com.tripoin.pos.desktop.swing.component.table.view;
 
 import com.tripoin.pos.desktop.swing.client.ICompanyClient;
 import com.tripoin.pos.desktop.swing.component.table.model.TableModelCompany;
-import com.tripoin.pos.shared.data.CompanyTableDTO;
+import com.tripoin.pos.shared.data.dto.response.CompanyResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component
-public class TableCompany extends AScaffoldingTable<CompanyTableDTO> {
+public class TableCompany extends AScaffoldingTable<CompanyResponseDTO> {
     /**
      *
      *

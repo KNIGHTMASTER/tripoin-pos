@@ -2,7 +2,7 @@ package com.tripoin.pos.rest.desktop.endpoint.impl;
 
 import com.tripoin.pos.rest.desktop.endpoint.IBranchEndPoint;
 import com.tripoin.pos.rest.desktop.service.IBranchService;
-import com.tripoin.pos.shared.data.BranchMapper;
+import com.tripoin.pos.shared.data.mapper.BranchMapper;
 import com.tripoin.pos.shared.data.model.Branch;
 import com.tripoin.scaffolding.endpoint.impl.AScaffoldingEndPoint;
 import org.springframework.beans.factory.annotation.Autowired;

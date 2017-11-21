@@ -1,9 +1,9 @@
 package com.tripoin.pos.desktop.swing.client.impl;
 
-import com.tripoin.pos.desktop.swing.client.ARetrofitRestClient;
+import com.tripoin.pos.desktop.swing.client.base.ARetrofitRestClient;
 import com.tripoin.pos.desktop.swing.client.ICompanyClient;
 import com.tripoin.pos.desktop.swing.client.endpoint.ICompanyEndPointClient;
-import com.tripoin.pos.shared.data.CompanyTableDTO;
+import com.tripoin.pos.shared.data.dto.response.CompanyResponseDTO;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.*;
@@ -32,17 +32,17 @@ public class CompanyClientImpl extends ARetrofitRestClient implements ICompanyCl
     }
 
     @Override
-    public Call<GenericListResponseDTO<CompanyTableDTO>> findAll() {
+    public Call<GenericListResponseDTO<CompanyResponseDTO>> findAll() {
         return companyClient.findAll();
     }
 
     @Override
-    public Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationAll(RequestPaginationAllDTO p_RequestPaginationAllDTO) {
+    public Call<ResponseGenericPaginationDTO<CompanyResponseDTO>> findPaginationAll(RequestPaginationAllDTO p_RequestPaginationAllDTO) {
         return companyClient.findPaginationAll(p_RequestPaginationAllDTO);
     }
 
     @Override
-    public Call<GenericSingleDATAResponseDTO<CompanyTableDTO>> findById(RequestFindById p_RequestFindById) {
+    public Call<GenericSingleDATAResponseDTO<CompanyResponseDTO>> findById(RequestFindById p_RequestFindById) {
         return companyClient.findById(p_RequestFindById);
     }
 
@@ -52,12 +52,12 @@ public class CompanyClientImpl extends ARetrofitRestClient implements ICompanyCl
     }
 
     @Override
-    public Call<ResponseData> insert(CompanyTableDTO p_DATA) {
+    public Call<ResponseData> insert(CompanyResponseDTO p_DATA) {
         return companyClient.insert(p_DATA);
     }
 
     @Override
-    public Call<ResponseData> update(CompanyTableDTO p_DATA) {
+    public Call<ResponseData> update(CompanyResponseDTO p_DATA) {
         return companyClient.update(p_DATA);
     }
 
@@ -67,12 +67,12 @@ public class CompanyClientImpl extends ARetrofitRestClient implements ICompanyCl
     }
 
     @Override
-    public Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationByCodeOrderById(RequestPaginationByCodeDTO p_RequestPaginationByCodeDTO) {
+    public Call<ResponseGenericPaginationDTO<CompanyResponseDTO>> findPaginationByCodeOrderById(RequestPaginationByCodeDTO p_RequestPaginationByCodeDTO) {
         return companyClient.findPaginationByCodeOrderById(p_RequestPaginationByCodeDTO);
     }
 
     @Override
-    public Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationByNameOrderById(RequestPaginationByNameDTO p_RequestPaginationByNameDTO) {
+    public Call<ResponseGenericPaginationDTO<CompanyResponseDTO>> findPaginationByNameOrderById(RequestPaginationByNameDTO p_RequestPaginationByNameDTO) {
         return companyClient.findPaginationByNameOrderById(p_RequestPaginationByNameDTO);
     }
 

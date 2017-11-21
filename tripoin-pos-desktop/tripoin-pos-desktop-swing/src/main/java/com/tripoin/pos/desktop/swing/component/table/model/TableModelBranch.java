@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.component.table.model;
 
-import com.tripoin.pos.shared.data.BranchTableDTO;
+import com.tripoin.pos.shared.data.dto.response.BranchResponseDTO;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component
-public class TableModelBranch extends AScaffoldingTableModel<BranchTableDTO> {
+public class TableModelBranch extends AScaffoldingTableModel<BranchResponseDTO> {
     /**
      *
      *

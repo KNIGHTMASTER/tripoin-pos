@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.view.panel.internalframe.company;
 
 import com.tripoin.pos.desktop.swing.client.ICompanyClient;
-import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
+import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
 import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;

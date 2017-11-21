@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.component.table.view;
 
-import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
+import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
 import com.tripoin.pos.desktop.swing.component.dialog.DialogProgress;
 import com.tripoin.pos.desktop.swing.component.table.ITableListener;
 import com.tripoin.pos.desktop.swing.component.table.listener.AScaffoldingTableListener;
@@ -48,17 +48,10 @@ public abstract class AScaffoldingTable<RESPONSE> extends JTable implements ICom
 
     @Override
     public void initComponents() {
-        /*scaffoldingTableListener = new AScaffoldingTableListener() {
-            @Override
-            public AScaffoldingPopUp getScaffoldingPopUp() {
-                return null;
-            }
-        };*/
-        if (scaffoldingTableListener == null){
-            System.out.println("list = null");
-        }
         scaffoldingTableListener.initComponents();
 
+        this.setRowSelectionAllowed(true);
+        this.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.setAutoCreateRowSorter(true);
         initAction();
     }

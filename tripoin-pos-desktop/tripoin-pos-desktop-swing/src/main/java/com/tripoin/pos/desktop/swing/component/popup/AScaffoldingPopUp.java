@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.component.popup;
 
-import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
+import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
 import com.tripoin.pos.desktop.swing.component.dialog.AScaffoldingDialog;

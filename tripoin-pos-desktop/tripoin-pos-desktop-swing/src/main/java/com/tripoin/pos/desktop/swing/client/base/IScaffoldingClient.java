@@ -1,4 +1,4 @@
-package com.tripoin.pos.desktop.swing.client;
+package com.tripoin.pos.desktop.swing.client.base;
 
 /**
  * Created on 11/3/17.

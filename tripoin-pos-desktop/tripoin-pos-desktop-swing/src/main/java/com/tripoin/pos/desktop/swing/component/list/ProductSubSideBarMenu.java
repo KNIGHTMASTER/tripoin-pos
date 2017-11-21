@@ -57,12 +57,12 @@ public class ProductSubSideBarMenu extends MultipleListSideBarMenu {
         result.put(getListData()[3], internalFrameProductType);
         result.put(getListData()[4], internalFrameProductStock);
         result.put(getListData()[5], internalFrameProductUnit);
-        result.put(getListData()[5], internalFrameGuarantee);
+        result.put(getListData()[6], internalFrameGuarantee);
         return result;
     }
 
     @Override
     public String[] getListData() {
-        return new String[] {"Product", "Product Brand", "Category", "Type", "Stock", "Unit", "Guarantee"};
+        return new String[] {"Product", "Brand", "Category", "Type", "Stock", "Unit", "Guarantee"};
     }
 }

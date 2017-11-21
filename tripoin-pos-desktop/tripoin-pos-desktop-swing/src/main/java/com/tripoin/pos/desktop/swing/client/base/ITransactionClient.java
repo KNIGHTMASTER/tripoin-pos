@@ -1,4 +1,4 @@
-package com.tripoin.pos.desktop.swing.client;
+package com.tripoin.pos.desktop.swing.client.base;
 
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.RequestDeleteById;

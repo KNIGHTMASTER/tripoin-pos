@@ -1,15 +1,13 @@
-package com.tripoin.pos.shared.data;
+package com.tripoin.pos.shared.data.dto.response;
 
-import com.tripoin.pos.shared.data.util.ExtractableValueDTO;
-
-import java.io.Serializable;
+import com.tripoin.scaffolding.data.dto.response.BaseResponseDTO;
 
 /**
  * Created on 11/10/17.
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-public class BranchTableDTO extends ExtractableValueDTO implements Serializable {
+public class BranchResponseDTO extends BaseResponseDTO {
     /**
      *
      *
@@ -20,7 +18,7 @@ public class BranchTableDTO extends ExtractableValueDTO implements Serializable 
     private String code;
     private String name;
     private String remarks;
-    private CompanyTableDTO company;
+    private CompanyResponseDTO company;
 
     public Long getId() {
         return id;
@@ -54,17 +52,12 @@ public class BranchTableDTO extends ExtractableValueDTO implements Serializable 
         this.remarks = remarks;
     }
 
-    public CompanyTableDTO getCompany() {
+    public CompanyResponseDTO getCompany() {
         return company;
     }
 
-    public void setCompany(CompanyTableDTO company) {
+    public void setCompany(CompanyResponseDTO company) {
         this.company = company;
-    }
-
-    @Override
-    public String[] extractValues() {
-        return new String[]{String.valueOf(id), code, name, remarks, String.valueOf(company.getId())};
     }
 
     @Override

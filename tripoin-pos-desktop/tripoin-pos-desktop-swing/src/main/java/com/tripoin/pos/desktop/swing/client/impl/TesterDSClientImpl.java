@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.client.impl;
 
-import com.tripoin.pos.desktop.swing.client.ARetrofitRestClient;
+import com.tripoin.pos.desktop.swing.client.base.ARetrofitRestClient;
 import com.tripoin.pos.desktop.swing.client.ITesterDSClient;
 import org.springframework.stereotype.Service;
 

@@ -24,7 +24,7 @@ public abstract class ListSideBarMenu extends JList<String> implements IComponen
 
     @Autowired
     private DesktopPaneMain desktopPaneMain;
-    
+
     @Override
     public void initComponents() {
         this.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
@@ -43,23 +43,18 @@ public abstract class ListSideBarMenu extends JList<String> implements IComponen
                     if (getPreventionInternalFrame().isVisible()) {
                         System.out.println(getPreventionComponentName());
                         if (desktopPaneMain.getComponentCount() <= 0) {
-                            System.out.println("1");
                             desktopPaneMain.add(getPreventionInternalFrame());
                             getPreventionInternalFrame().toFront();
                         } else {
                             for (java.awt.Component component : desktopPaneMain.getComponents()) {
-                                System.out.println("2");
                                 if (component.getName().equals(getPreventionComponentName())) {
-                                    System.out.println("3");
                                     getPreventionInternalFrame().setVisible(true);
                                     getPreventionInternalFrame().toFront();
                                     break;
                                 } else {
                                     if (getPreventionInternalFrame().isClosed()) {
-                                        System.out.println("4");
                                         getPreventionInternalFrame().toFront();
                                     }else {
-                                        System.out.println("4-1");
                                         try{
                                             getPreventionInternalFrame().showNewComponent(desktopPaneMain.getComponentCount());
                                             desktopPaneMain.add(getPreventionInternalFrame());
@@ -73,13 +68,11 @@ public abstract class ListSideBarMenu extends JList<String> implements IComponen
                         }
                     } else {
                         if (desktopPaneMain.getComponentCount() <= 0){
-                            System.out.println("5");
                             getPreventionInternalFrame().resetComponent();
                             desktopPaneMain.add(getPreventionInternalFrame());
                             getPreventionInternalFrame().setVisible(true);
                             getPreventionInternalFrame().toFront();
                         }else {
-                            System.out.println("6");
                             getPreventionInternalFrame().showNewComponent(desktopPaneMain.getComponentCount());
                             desktopPaneMain.add(getPreventionInternalFrame());
                             getPreventionInternalFrame().setVisible(true);

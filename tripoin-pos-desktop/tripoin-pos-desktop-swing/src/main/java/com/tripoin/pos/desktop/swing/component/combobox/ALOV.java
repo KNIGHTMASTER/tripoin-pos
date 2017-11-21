@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.component.combobox;
 
-import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
+import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
 import com.tripoin.pos.desktop.swing.dto.LOVDTO;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;

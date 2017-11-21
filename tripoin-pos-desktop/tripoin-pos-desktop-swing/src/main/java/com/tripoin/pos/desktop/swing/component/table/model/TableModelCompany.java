@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.component.table.model;
 
-import com.tripoin.pos.shared.data.CompanyTableDTO;
+import com.tripoin.pos.shared.data.dto.response.CompanyResponseDTO;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component
-public class TableModelCompany extends AScaffoldingTableModel<CompanyTableDTO> {
+public class TableModelCompany extends AScaffoldingTableModel<CompanyResponseDTO> {
     /**
      *
      *

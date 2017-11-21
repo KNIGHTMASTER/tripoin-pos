@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.component.combobox;
 
 import com.tripoin.pos.desktop.swing.client.ICompanyClient;
-import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
+import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

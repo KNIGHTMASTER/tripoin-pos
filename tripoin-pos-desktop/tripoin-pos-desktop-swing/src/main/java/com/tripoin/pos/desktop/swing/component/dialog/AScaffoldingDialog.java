@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.component.dialog;
 
-import com.tripoin.pos.desktop.swing.client.IScaffoldingClient;
+import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
 import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent;
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
 import com.tripoin.pos.desktop.swing.component.button.base.ButtonClear;
@@ -136,7 +136,6 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
                     }else if (enabledTextFields.get(a) instanceof  JTextArea) {
                         ((JTextArea) enabledTextFields.get(a)).setText(getParamContentArray()[a]);
                     }else if (enabledTextFields.get(a) instanceof  JComboBox) {
-                        System.out.println("PARAM CONTENT "+getParamContentArray()[a]);
                         ((JComboBox)enabledTextFields.get(a)).setSelectedItem(getParamContentArray()[a]);
                     }
                 }
@@ -277,7 +276,9 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
 
     public abstract List<Component> getEnabledModeFields();
 
-    public abstract int getNumberOfComponent();
+    public int getNumberOfComponent() {
+        return getLabelComponentText().length;
+    }
 
     public abstract String[] getLabelComponentText();
 

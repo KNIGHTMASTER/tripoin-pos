@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.client.endpoint;
 
-import com.tripoin.pos.shared.data.BranchTableDTO;
+import com.tripoin.pos.shared.data.dto.response.BranchResponseDTO;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.*;
@@ -24,25 +24,25 @@ import java.util.List;
 public interface IBranchEndPointClient {
 
     @GET("branch/100004")
-    Call<GenericListResponseDTO<BranchTableDTO>> findAll();
+    Call<GenericListResponseDTO<BranchResponseDTO>> findAll();
 
     @POST("branch/100005")
-    Call<ResponseGenericPaginationDTO<BranchTableDTO>> findPaginationAll(@Body RequestPaginationAllDTO p_RequestPaginationAllDTO);
+    Call<ResponseGenericPaginationDTO<BranchResponseDTO>> findPaginationAll(@Body RequestPaginationAllDTO p_RequestPaginationAllDTO);
 
     @POST("branch/100031")
-    Call<ResponseGenericPaginationDTO<BranchTableDTO>> findPaginationByCodeOrderById(@Body RequestPaginationByCodeDTO p_RequestPaginationByCodeDTO);
+    Call<ResponseGenericPaginationDTO<BranchResponseDTO>> findPaginationByCodeOrderById(@Body RequestPaginationByCodeDTO p_RequestPaginationByCodeDTO);
 
     @POST("branch/100032")
-    Call<ResponseGenericPaginationDTO<BranchTableDTO>> findPaginationByNameOrderById(@Body RequestPaginationByNameDTO p_RequestPaginationByNameDTO);
+    Call<ResponseGenericPaginationDTO<BranchResponseDTO>> findPaginationByNameOrderById(@Body RequestPaginationByNameDTO p_RequestPaginationByNameDTO);
 
     @POST("branch/100006")
-    Call<GenericSingleDATAResponseDTO<BranchTableDTO>> findById(@Body RequestFindById p_RequestFindById);
+    Call<GenericSingleDATAResponseDTO<BranchResponseDTO>> findById(@Body RequestFindById p_RequestFindById);
 
     @POST("branch/100023")
-    Call<ResponseData> insert(@Body BranchTableDTO p_BranchTableDTO);
+    Call<ResponseData> insert(@Body BranchResponseDTO p_BranchResponseDTO);
 
     @PUT("branch/100022")
-    Call<ResponseData> update(@Body BranchTableDTO p_BranchTableDTO);
+    Call<ResponseData> update(@Body BranchResponseDTO p_BranchResponseDTO);
 
     @HTTP(method = "DELETE", path = "branch/100026", hasBody = true)
     Call<ResponseData> delete(@Body RequestDeleteById p_IdToDelete);

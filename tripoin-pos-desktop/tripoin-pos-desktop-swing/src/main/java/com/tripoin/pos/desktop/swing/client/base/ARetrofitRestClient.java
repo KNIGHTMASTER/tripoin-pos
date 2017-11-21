@@ -1,4 +1,4 @@
-package com.tripoin.pos.desktop.swing.client;
+package com.tripoin.pos.desktop.swing.client.base;
 
 import com.tripoin.pos.desktop.swing.util.RetrofitFactory;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;

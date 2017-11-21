@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.client.endpoint;
 
-import com.tripoin.pos.shared.data.CompanyTableDTO;
+import com.tripoin.pos.shared.data.dto.response.CompanyResponseDTO;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.*;
@@ -24,25 +24,25 @@ import java.util.List;
 public interface ICompanyEndPointClient {
 
     @GET("company/100004")
-    Call<GenericListResponseDTO<CompanyTableDTO>> findAll();
+    Call<GenericListResponseDTO<CompanyResponseDTO>> findAll();
 
     @POST("company/100005")
-    Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationAll(@Body RequestPaginationAllDTO p_RequestPaginationAllDTO);
+    Call<ResponseGenericPaginationDTO<CompanyResponseDTO>> findPaginationAll(@Body RequestPaginationAllDTO p_RequestPaginationAllDTO);
 
     @POST("company/100031")
-    Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationByCodeOrderById(@Body RequestPaginationByCodeDTO p_RequestPaginationByCodeDTO);
+    Call<ResponseGenericPaginationDTO<CompanyResponseDTO>> findPaginationByCodeOrderById(@Body RequestPaginationByCodeDTO p_RequestPaginationByCodeDTO);
 
     @POST("company/100032")
-    Call<ResponseGenericPaginationDTO<CompanyTableDTO>> findPaginationByNameOrderById(@Body RequestPaginationByNameDTO p_RequestPaginationByNameDTO);
+    Call<ResponseGenericPaginationDTO<CompanyResponseDTO>> findPaginationByNameOrderById(@Body RequestPaginationByNameDTO p_RequestPaginationByNameDTO);
 
     @POST("company/100006")
-    Call<GenericSingleDATAResponseDTO<CompanyTableDTO>> findById(@Body RequestFindById p_RequestFindById);
+    Call<GenericSingleDATAResponseDTO<CompanyResponseDTO>> findById(@Body RequestFindById p_RequestFindById);
 
     @POST("company/100023")
-    Call<ResponseData> insert(@Body CompanyTableDTO p_CompanyTableDTO);
+    Call<ResponseData> insert(@Body CompanyResponseDTO p_CompanyResponseDTO);
 
     @PUT("company/100022")
-    Call<ResponseData> update(@Body CompanyTableDTO p_CompanyTableDTO);
+    Call<ResponseData> update(@Body CompanyResponseDTO p_CompanyResponseDTO);
 
     @HTTP(method = "DELETE", path = "company/100026", hasBody = true)
     Call<ResponseData> delete(@Body RequestDeleteById p_IdToDelete);

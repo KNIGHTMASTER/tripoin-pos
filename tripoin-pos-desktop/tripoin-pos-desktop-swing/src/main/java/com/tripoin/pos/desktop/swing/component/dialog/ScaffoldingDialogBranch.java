@@ -4,8 +4,8 @@ import com.tripoin.pos.desktop.swing.component.combobox.ALOV;
 import com.tripoin.pos.desktop.swing.component.combobox.CompanyLOV;
 import com.tripoin.pos.desktop.swing.component.textarea.DisabledTextArea;
 import com.tripoin.pos.desktop.swing.component.textfield.DisabledTextField;
-import com.tripoin.pos.shared.data.BranchTableDTO;
-import com.tripoin.pos.shared.data.CompanyTableDTO;
+import com.tripoin.pos.shared.data.dto.response.BranchResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.CompanyResponseDTO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-public abstract class ScaffoldingDialogBranch extends AScaffoldingDialog<BranchTableDTO> {
+public abstract class ScaffoldingDialogBranch extends AScaffoldingDialog<BranchResponseDTO> {
     /**
      *
      *
@@ -86,29 +86,24 @@ public abstract class ScaffoldingDialogBranch extends AScaffoldingDialog<BranchT
     }
 
     @Override
-    public BranchTableDTO getDATAtoInsert() {
-        BranchTableDTO branchTableDTO = new BranchTableDTO();
-        CompanyTableDTO companyTableDTO = new CompanyTableDTO();
+    public BranchResponseDTO getDATAtoInsert() {
+        BranchResponseDTO branchResponseDTO = new BranchResponseDTO();
+        CompanyResponseDTO companyResponseDTO = new CompanyResponseDTO();
         if (enabledTextFields.size() == getNumberOfComponent()) {
-            branchTableDTO.setId(Long.valueOf(((JTextField) enabledTextFields.get(0)).getText()));
-            branchTableDTO.setCode(((JTextField) enabledTextFields.get(1)).getText());
-            branchTableDTO.setName(((JTextField) enabledTextFields.get(2)).getText());
-            companyTableDTO.setId(((ALOV) enabledTextFields.get(3)).getSelectedId(((ALOV) enabledTextFields.get(3)).getSelectedIndex()));
-            branchTableDTO.setCompany(companyTableDTO);
-            branchTableDTO.setRemarks(((JTextArea)enabledTextFields.get(4)).getText());
+            branchResponseDTO.setId(Long.valueOf(((JTextField) enabledTextFields.get(0)).getText()));
+            branchResponseDTO.setCode(((JTextField) enabledTextFields.get(1)).getText());
+            branchResponseDTO.setName(((JTextField) enabledTextFields.get(2)).getText());
+            companyResponseDTO.setId(((ALOV) enabledTextFields.get(3)).getSelectedId(((ALOV) enabledTextFields.get(3)).getSelectedIndex()));
+            branchResponseDTO.setCompany(companyResponseDTO);
+            branchResponseDTO.setRemarks(((JTextArea)enabledTextFields.get(4)).getText());
         }else {
-            branchTableDTO.setCode(((JTextField)enabledTextFields.get(0)).getText());
-            branchTableDTO.setName(((JTextField) enabledTextFields.get(1)).getText());
-            companyTableDTO.setId(((ALOV) enabledTextFields.get(2)).getSelectedId(((ALOV) enabledTextFields.get(2)).getSelectedIndex()));
-            branchTableDTO.setCompany(companyTableDTO);
-            branchTableDTO.setRemarks(((JTextArea) enabledTextFields.get(3)).getText());
+            branchResponseDTO.setCode(((JTextField)enabledTextFields.get(0)).getText());
+            branchResponseDTO.setName(((JTextField) enabledTextFields.get(1)).getText());
+            companyResponseDTO.setId(((ALOV) enabledTextFields.get(2)).getSelectedId(((ALOV) enabledTextFields.get(2)).getSelectedIndex()));
+            branchResponseDTO.setCompany(companyResponseDTO);
+            branchResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(3)).getText());
         }
-        return branchTableDTO;
-    }
-
-    @Override
-    public int getNumberOfComponent() {
-        return 5;
+        return branchResponseDTO;
     }
 
     @Override

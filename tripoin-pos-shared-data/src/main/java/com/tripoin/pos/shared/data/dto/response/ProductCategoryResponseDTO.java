@@ -1,15 +1,13 @@
-package com.tripoin.pos.shared.data;
+package com.tripoin.pos.shared.data.dto.response;
 
-import com.tripoin.pos.shared.data.util.ExtractableValueDTO;
-
-import java.io.Serializable;
+import com.tripoin.scaffolding.data.dto.response.BaseResponseDTO;
 
 /**
  * Created on 11/2/17.
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-public class CompanyTableDTO extends ExtractableValueDTO implements Serializable {
+public class ProductCategoryResponseDTO extends BaseResponseDTO {
     /**
      *
      *
@@ -55,15 +53,11 @@ public class CompanyTableDTO extends ExtractableValueDTO implements Serializable
 
     @Override
     public String toString() {
-        return "CompanyTableDTO{" +
+        return "ProductCategoryTableDTO{" +
                 "id=" + id +
                 ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
+                ", remarks='" + remarks + '\'' +
                 '}';
-    }
-
-    @Override
-    public String [] extractValues(){
-        return new String[] {String.valueOf(id), code, name, remarks};
     }
 }

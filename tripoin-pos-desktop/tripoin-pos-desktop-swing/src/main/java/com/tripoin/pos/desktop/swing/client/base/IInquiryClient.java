@@ -1,4 +1,4 @@
-package com.tripoin.pos.desktop.swing.client;
+package com.tripoin.pos.desktop.swing.client.base;
 
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
 import com.tripoin.scaffolding.data.dto.request.RequestFindById;

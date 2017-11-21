@@ -1,5 +1,6 @@
-package com.tripoin.pos.shared.data;
+package com.tripoin.pos.shared.data.mapper;
 
+import com.tripoin.pos.shared.data.dto.response.BranchResponseDTO;
 import com.tripoin.pos.shared.data.model.Branch;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,14 @@ import org.springframework.stereotype.Service;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Service
-public class BranchMapper extends ADATAMapper<Branch, BranchTableDTO> {
+public class BranchMapper extends ADATAMapper<Branch, BranchResponseDTO> {
 
     @Autowired
     private CompanyMapper companyMapper;
 
     @Override
-    public BranchTableDTO convert(Branch branch) {
-        BranchTableDTO result = new BranchTableDTO();
+    public BranchResponseDTO convert(Branch branch) {
+        BranchResponseDTO result = new BranchResponseDTO();
         result.setId(branch.getId());
         result.setCode(branch.getCode());
         result.setName(branch.getName());

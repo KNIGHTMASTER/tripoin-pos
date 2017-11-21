@@ -2,7 +2,7 @@ package com.tripoin.pos.desktop.swing.component.dialog;
 
 import com.tripoin.pos.desktop.swing.component.textarea.DisabledTextArea;
 import com.tripoin.pos.desktop.swing.component.textfield.DisabledTextField;
-import com.tripoin.pos.shared.data.CompanyTableDTO;
+import com.tripoin.pos.shared.data.dto.response.CompanyResponseDTO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-public abstract class ScaffoldingDialogCompany extends AScaffoldingDialog<CompanyTableDTO> {
+public abstract class ScaffoldingDialogCompany extends AScaffoldingDialog<CompanyResponseDTO> {
     /**
      *
      *
@@ -72,24 +72,19 @@ public abstract class ScaffoldingDialogCompany extends AScaffoldingDialog<Compan
     }
 
     @Override
-    public CompanyTableDTO getDATAtoInsert() {
-        CompanyTableDTO companyTableDTO = new CompanyTableDTO();
+    public CompanyResponseDTO getDATAtoInsert() {
+        CompanyResponseDTO companyResponseDTO = new CompanyResponseDTO();
         if (enabledTextFields.size() == getNumberOfComponent()) {
-            companyTableDTO.setId(Long.valueOf(((JTextField) enabledTextFields.get(0)).getText()));
-            companyTableDTO.setCode(((JTextField) enabledTextFields.get(1)).getText());
-            companyTableDTO.setName(((JTextField)enabledTextFields.get(2)).getText());
-            companyTableDTO.setRemarks(((JTextArea) enabledTextFields.get(3)).getText());
+            companyResponseDTO.setId(Long.valueOf(((JTextField) enabledTextFields.get(0)).getText()));
+            companyResponseDTO.setCode(((JTextField) enabledTextFields.get(1)).getText());
+            companyResponseDTO.setName(((JTextField)enabledTextFields.get(2)).getText());
+            companyResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(3)).getText());
         }else {
-            companyTableDTO.setCode(((JTextField)enabledTextFields.get(0)).getText());
-            companyTableDTO.setName(((JTextField) enabledTextFields.get(1)).getText());
-            companyTableDTO.setRemarks(((JTextArea) enabledTextFields.get(2)).getText());
+            companyResponseDTO.setCode(((JTextField)enabledTextFields.get(0)).getText());
+            companyResponseDTO.setName(((JTextField) enabledTextFields.get(1)).getText());
+            companyResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(2)).getText());
         }
-        return companyTableDTO;
-    }
-
-    @Override
-    public int getNumberOfComponent() {
-        return 4;
+        return companyResponseDTO;
     }
 
     @Override
