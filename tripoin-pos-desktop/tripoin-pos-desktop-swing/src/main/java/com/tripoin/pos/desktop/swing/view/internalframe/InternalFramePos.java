@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.view.internalframe;
 
-import com.tripoin.pos.desktop.swing.view.panel.internalframe.PanelCatalog;
-import com.tripoin.pos.desktop.swing.view.panel.internalframe.PanelTransaction;
+import com.tripoin.pos.desktop.swing.view.panel.internalframe.transaction.PanelCatalog;
+import com.tripoin.pos.desktop.swing.view.panel.internalframe.transaction.PanelTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

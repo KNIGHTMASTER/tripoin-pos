@@ -13,4 +13,14 @@ public class ProductTypeResponseDTO extends BaseResponseDTO {
      *
      */
     private static final long serialVersionUID = -4458327710851194936L;
+
+    private ProductCategoryResponseDTO productCategory;
+
+    public ProductCategoryResponseDTO getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(ProductCategoryResponseDTO productCategory) {
+        this.productCategory = productCategory;
+    }
 }

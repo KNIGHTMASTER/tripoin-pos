@@ -22,7 +22,7 @@ public class ProductBrand extends AAuditTrail {
 
     private Set<Product> products;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "productBrand")
     @OneToMany(mappedBy = "productBrand", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Set<Product> getProducts() {
         return products;

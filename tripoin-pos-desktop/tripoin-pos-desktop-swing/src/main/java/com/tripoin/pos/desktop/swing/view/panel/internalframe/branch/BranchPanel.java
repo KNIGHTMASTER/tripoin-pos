@@ -6,8 +6,8 @@ import com.tripoin.pos.desktop.swing.component.base.ICentralizePositionComponent
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
 import com.tripoin.pos.desktop.swing.component.combobox.CompanyLOV;
-import com.tripoin.pos.desktop.swing.component.dialog.AScaffoldingDialog;
-import com.tripoin.pos.desktop.swing.component.dialog.ScaffoldingDialogBranch;
+import com.tripoin.pos.desktop.swing.component.dialog.base.AScaffoldingDialog;
+import com.tripoin.pos.desktop.swing.component.dialog.impl.ScaffoldingDialogBranch;
 import com.tripoin.pos.desktop.swing.component.label.LabelScaffoldingBranch;
 import com.tripoin.pos.desktop.swing.component.label.LabelScaffoldingTitle;
 import com.tripoin.pos.desktop.swing.component.popup.AScaffoldingPopUp;

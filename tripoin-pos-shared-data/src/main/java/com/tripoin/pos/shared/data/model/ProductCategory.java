@@ -21,8 +21,9 @@ public class ProductCategory extends AAuditTrail {
     private static final long serialVersionUID = -8478198949012356307L;
 
     private Set<Product> products;
+    private Set<ProductType> productTypes;
 
-    @JsonManagedReference
+    @JsonManagedReference(value = "productCategory")
     @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Set<Product> getProducts() {
         return products;
@@ -30,6 +31,16 @@ public class ProductCategory extends AAuditTrail {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    @JsonManagedReference(value = "productCategoryProductType")
+    @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    public Set<ProductType> getProductTypes() {
+        return productTypes;
+    }
+
+    public void setProductTypes(Set<ProductType> productTypes) {
+        this.productTypes = productTypes;
     }
 
     @Override

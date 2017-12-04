@@ -28,7 +28,7 @@ public class Product extends AAuditTrail {
     private ProductGuarantee productGuarantee;
     private String imageUrl;
 
-    @JsonBackReference
+    @JsonBackReference(value = "productCategory")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     public ProductCategory getProductCategory() {
@@ -39,7 +39,7 @@ public class Product extends AAuditTrail {
         this.productCategory = productCategory;
     }
 
-    @JsonBackReference
+    @JsonBackReference(value = "productType")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id")
     public ProductType getProductType() {
@@ -50,7 +50,7 @@ public class Product extends AAuditTrail {
         this.productType = productType;
     }
 
-    @JsonBackReference
+    @JsonBackReference(value = "productBrand")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id")
     public ProductBrand getProductBrand() {
@@ -61,7 +61,7 @@ public class Product extends AAuditTrail {
         this.productBrand = productBrand;
     }
 
-    @JsonBackReference
+    @JsonBackReference(value = "supplier")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id")
     public Supplier getSupplier() {

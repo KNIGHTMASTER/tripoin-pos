@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.controller.panel;
 
 import com.tripoin.pos.desktop.swing.client.ITesterDSClient;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogProgress;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogProgress;
 import com.tripoin.pos.shared.data.DataSourceParam;
 import com.tripoin.pos.shared.data.util.IPropertyModifier;
 import id.co.telkomsigma.tgf.util.IParameterizedComponent;

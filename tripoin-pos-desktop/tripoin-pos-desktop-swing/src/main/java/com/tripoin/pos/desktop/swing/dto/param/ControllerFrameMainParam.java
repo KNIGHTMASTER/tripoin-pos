@@ -1,9 +1,9 @@
 package com.tripoin.pos.desktop.swing.dto.param;
 
-import com.tripoin.pos.desktop.swing.component.dialog.DialogAbout;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogLogin;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogServer;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogTheme;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogAbout;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogLogin;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogServer;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogTheme;
 import com.tripoin.pos.desktop.swing.view.frame.MainFrame;
 
 import java.io.Serializable;

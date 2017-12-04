@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.controller.tab;
 
-import com.tripoin.pos.desktop.swing.component.dialog.DialogProgress;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogProgress;
 import com.tripoin.pos.desktop.swing.view.tab.TabSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

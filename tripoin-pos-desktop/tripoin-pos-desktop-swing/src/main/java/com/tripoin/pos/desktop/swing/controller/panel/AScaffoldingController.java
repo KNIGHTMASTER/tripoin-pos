@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.controller.panel;
 
-import com.tripoin.pos.desktop.swing.component.dialog.DialogAutoCloseAlert;
-import com.tripoin.pos.desktop.swing.component.dialog.ScaffoldingDialogMode;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogAutoCloseAlert;
+import com.tripoin.pos.desktop.swing.component.dialog.base.ScaffoldingDialogMode;
 import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import com.tripoin.pos.desktop.swing.dto.param.ControllerScaffoldingParam;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
@@ -186,6 +186,10 @@ public abstract class AScaffoldingController<RESPONSE> implements IParameterized
         int firstIndex = responseGenericPaginationDTO.getNumber() * selectedCombo + 1;
         int lastIndex = responseGenericPaginationDTO.getNumber() * selectedCombo + responseGenericPaginationDTO.getNumberOfElements();
 
+        if (responseGenericPaginationDTO.getTotalElements() <= 0) {
+            firstIndex = 0;
+            lastIndex = 0;
+        }
         getParam().getLabelIndex().setText("Showing " + firstIndex + " - " + lastIndex + " from " + responseGenericPaginationDTO.getTotalElements() + " Record");
         if (responseGenericPaginationDTO.getFirst()){
             getParam().getPanelPaginationButton().buttonFirstPage.setEnabled(false);

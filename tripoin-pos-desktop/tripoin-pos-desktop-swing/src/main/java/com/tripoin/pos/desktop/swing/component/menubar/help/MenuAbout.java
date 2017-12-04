@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.component.menubar.help;
 
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogAbout;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogAbout;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -12,7 +12,7 @@ import com.tripoin.pos.desktop.swing.component.button.scaffolding.ButtonNextPage
 import com.tripoin.pos.desktop.swing.component.button.scaffolding.ButtonPrevPage;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxFilter;
-import com.tripoin.pos.desktop.swing.component.dialog.AScaffoldingDialog;
+import com.tripoin.pos.desktop.swing.component.dialog.base.AScaffoldingDialog;
 import com.tripoin.pos.desktop.swing.component.label.LabelScaffoldingDisplay;
 import com.tripoin.pos.desktop.swing.component.label.LabelScaffoldingSearch;
 import com.tripoin.pos.desktop.swing.component.label.LabelScaffoldingTitle;

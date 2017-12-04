@@ -3,6 +3,7 @@ package com.tripoin.pos.desktop.swing.util;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -19,6 +20,9 @@ public class RetrofitFactory implements IComponentInitializer{
 
     private Retrofit retrofit;
 
+    @Value("${base.rest.url}")
+    private String baseUrl;
+
     @PostConstruct
     @Override
     public void initComponents() {
@@ -27,7 +31,7 @@ public class RetrofitFactory implements IComponentInitializer{
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:8989/tripoin-pos-rest-desktop/")
+                .baseUrl(baseUrl)
                 .addConverterFactory(JacksonConverterFactory.create())
                 .client(client)
                 .build();

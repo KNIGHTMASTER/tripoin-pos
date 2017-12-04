@@ -40,7 +40,10 @@ public class ProductSubSideBarMenu extends MultipleListSideBarMenu {
     private InternalFrameProductUnit internalFrameProductUnit;
 
     @Autowired
-    private InternalFrameGuarantee internalFrameGuarantee;
+    private InternalFrameProductGuarantee internalFrameProductGuarantee;
+
+    @Autowired
+    private InternalFrameSupplier internalFrameSupplier;
 
     @PostConstruct
     @Override
@@ -55,14 +58,15 @@ public class ProductSubSideBarMenu extends MultipleListSideBarMenu {
         result.put(getListData()[1], internalFrameProductBrand);
         result.put(getListData()[2], internalFrameProductCategory);
         result.put(getListData()[3], internalFrameProductType);
-        result.put(getListData()[4], internalFrameProductStock);
-        result.put(getListData()[5], internalFrameProductUnit);
-        result.put(getListData()[6], internalFrameGuarantee);
+        result.put(getListData()[4], internalFrameProductUnit);
+        result.put(getListData()[5], internalFrameProductStock);
+        result.put(getListData()[6], internalFrameProductGuarantee);
+        result.put(getListData()[7], internalFrameSupplier);
         return result;
     }
 
     @Override
     public String[] getListData() {
-        return new String[] {"Product", "Brand", "Category", "Type", "Stock", "Unit", "Guarantee"};
+        return new String[] {"Product", "Brand", "Category", "Type", "Unit", "Stock", "Guarantee", "Supplier"};
     }
 }

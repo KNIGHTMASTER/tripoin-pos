@@ -1,5 +1,6 @@
 package com.tripoin.pos.shared.data.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.tripoin.scaffolding.data.AAuditTrail;
 
 import javax.persistence.*;
@@ -44,6 +45,7 @@ public class Supplier extends AAuditTrail {
         this.contact = contact;
     }
 
+    @JsonBackReference(value = "supplier")
     @OneToMany(mappedBy = "supplier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Product> getProducts() {
         return products;

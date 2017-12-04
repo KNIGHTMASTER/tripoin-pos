@@ -21,7 +21,7 @@ public class ProductStock extends AAuditTrail {
 
     private Integer warehouseStock;
     private Integer displayStock;
-    private Unit unit;
+    private ProductUnit productUnit;
 
     private Product product;
 
@@ -43,15 +43,15 @@ public class ProductStock extends AAuditTrail {
         this.displayStock = displayStock;
     }
 
-    @JsonBackReference
+    @JsonBackReference(value = "unitStock")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unit_id")
-    public Unit getUnit() {
-        return unit;
+    public ProductUnit getProductUnit() {
+        return productUnit;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public void setProductUnit(ProductUnit productUnit) {
+        this.productUnit = productUnit;
     }
 
     @OneToOne(mappedBy = "productStock")

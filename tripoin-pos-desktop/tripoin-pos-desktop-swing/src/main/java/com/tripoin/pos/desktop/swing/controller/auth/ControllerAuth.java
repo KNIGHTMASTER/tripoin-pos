@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.controller.auth;
 
-import com.tripoin.pos.desktop.swing.component.dialog.DialogLogin;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogLogin;
 import com.tripoin.pos.desktop.swing.view.frame.MainFrame;
 import org.springframework.stereotype.Component;
 

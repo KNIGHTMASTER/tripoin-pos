@@ -1,10 +1,10 @@
 package com.tripoin.pos.desktop.swing.view.frame;
 
 import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogAbout;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogLogin;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogServer;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogTheme;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogAbout;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogLogin;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogServer;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogTheme;
 import com.tripoin.pos.desktop.swing.component.frame.IFrameSetup;
 import com.tripoin.pos.desktop.swing.component.menubar.AppSwingMenuBar;
 import com.tripoin.pos.desktop.swing.component.sidebar.DefaultSideBarMenu;

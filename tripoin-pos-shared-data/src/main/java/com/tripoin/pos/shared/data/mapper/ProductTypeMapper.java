@@ -3,6 +3,7 @@ package com.tripoin.pos.shared.data.mapper;
 import com.tripoin.pos.shared.data.dto.response.ProductTypeResponseDTO;
 import com.tripoin.pos.shared.data.model.ProductType;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,12 +14,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductTypeMapper extends ADATAMapper<ProductType, ProductTypeResponseDTO> {
 
+    @Autowired
+    private ProductCategoryMapper productCategoryMapper;
+
     @Override
     public ProductTypeResponseDTO convert(ProductType productType) {
         ProductTypeResponseDTO productTypeResponseDTO = new ProductTypeResponseDTO();
         productTypeResponseDTO.setId(productType.getId());
         productTypeResponseDTO.setCode(productType.getCode());
         productTypeResponseDTO.setName(productType.getName());
+        if (productType.getProductCategory() != null) {
+            productTypeResponseDTO.setProductCategory(productCategoryMapper.convert(productType.getProductCategory()));
+        }
         productTypeResponseDTO.setRemarks(productType.getRemarks());
         return productTypeResponseDTO;
     }

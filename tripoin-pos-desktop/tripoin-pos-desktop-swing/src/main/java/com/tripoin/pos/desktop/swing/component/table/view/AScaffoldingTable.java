@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.component.table.view;
 
 import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
-import com.tripoin.pos.desktop.swing.component.dialog.DialogProgress;
+import com.tripoin.pos.desktop.swing.component.dialog.base.DialogProgress;
 import com.tripoin.pos.desktop.swing.component.table.ITableListener;
 import com.tripoin.pos.desktop.swing.component.table.listener.AScaffoldingTableListener;
 import com.tripoin.pos.desktop.swing.component.table.model.AScaffoldingTableModel;
@@ -114,11 +114,11 @@ public abstract class AScaffoldingTable<RESPONSE> extends JTable implements ICom
             p_TextToSearch = UIConstant.Common.Punctuation.EMPTY;
         }
         ResponseGenericPaginationDTO responseGenericPaginationDTO = null;
-        final String finalP_TextToSearch = p_TextToSearch;
+        final String p_textToSearch = p_TextToSearch;
         SwingWorker<ResponseGenericPaginationDTO<RESPONSE>, ?> worker = new SwingWorker<ResponseGenericPaginationDTO<RESPONSE>, Void>(){
             @Override
             protected ResponseGenericPaginationDTO<RESPONSE> doInBackground() throws Exception {
-                return refreshTable(p_Size, p_TargetPage, p_FindMode, finalP_TextToSearch);
+                return refreshTable(p_Size, p_TargetPage, p_FindMode, p_textToSearch);
             }
             @Override
             protected void done(){

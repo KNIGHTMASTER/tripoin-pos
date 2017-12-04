@@ -31,6 +31,7 @@ public abstract class ALOV<RESPONSE extends LOVDTO> extends JComboBox<String> im
     private GenericListResponseDTO<List<LOVDTO>> dto = null;
 
     protected String[] lovDATA;
+
     @Override
     public void initComponents() {
         scaffoldingClient = getScaffoldingClient();

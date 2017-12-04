@@ -2,7 +2,7 @@ package com.tripoin.pos.desktop.swing.dto.param;
 
 import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
-import com.tripoin.pos.desktop.swing.component.dialog.AScaffoldingDialog;
+import com.tripoin.pos.desktop.swing.component.dialog.base.AScaffoldingDialog;
 import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import com.tripoin.pos.desktop.swing.view.panel.internalframe.scaffolding.PanelPaginationButton;
 
