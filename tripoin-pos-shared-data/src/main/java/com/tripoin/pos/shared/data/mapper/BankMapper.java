@@ -1,7 +1,7 @@
 package com.tripoin.pos.shared.data.mapper;
 
 import com.tripoin.pos.shared.data.dto.response.BankResponseDTO;
-import com.tripoin.pos.shared.data.model.Bank;
+import com.tripoin.pos.shared.data.model.master.Bank;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
 import org.springframework.stereotype.Service;
 

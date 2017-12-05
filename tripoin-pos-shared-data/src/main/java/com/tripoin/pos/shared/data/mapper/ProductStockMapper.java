@@ -1,7 +1,7 @@
 package com.tripoin.pos.shared.data.mapper;
 
 import com.tripoin.pos.shared.data.dto.response.ProductStockResponseDTO;
-import com.tripoin.pos.shared.data.model.ProductStock;
+import com.tripoin.pos.shared.data.model.master.ProductStock;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class ProductStockMapper extends ADATAMapper<ProductStock, ProductStockRe
         responseDTO.setWarehouseStock(productStock.getWarehouseStock());
         responseDTO.setDisplayStock(productStock.getDisplayStock());
         if (productStock.getProductUnit() != null) {
-            responseDTO.setUnit(unitMapper.convert(productStock.getProductUnit()));
+            responseDTO.setProductUnit(unitMapper.convert(productStock.getProductUnit()));
         }
         return responseDTO;
     }

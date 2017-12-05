@@ -1,6 +1,6 @@
 package com.tripoin.pos.rest.desktop.endpoint;
 
-import com.tripoin.pos.shared.data.model.Supplier;
+import com.tripoin.pos.shared.data.model.master.Supplier;
 import com.tripoin.scaffolding.endpoint.IScaffoldingEndPoint;
 
 /**

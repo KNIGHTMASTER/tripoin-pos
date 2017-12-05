@@ -32,7 +32,7 @@ public abstract class ScaffoldingDialogProductStock extends AScaffoldingDialog<P
         unitLOV = getUnitLOV();
 
         preferredHeight = 400;
-        preferredWidth = 400;
+        preferredWidth = 370;
         super.initComponents();
     }
 
@@ -56,7 +56,6 @@ public abstract class ScaffoldingDialogProductStock extends AScaffoldingDialog<P
         DisabledTextField txtDisplayStock = new DisabledTextField();
         DisabledTextField txtWarehouseStock = new DisabledTextField();
         DisabledTextArea txtRemarks = new DisabledTextArea();
-
 
         disabledTextFields.add(txtId);
         disabledTextFields.add(txtCode);
@@ -112,7 +111,7 @@ public abstract class ScaffoldingDialogProductStock extends AScaffoldingDialog<P
             productUnitResponseDTO.setId(((ALOV) enabledTextFields.get(4)).getSelectedId(((ALOV) enabledTextFields.get(4)).getSelectedIndex()));
             productStockResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(5)).getText());
         }
-        productStockResponseDTO.setUnit(productUnitResponseDTO);
+        productStockResponseDTO.setProductUnit(productUnitResponseDTO);
         return productStockResponseDTO;
     }
 
@@ -123,8 +122,7 @@ public abstract class ScaffoldingDialogProductStock extends AScaffoldingDialog<P
 
     @Override
     public String[] getParamContentArray() {
-        System.out.println(getParamContent().toString());
-        return new String[] {String.valueOf(getParamContent().getId()), getParamContent().getCode(), getParamContent().getName(), String.valueOf(getParamContent().getDisplayStock()), String.valueOf(getParamContent().getWarehouseStock()), getParamContent().getUnit().getName(), getParamContent().getRemarks()};
+        return new String[] {String.valueOf(getParamContent().getId()), getParamContent().getCode(), getParamContent().getName(), String.valueOf(getParamContent().getDisplayStock()), String.valueOf(getParamContent().getWarehouseStock()), getParamContent().getProductUnit().getName(), getParamContent().getRemarks()};
     }
 
     public abstract UnitLOV getUnitLOV();

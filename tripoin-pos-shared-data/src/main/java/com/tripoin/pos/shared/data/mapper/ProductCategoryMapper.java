@@ -1,7 +1,7 @@
 package com.tripoin.pos.shared.data.mapper;
 
 import com.tripoin.pos.shared.data.dto.response.ProductCategoryResponseDTO;
-import com.tripoin.pos.shared.data.model.ProductCategory;
+import com.tripoin.pos.shared.data.model.master.ProductCategory;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
 import org.springframework.stereotype.Service;
 

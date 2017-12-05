@@ -1,7 +1,7 @@
 package com.tripoin.pos.shared.data.mapper;
 
 import com.tripoin.pos.shared.data.dto.response.ProductGuaranteeResponseDTO;
-import com.tripoin.pos.shared.data.model.ProductGuarantee;
+import com.tripoin.pos.shared.data.model.master.ProductGuarantee;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
 import org.springframework.stereotype.Service;
 

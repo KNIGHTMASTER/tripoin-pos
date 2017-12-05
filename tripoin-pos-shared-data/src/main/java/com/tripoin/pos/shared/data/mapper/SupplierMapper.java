@@ -1,7 +1,7 @@
 package com.tripoin.pos.shared.data.mapper;
 
 import com.tripoin.pos.shared.data.dto.response.SupplierResponseDTO;
-import com.tripoin.pos.shared.data.model.Supplier;
+import com.tripoin.pos.shared.data.model.master.Supplier;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +27,12 @@ public class SupplierMapper extends ADATAMapper<Supplier, SupplierResponseDTO> {
         responseDTO.setCode(supplier.getCode());
         responseDTO.setName(supplier.getName());
         responseDTO.setRemarks(supplier.getRemarks());
-        responseDTO.setAddress(addressMapper.convert(supplier.getAddress()));
-        responseDTO.setContact(contactMapper.convert(supplier.getContact()));
+        if (supplier.getAddress() != null) {
+            responseDTO.setAddress(addressMapper.convert(supplier.getAddress()));
+        }
+        if (supplier.getContact() != null) {
+            responseDTO.setContact(contactMapper.convert(supplier.getContact()));
+        }
         return responseDTO;
     }
 }

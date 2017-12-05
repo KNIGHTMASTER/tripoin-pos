@@ -16,7 +16,7 @@ public class ProductStockResponseDTO extends BaseResponseDTO {
 
     private int warehouseStock;
     private int displayStock;
-    private ProductUnitResponseDTO unit;
+    private ProductUnitResponseDTO productUnit;
 
     public int getWarehouseStock() {
         return warehouseStock;
@@ -34,12 +34,12 @@ public class ProductStockResponseDTO extends BaseResponseDTO {
         this.displayStock = displayStock;
     }
 
-    public ProductUnitResponseDTO getUnit() {
-        return unit;
+    public ProductUnitResponseDTO getProductUnit() {
+        return productUnit;
     }
 
-    public void setUnit(ProductUnitResponseDTO unit) {
-        this.unit = unit;
+    public void setProductUnit(ProductUnitResponseDTO productUnit) {
+        this.productUnit = productUnit;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ProductStockResponseDTO extends BaseResponseDTO {
         return "ProductStockResponseDTO{" +
                 "warehouseStock=" + warehouseStock +
                 ", displayStock=" + displayStock +
-                ", unit=" + unit +
+                ", unit=" + productUnit +
                 '}';
     }
 }

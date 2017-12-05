@@ -14,51 +14,58 @@ public class ProductBrandResponseDTO extends BaseResponseDTO {
      */
     private static final long serialVersionUID = -8669008868142138581L;
 
-    private Long id;
-    private String code;
-    private String name;
-    private String remarks;
+    private ProductCategoryResponseDTO productCategory;
+    private ProductTypeResponseDTO productType;
+    private ProductBrandResponseDTO productBrand;
+    private SupplierResponseDTO supplier;
+    private PriceResponseDTO price;
+    private ProductStockResponseDTO productStock;
 
-    public Long getId() {
-        return id;
+    public ProductCategoryResponseDTO getProductCategory() {
+        return productCategory;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProductCategory(ProductCategoryResponseDTO productCategory) {
+        this.productCategory = productCategory;
     }
 
-    public String getCode() {
-        return code;
+    public ProductTypeResponseDTO getProductType() {
+        return productType;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setProductType(ProductTypeResponseDTO productType) {
+        this.productType = productType;
     }
 
-    public String getName() {
-        return name;
+    public ProductBrandResponseDTO getProductBrand() {
+        return productBrand;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductBrand(ProductBrandResponseDTO productBrand) {
+        this.productBrand = productBrand;
     }
 
-    public String getRemarks() {
-        return remarks;
+    public SupplierResponseDTO getSupplier() {
+        return supplier;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setSupplier(SupplierResponseDTO supplier) {
+        this.supplier = supplier;
     }
 
-    @Override
-    public String toString() {
-        return "ProductBrandTableDTO{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", remarks='" + remarks + '\'' +
-                '}';
+    public PriceResponseDTO getPrice() {
+        return price;
     }
 
+    public void setPrice(PriceResponseDTO price) {
+        this.price = price;
+    }
+
+    public ProductStockResponseDTO getProductStock() {
+        return productStock;
+    }
+
+    public void setProductStock(ProductStockResponseDTO productStock) {
+        this.productStock = productStock;
+    }
 }

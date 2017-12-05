@@ -1,6 +1,6 @@
 package com.tripoin.pos.rest.desktop.endpoint;
 
-import com.tripoin.pos.shared.data.model.ExpensePrice;
+import com.tripoin.pos.shared.data.model.trx.ExpensePrice;
 import com.tripoin.scaffolding.endpoint.IScaffoldingEndPoint;
 
 /**

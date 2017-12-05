@@ -1,7 +1,7 @@
 package com.tripoin.pos.shared.data.mapper;
 
 import com.tripoin.pos.shared.data.dto.response.AddressResponseDTO;
-import com.tripoin.pos.shared.data.model.Address;
+import com.tripoin.pos.shared.data.model.master.Address;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

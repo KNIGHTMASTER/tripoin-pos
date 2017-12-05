@@ -24,7 +24,7 @@ public abstract class ScaffoldingDialogProductGuarantee extends AScaffoldingDial
 
     @Override
     public void initComponents() {
-        preferredHeight = 200;
+        preferredHeight = 250;
         preferredWidth = 400;
         super.initComponents();
     }
@@ -45,11 +45,15 @@ public abstract class ScaffoldingDialogProductGuarantee extends AScaffoldingDial
         DisabledTextField txtId = new DisabledTextField();
         DisabledTextField txtCode = new DisabledTextField();
         DisabledTextField txtName = new DisabledTextField();
+        DisabledTextField txtMerchantGuarantee = new DisabledTextField();
+        DisabledTextField txtBrandGuarantee = new DisabledTextField();
         DisabledTextArea txtRemarks = new DisabledTextArea();
 
         disabledTextFields.add(txtId);
         disabledTextFields.add(txtCode);
         disabledTextFields.add(txtName);
+        disabledTextFields.add(txtMerchantGuarantee);
+        disabledTextFields.add(txtBrandGuarantee);
         disabledTextFields.add(txtRemarks);
 
         return disabledTextFields;
@@ -62,11 +66,15 @@ public abstract class ScaffoldingDialogProductGuarantee extends AScaffoldingDial
         JTextField txtId = new JTextField();
         JTextField txtCode = new JTextField();
         JTextField txtName = new JTextField();
+        JTextField txtMerchantGuarantee = new JTextField();
+        JTextField txtBrandGuarantee = new JTextField();
         JTextArea txtRemarks = new JTextArea();
 
         enabledTextFields.add(txtId);
         enabledTextFields.add(txtCode);
         enabledTextFields.add(txtName);
+        enabledTextFields.add(txtMerchantGuarantee);
+        enabledTextFields.add(txtBrandGuarantee);
         enabledTextFields.add(txtRemarks);
 
         return enabledTextFields;
@@ -79,10 +87,14 @@ public abstract class ScaffoldingDialogProductGuarantee extends AScaffoldingDial
             productGuaranteeResponseDTO.setId(Long.valueOf(((JTextField) enabledTextFields.get(0)).getText()));
             productGuaranteeResponseDTO.setCode(((JTextField) enabledTextFields.get(1)).getText());
             productGuaranteeResponseDTO.setName(((JTextField) enabledTextFields.get(2)).getText());
-            productGuaranteeResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(3)).getText());
+            productGuaranteeResponseDTO.setMerchantGuarantee(Integer.parseInt(((JTextField) enabledTextFields.get(3)).getText()));
+            productGuaranteeResponseDTO.setBrandGuarantee(Integer.parseInt(((JTextField) enabledTextFields.get(4)).getText()));
+            productGuaranteeResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(5)).getText());
         }else {
             productGuaranteeResponseDTO.setCode(((JTextField) enabledTextFields.get(0)).getText());
             productGuaranteeResponseDTO.setName(((JTextField) enabledTextFields.get(1)).getText());
+            productGuaranteeResponseDTO.setMerchantGuarantee(Integer.parseInt(((JTextField) enabledTextFields.get(2)).getText()));
+            productGuaranteeResponseDTO.setBrandGuarantee(Integer.parseInt(((JTextField) enabledTextFields.get(3)).getText()));
             productGuaranteeResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(2)).getText());
         }
         return productGuaranteeResponseDTO;
@@ -90,11 +102,17 @@ public abstract class ScaffoldingDialogProductGuarantee extends AScaffoldingDial
 
     @Override
     public String[] getLabelComponentText() {
-        return new String[] {"Id", "Code", "Name", "Remarks"};
+        return new String[] {"Id", "Code", "Name", "Merchant Guarantee", "Brand Guarantee", "Remarks"};
     }
 
     @Override
     public String[] getParamContentArray() {
-        return new String[] {String.valueOf(getParamContent().getId()), getParamContent().getCode(), getParamContent().getName(), getParamContent().getRemarks()};
+        return new String[] {
+                String.valueOf(getParamContent().getId()),
+                getParamContent().getCode(),
+                getParamContent().getName(),
+                String.valueOf(getParamContent().getMerchantGuarantee()),
+                String.valueOf(getParamContent().getBrandGuarantee()),
+                getParamContent().getRemarks()};
     }
 }

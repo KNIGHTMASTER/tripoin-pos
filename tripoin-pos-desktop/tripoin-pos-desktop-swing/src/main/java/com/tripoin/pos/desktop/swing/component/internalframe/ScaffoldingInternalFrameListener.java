@@ -22,7 +22,7 @@ public abstract class ScaffoldingInternalFrameListener implements InternalFrameL
 
     @Override
     public void internalFrameOpened(InternalFrameEvent e) {
-
+        refreshContent();
     }
 
     @Override
@@ -47,16 +47,25 @@ public abstract class ScaffoldingInternalFrameListener implements InternalFrameL
 
     @Override
     public void internalFrameActivated(InternalFrameEvent e) {
+        /*getScaffoldingPanel().refreshContent(
+                getComboBoxDisplayNumberOfData().getSelectedValue(getComboBoxDisplayNumberOfData().getSelectedIndex()),
+                0,
+                AScaffoldingTable.FindMode.DEFAULT,
+                UIConstant.Common.Punctuation.EMPTY
+        );*/
+    }
+
+    @Override
+    public void internalFrameDeactivated(InternalFrameEvent e) {
+//        System.out.println("deactive");
+    }
+
+    private void refreshContent() {
         getScaffoldingPanel().refreshContent(
                 getComboBoxDisplayNumberOfData().getSelectedValue(getComboBoxDisplayNumberOfData().getSelectedIndex()),
                 0,
                 AScaffoldingTable.FindMode.DEFAULT,
                 UIConstant.Common.Punctuation.EMPTY
         );
-    }
-
-    @Override
-    public void internalFrameDeactivated(InternalFrameEvent e) {
-//        System.out.println("deactive");
     }
 }

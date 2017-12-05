@@ -1,7 +1,7 @@
 package com.tripoin.pos.shared.data.mapper;
 
 import com.tripoin.pos.shared.data.dto.response.VillageResponseDTO;
-import com.tripoin.pos.shared.data.model.Village;
+import com.tripoin.pos.shared.data.model.master.Village;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

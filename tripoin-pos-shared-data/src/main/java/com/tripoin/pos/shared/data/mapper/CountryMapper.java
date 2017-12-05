@@ -1,7 +1,7 @@
 package com.tripoin.pos.shared.data.mapper;
 
 import com.tripoin.pos.shared.data.dto.response.CountryResponseDTO;
-import com.tripoin.pos.shared.data.model.Country;
+import com.tripoin.pos.shared.data.model.master.Country;
 import com.tripoin.scaffolding.data.mapper.ADATAMapper;
 import org.springframework.stereotype.Service;
 

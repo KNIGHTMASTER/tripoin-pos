@@ -1,9 +1,9 @@
 package com.tripoin.pos.rest.desktop.endpoint.impl;
 
 import com.tripoin.pos.rest.desktop.endpoint.IUnitEndPoint;
-import com.tripoin.pos.rest.desktop.service.IUnitService;
+import com.tripoin.pos.rest.desktop.service.master.IUnitService;
 import com.tripoin.pos.shared.data.mapper.UnitMapper;
-import com.tripoin.pos.shared.data.model.ProductUnit;
+import com.tripoin.pos.shared.data.model.master.ProductUnit;
 import com.tripoin.scaffolding.endpoint.impl.AScaffoldingEndPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
