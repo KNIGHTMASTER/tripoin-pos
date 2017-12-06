@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.controller.panel.productguarantee;
 
 import com.tripoin.pos.desktop.swing.controller.panel.AScaffoldingController;
-import com.tripoin.pos.shared.data.dto.response.ProductGuaranteeResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.ProductGuaranteeResponseDTO;
 import org.springframework.stereotype.Service;
 
 /**

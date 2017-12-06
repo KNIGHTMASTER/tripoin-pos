@@ -3,7 +3,7 @@ package com.tripoin.pos.desktop.swing.client.impl;
 import com.tripoin.pos.desktop.swing.client.base.ARetrofitRestClient;
 import com.tripoin.pos.desktop.swing.client.IProductCategoryClient;
 import com.tripoin.pos.desktop.swing.client.endpoint.IProductCategoryEndPointClient;
-import com.tripoin.pos.shared.data.dto.response.ProductCategoryResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.ProductCategoryResponseDTO;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.*;

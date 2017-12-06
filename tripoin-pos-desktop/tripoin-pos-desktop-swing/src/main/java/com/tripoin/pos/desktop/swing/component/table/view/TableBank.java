@@ -2,7 +2,7 @@ package com.tripoin.pos.desktop.swing.component.table.view;
 
 import com.tripoin.pos.desktop.swing.client.IBankClient;
 import com.tripoin.pos.desktop.swing.component.table.model.TableModelBank;
-import com.tripoin.pos.shared.data.dto.response.BankResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.BankResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -2,7 +2,7 @@ package com.tripoin.pos.rest.desktop.endpoint.impl;
 
 import com.tripoin.pos.rest.desktop.endpoint.IProductCategoryEndPoint;
 import com.tripoin.pos.rest.desktop.service.master.IProductCategoryService;
-import com.tripoin.pos.shared.data.mapper.ProductCategoryMapper;
+import com.tripoin.pos.shared.data.mapper.master.ProductCategoryMapper;
 import com.tripoin.pos.shared.data.model.master.ProductCategory;
 import com.tripoin.scaffolding.endpoint.impl.AScaffoldingEndPoint;
 import org.springframework.beans.factory.annotation.Autowired;

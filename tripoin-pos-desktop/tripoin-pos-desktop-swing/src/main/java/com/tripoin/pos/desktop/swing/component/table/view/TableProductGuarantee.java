@@ -2,7 +2,7 @@ package com.tripoin.pos.desktop.swing.component.table.view;
 
 import com.tripoin.pos.desktop.swing.client.IProductGuaranteeClient;
 import com.tripoin.pos.desktop.swing.component.table.model.TableModelProductGuarantee;
-import com.tripoin.pos.shared.data.dto.response.ProductGuaranteeResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.ProductGuaranteeResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

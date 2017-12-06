@@ -4,7 +4,7 @@ import com.tripoin.pos.desktop.swing.client.IFinanceAccountClient;
 import com.tripoin.pos.desktop.swing.client.base.ARetrofitRestClient;
 import com.tripoin.pos.desktop.swing.client.endpoint.IFinanceAccountEndPointClient;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
-import com.tripoin.pos.shared.data.dto.response.FinanceAccountResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.FinanceAccountResponseDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.*;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;

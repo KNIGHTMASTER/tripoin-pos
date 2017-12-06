@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.component.table.model;
 
-import com.tripoin.pos.shared.data.dto.response.ProductTypeResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.ProductTypeResponseDTO;
 import org.springframework.stereotype.Component;
 
 /**

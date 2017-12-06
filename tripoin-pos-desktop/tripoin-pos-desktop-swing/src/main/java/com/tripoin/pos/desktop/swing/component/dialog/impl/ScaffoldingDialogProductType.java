@@ -5,8 +5,8 @@ import com.tripoin.pos.desktop.swing.component.combobox.ProductCategoryLOV;
 import com.tripoin.pos.desktop.swing.component.dialog.base.AScaffoldingDialog;
 import com.tripoin.pos.desktop.swing.component.textarea.DisabledTextArea;
 import com.tripoin.pos.desktop.swing.component.textfield.DisabledTextField;
-import com.tripoin.pos.shared.data.dto.response.ProductCategoryResponseDTO;
-import com.tripoin.pos.shared.data.dto.response.ProductTypeResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.ProductCategoryResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.ProductTypeResponseDTO;
 
 import javax.swing.*;
 import java.awt.*;

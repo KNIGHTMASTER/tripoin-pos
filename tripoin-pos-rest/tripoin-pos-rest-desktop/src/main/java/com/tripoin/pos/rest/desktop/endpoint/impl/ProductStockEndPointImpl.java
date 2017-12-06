@@ -2,7 +2,7 @@ package com.tripoin.pos.rest.desktop.endpoint.impl;
 
 import com.tripoin.pos.rest.desktop.endpoint.IProductStockEndPoint;
 import com.tripoin.pos.rest.desktop.service.master.IProductStockService;
-import com.tripoin.pos.shared.data.mapper.ProductStockMapper;
+import com.tripoin.pos.shared.data.mapper.master.ProductStockMapper;
 import com.tripoin.pos.shared.data.model.master.ProductStock;
 import com.tripoin.scaffolding.endpoint.impl.AScaffoldingEndPoint;
 import org.springframework.beans.factory.annotation.Autowired;

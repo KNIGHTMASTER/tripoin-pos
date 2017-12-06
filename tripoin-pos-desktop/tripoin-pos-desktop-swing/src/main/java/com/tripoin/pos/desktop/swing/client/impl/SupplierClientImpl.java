@@ -4,7 +4,7 @@ import com.tripoin.pos.desktop.swing.client.ISupplierClient;
 import com.tripoin.pos.desktop.swing.client.base.ARetrofitRestClient;
 import com.tripoin.pos.desktop.swing.client.endpoint.ISupplierEndPointClient;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
-import com.tripoin.pos.shared.data.dto.response.SupplierResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.SupplierResponseDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.*;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;

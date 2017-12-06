@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.controller.panel.producttype;
 
 import com.tripoin.pos.desktop.swing.controller.panel.AScaffoldingController;
-import com.tripoin.pos.shared.data.dto.response.ProductTypeResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.ProductTypeResponseDTO;
 import org.springframework.stereotype.Service;
 
 /**

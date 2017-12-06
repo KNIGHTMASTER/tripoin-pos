@@ -5,6 +5,7 @@ import com.tripoin.pos.shared.data.model.system.PaymentTypeDetail;
 import com.tripoin.scaffolding.data.AAuditTrail;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -25,7 +26,7 @@ public class Payment extends AAuditTrail {
     private Employee employee;
     private Date trxDate;
     private Integer totalItem;
-    private Double tax;
+    private BigDecimal tax;
     private Integer refferenceId;
 
     @ManyToOne
@@ -68,11 +69,11 @@ public class Payment extends AAuditTrail {
     }
 
     @Column(name = "tax")
-    public Double getTax() {
+    public BigDecimal getTax() {
         return tax;
     }
 
-    public void setTax(Double tax) {
+    public void setTax(BigDecimal tax) {
         this.tax = tax;
     }
 

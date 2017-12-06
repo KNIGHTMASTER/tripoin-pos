@@ -2,7 +2,7 @@ package com.tripoin.pos.rest.desktop.endpoint.impl;
 
 import com.tripoin.pos.rest.desktop.endpoint.IProductGuaranteeEndPoint;
 import com.tripoin.pos.rest.desktop.service.master.IProductGuaranteeService;
-import com.tripoin.pos.shared.data.mapper.ProductGuaranteeMapper;
+import com.tripoin.pos.shared.data.mapper.master.ProductGuaranteeMapper;
 import com.tripoin.pos.shared.data.model.master.ProductGuarantee;
 import com.tripoin.scaffolding.endpoint.impl.AScaffoldingEndPoint;
 import org.springframework.beans.factory.annotation.Autowired;

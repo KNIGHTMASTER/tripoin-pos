@@ -2,7 +2,7 @@ package com.tripoin.pos.rest.desktop.endpoint.impl;
 
 import com.tripoin.pos.rest.desktop.endpoint.IFinanceAccountEndPoint;
 import com.tripoin.pos.rest.desktop.service.master.IFinanceAccountService;
-import com.tripoin.pos.shared.data.mapper.FinanceAccountMapper;
+import com.tripoin.pos.shared.data.mapper.master.FinanceAccountMapper;
 import com.tripoin.pos.shared.data.model.master.FinanceAccount;
 import com.tripoin.scaffolding.endpoint.impl.AScaffoldingEndPoint;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,7 +2,7 @@ package com.tripoin.pos.desktop.swing.component.table.view;
 
 import com.tripoin.pos.desktop.swing.client.IProductCategoryClient;
 import com.tripoin.pos.desktop.swing.component.table.model.TableModelProductCategory;
-import com.tripoin.pos.shared.data.dto.response.ProductCategoryResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.ProductCategoryResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

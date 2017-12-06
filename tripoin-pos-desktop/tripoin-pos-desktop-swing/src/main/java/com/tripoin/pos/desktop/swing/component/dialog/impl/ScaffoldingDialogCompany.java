@@ -3,7 +3,7 @@ package com.tripoin.pos.desktop.swing.component.dialog.impl;
 import com.tripoin.pos.desktop.swing.component.dialog.base.AScaffoldingDialog;
 import com.tripoin.pos.desktop.swing.component.textarea.DisabledTextArea;
 import com.tripoin.pos.desktop.swing.component.textfield.DisabledTextField;
-import com.tripoin.pos.shared.data.dto.response.CompanyResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.CompanyResponseDTO;
 
 import javax.swing.*;
 import java.awt.*;

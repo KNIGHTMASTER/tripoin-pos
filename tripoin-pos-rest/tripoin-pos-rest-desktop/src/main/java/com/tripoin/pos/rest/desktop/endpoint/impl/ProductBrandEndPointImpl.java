@@ -2,7 +2,7 @@ package com.tripoin.pos.rest.desktop.endpoint.impl;
 
 import com.tripoin.pos.rest.desktop.endpoint.IProductBrandEndPoint;
 import com.tripoin.pos.rest.desktop.service.master.IProductBrandService;
-import com.tripoin.pos.shared.data.mapper.ProductBrandMapper;
+import com.tripoin.pos.shared.data.mapper.master.ProductBrandMapper;
 import com.tripoin.pos.shared.data.model.master.ProductBrand;
 import com.tripoin.scaffolding.endpoint.impl.AScaffoldingEndPoint;
 import org.springframework.beans.factory.annotation.Autowired;

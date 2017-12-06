@@ -2,7 +2,7 @@ package com.tripoin.pos.rest.desktop.endpoint.impl;
 
 import com.tripoin.pos.rest.desktop.endpoint.IExpensePriceEndPoint;
 import com.tripoin.pos.rest.desktop.service.trx.IExpensePriceService;
-import com.tripoin.pos.shared.data.mapper.ExpensePriceMapper;
+import com.tripoin.pos.shared.data.mapper.trx.ExpensePriceMapper;
 import com.tripoin.pos.shared.data.model.trx.ExpensePrice;
 import com.tripoin.scaffolding.endpoint.impl.AScaffoldingEndPoint;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.tripoin.pos.desktop.swing.controller.panel.financeaccount;
 
 import com.tripoin.pos.desktop.swing.controller.panel.AScaffoldingController;
-import com.tripoin.pos.shared.data.dto.response.FinanceAccountResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.FinanceAccountResponseDTO;
 import org.springframework.stereotype.Service;
 
 /**

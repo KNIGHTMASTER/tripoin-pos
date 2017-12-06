@@ -1,6 +1,6 @@
 package com.tripoin.pos.desktop.swing.client.endpoint;
 
-import com.tripoin.pos.shared.data.dto.response.BranchResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.BranchResponseDTO;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.*;
