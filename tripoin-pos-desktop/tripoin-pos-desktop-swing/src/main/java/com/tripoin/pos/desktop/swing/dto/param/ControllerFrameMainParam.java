@@ -4,6 +4,7 @@ import com.tripoin.pos.desktop.swing.component.dialog.base.DialogAbout;
 import com.tripoin.pos.desktop.swing.component.dialog.base.DialogLogin;
 import com.tripoin.pos.desktop.swing.component.dialog.base.DialogServer;
 import com.tripoin.pos.desktop.swing.component.dialog.base.DialogTheme;
+import com.tripoin.pos.desktop.swing.view.desktoppane.DesktopPaneMain;
 import com.tripoin.pos.desktop.swing.view.frame.MainFrame;
 
 import java.io.Serializable;
@@ -30,6 +31,15 @@ public class ControllerFrameMainParam implements Serializable {
     private DialogAbout dialogAbout;
     private DialogServer dialogServer;
     private DialogTheme dialogTheme;
+    private DesktopPaneMain desktopPaneMain;
+
+    public DesktopPaneMain getDesktopPaneMain() {
+        return desktopPaneMain;
+    }
+
+    public void setDesktopPaneMain(DesktopPaneMain desktopPaneMain) {
+        this.desktopPaneMain = desktopPaneMain;
+    }
 
     public int getScreenSizeWidth() {
         return screenSizeWidth;

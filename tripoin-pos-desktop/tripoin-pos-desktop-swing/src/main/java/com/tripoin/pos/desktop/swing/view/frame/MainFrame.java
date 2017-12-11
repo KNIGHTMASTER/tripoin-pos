@@ -10,6 +10,7 @@ import com.tripoin.pos.desktop.swing.component.menubar.AppSwingMenuBar;
 import com.tripoin.pos.desktop.swing.component.sidebar.DefaultSideBarMenu;
 import com.tripoin.pos.desktop.swing.controller.frame.ControllerFrameMain;
 import com.tripoin.pos.desktop.swing.dto.param.ControllerFrameMainParam;
+import com.tripoin.pos.desktop.swing.view.desktoppane.DesktopPaneMain;
 import com.tripoin.pos.desktop.swing.view.internalframe.InternalFrameDashboard;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +56,9 @@ public class MainFrame extends JFrame {
     private DialogServer dialogServer;
 
     @Autowired
+    private DesktopPaneMain desktopPaneMain;
+
+    @Autowired
     private InternalFrameDashboard internalFrameDashboard;
 
     @Autowired
@@ -91,6 +95,7 @@ public class MainFrame extends JFrame {
         controllerFrameMainParam.setDialogLogin(dialogLogin);
         controllerFrameMainParam.setDialogServer(dialogServer);
         controllerFrameMainParam.setDialogTheme(dialogTheme);
+        controllerFrameMainParam.setDesktopPaneMain(desktopPaneMain);
     }
 
     public void setMenuVisibility(boolean b){

@@ -26,6 +26,9 @@ public class MenuHome extends JMenu implements IComponentInitializer {
     private MenuDashboard menuDashboard;
 
     @Autowired
+    private MenuClearDesktop menuClearDesktop;
+
+    @Autowired
     private IResourceBundleLocator rb;
 
     @Value("${menu.home.imageurl}")
@@ -37,6 +40,7 @@ public class MenuHome extends JMenu implements IComponentInitializer {
         this.setText(rb.getValue("menu.home.name"));
         this.setIcon(new ImageIcon(getClass().getClassLoader().getResource(menuHomeImageUrl)));
         this.add(menuDashboard);
+        this.add(menuClearDesktop);
     }
 
     public MenuDashboard getMenuDashboard() {

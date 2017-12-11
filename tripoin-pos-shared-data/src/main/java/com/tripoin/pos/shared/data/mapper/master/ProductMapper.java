@@ -33,6 +33,9 @@ public class ProductMapper extends ADATAMapper<Product, ProductResponseDTO> {
     @Autowired
     private ProductStockMapper productStockMapper;
 
+    @Autowired
+    private ProductGuaranteeMapper productGuaranteeMapper;
+
     @Override
     public ProductResponseDTO convert(Product product) {
         ProductResponseDTO responseDTO = new ProductResponseDTO();
@@ -57,6 +60,9 @@ public class ProductMapper extends ADATAMapper<Product, ProductResponseDTO> {
         }
         if (product.getProductStock() != null) {
             responseDTO.setProductStock(productStockMapper.convert(product.getProductStock()));
+        }
+        if (product.getProductGuarantee() != null) {
+            responseDTO.setProductGuarantee(productGuaranteeMapper.convert(product.getProductGuarantee()));
         }
         return responseDTO;
     }

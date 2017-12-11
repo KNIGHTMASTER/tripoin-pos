@@ -21,6 +21,8 @@ public class ProductResponseDTO extends BaseResponseDTO {
     private SupplierResponseDTO supplier;
     private PriceResponseDTO price;
     private ProductStockResponseDTO productStock;
+    private ProductGuaranteeResponseDTO productGuarantee;
+    private String imageUrl;
 
     public ProductCategoryResponseDTO getProductCategory() {
         return productCategory;
@@ -68,5 +70,21 @@ public class ProductResponseDTO extends BaseResponseDTO {
 
     public void setProductStock(ProductStockResponseDTO productStock) {
         this.productStock = productStock;
+    }
+
+    public ProductGuaranteeResponseDTO getProductGuarantee() {
+        return productGuarantee;
+    }
+
+    public void setProductGuarantee(ProductGuaranteeResponseDTO productGuarantee) {
+        this.productGuarantee = productGuarantee;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

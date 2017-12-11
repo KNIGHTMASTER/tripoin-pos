@@ -37,21 +37,34 @@ public abstract class ALOV<RESPONSE extends LOVDTO> extends JComboBox<String> im
         scaffoldingClient = getScaffoldingClient();
 
         Call<GenericListResponseDTO> responseDTOCall = scaffoldingClient.selectLOV();
-        try {
-            dto = responseDTOCall.execute().body();
-            lovDATA = new String[dto.getContent().size()];
-            for (int a=0; a<dto.getContent().size(); a++){
-                lovDATA[a] = String.valueOf(dto.getContent().get(a).get(1));
-            }
-            this.setModel(new DefaultComboBoxModel<>(lovDATA));
-        } catch (IOException e) {
-            LOGGER.error("Error select LOV Data from Rest ".concat(e.toString()));
-        }
+        reInitComponent(responseDTOCall);
     }
 
     public abstract IScaffoldingClient<RESPONSE> getScaffoldingClient();
 
     public Long getSelectedId(int p_Index){
         return Long.valueOf(String.valueOf(dto.getContent().get(p_Index).get(0)));
+    }
+
+    public void  setContentByParent(Long p_ParentId){
+        /*Do Nothing here. This will be implemented if necessary*/
+    }
+
+    public void reInitComponent(Call<GenericListResponseDTO> responseDTOCall) {
+        try {
+            dto = responseDTOCall.execute().body();
+            if (dto.getContent().size() > 0) {
+                lovDATA = new String[dto.getContent().size()];
+                for (int a=0; a<dto.getContent().size(); a++){
+                    lovDATA[a] = String.valueOf(dto.getContent().get(a).get(1));
+                }
+                this.setModel(new DefaultComboBoxModel<>(lovDATA));
+            }else {
+                this.setModel(null);
+            }
+        } catch (IOException | NullPointerException e) {
+            this.setModel(new DefaultComboBoxModel<>());
+            LOGGER.error("Error select LOV Data from Rest ".concat(e.toString()));
+        }
     }
 }

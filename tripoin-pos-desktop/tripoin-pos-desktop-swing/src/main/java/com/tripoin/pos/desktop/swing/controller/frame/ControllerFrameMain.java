@@ -35,6 +35,13 @@ public class ControllerFrameMain implements IParameterizedComponent<ControllerFr
         }
         getParam().getDialogServer().setVisible(true);
     }
+
+    public void subMenuClearDesktopActionPerformed() {
+        if (getParam().getDesktopPaneMain() != null){
+            getParam().getDesktopPaneMain().removeAll();
+            getParam().getDesktopPaneMain().updateUI();
+        }
+    }
     
     @Override
     public void setParam(ControllerFrameMainParam p_Param) {

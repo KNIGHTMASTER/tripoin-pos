@@ -24,6 +24,8 @@ import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
 import id.co.telkomsigma.tgf.util.IComponentAction;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import id.co.telkomsigma.tgf.util.UIConstant.Common.Punctuation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -67,6 +69,8 @@ public abstract class AScaffoldingPanel extends JPanel implements IComponentInit
 
     private int currentPage = 0;
     private int totalPage = 0;
+
+    protected static final Logger LOGGER = LoggerFactory.getLogger(AScaffoldingPanel.class);
 
     @Override
     public void initComponents() {

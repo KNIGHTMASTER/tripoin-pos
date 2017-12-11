@@ -12,9 +12,9 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EntityScan("com.tripoin.pos")
 @ComponentScan({"com.tripoin.pos"})
-public class TripoinPosRestResktopApplication {
+public class TripoinPosRestDesktopApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TripoinPosRestResktopApplication.class);
+        SpringApplication.run(TripoinPosRestDesktopApplication.class);
     }
 }

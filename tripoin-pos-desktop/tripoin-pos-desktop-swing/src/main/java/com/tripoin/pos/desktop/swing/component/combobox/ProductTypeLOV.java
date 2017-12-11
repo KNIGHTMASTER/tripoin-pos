@@ -2,8 +2,11 @@ package com.tripoin.pos.desktop.swing.component.combobox;
 
 import com.tripoin.pos.desktop.swing.client.IProductTypeClient;
 import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
+import com.tripoin.pos.shared.data.dto.request.SelectLOVProductTypeByProductCategoryRequestDTO;
+import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import retrofit2.Call;
 
 /**
  * Created on 11/15/17.
@@ -24,5 +27,11 @@ public class ProductTypeLOV extends ALOV {
     @Override
     public IScaffoldingClient getScaffoldingClient() {
         return productTypeClient;
+    }
+
+    @Override
+    public void setContentByParent(Long p_ParentId) {
+        Call<GenericListResponseDTO> responseProductTypeLOV = productTypeClient.selectLOVByProductCategory(new SelectLOVProductTypeByProductCategoryRequestDTO(String.valueOf(p_ParentId)));
+        reInitComponent(responseProductTypeLOV);
     }
 }

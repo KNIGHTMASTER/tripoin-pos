@@ -1,6 +1,7 @@
 package com.tripoin.pos.desktop.swing.client.endpoint;
 
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
+import com.tripoin.pos.shared.data.dto.request.SelectLOVProductTypeByProductCategoryRequestDTO;
 import com.tripoin.pos.shared.data.dto.response.master.ProductTypeResponseDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.*;
@@ -52,4 +53,7 @@ public interface IProductTypeEndPointClient {
 
     @GET("producttype/100017")
     Call<GenericListResponseDTO> selectLOV();
+
+    @POST("producttype/100030")
+    Call<GenericListResponseDTO> selectLOVByProductCategory(@Body SelectLOVProductTypeByProductCategoryRequestDTO productTypeByProductCategoryRequestDTO);
 }

@@ -4,6 +4,7 @@ import com.tripoin.pos.desktop.swing.client.IProductTypeClient;
 import com.tripoin.pos.desktop.swing.client.base.ARetrofitRestClient;
 import com.tripoin.pos.desktop.swing.client.endpoint.IProductTypeEndPointClient;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
+import com.tripoin.pos.shared.data.dto.request.SelectLOVProductTypeByProductCategoryRequestDTO;
 import com.tripoin.pos.shared.data.dto.response.master.ProductTypeResponseDTO;
 import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.*;
@@ -79,5 +80,10 @@ public class ProductTypeClientImpl extends ARetrofitRestClient implements IProdu
     @Override
     public Call<ResponseGenericPaginationDTO<ProductTypeResponseDTO>> findPaginationByNameOrderById(RequestPaginationByNameDTO p_RequestPaginationByNameDTO) {
         return productTypeEndPointClient.findPaginationByNameOrderById(p_RequestPaginationByNameDTO);
+    }
+
+    @Override
+    public Call<GenericListResponseDTO> selectLOVByProductCategory(SelectLOVProductTypeByProductCategoryRequestDTO productTypeByProductCategoryRequestDTO) {
+        return productTypeEndPointClient.selectLOVByProductCategory(productTypeByProductCategoryRequestDTO);
     }
 }
