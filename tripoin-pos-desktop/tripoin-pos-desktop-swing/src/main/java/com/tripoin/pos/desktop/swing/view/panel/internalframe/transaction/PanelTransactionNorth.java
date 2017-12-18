@@ -18,6 +18,11 @@ import java.awt.event.FocusListener;
  */
 @Component
 public class PanelTransactionNorth extends JPanel implements IComponentInitializer {
+    /**
+     *
+     *
+     */
+    private static final long serialVersionUID = 4368395087886450812L;
 
     @Autowired
     private ComboBoxCustomerType comboBoxCustomerType;

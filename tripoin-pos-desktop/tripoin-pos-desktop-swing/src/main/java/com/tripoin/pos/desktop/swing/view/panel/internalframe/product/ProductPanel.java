@@ -16,13 +16,14 @@ import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import com.tripoin.pos.desktop.swing.controller.panel.AScaffoldingController;
 import com.tripoin.pos.desktop.swing.controller.panel.product.ScaffoldingControllerProduct;
 import com.tripoin.pos.desktop.swing.view.panel.internalframe.scaffolding.AScaffoldingPanel;
-import id.co.telkomsigma.tgf.util.IComponentAction;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 /**
  * Created on 11/2/17.
@@ -30,7 +31,7 @@ import javax.annotation.PostConstruct;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component
-public class ProductPanel extends AScaffoldingPanel implements IComponentInitializer, IComponentAction {
+public class ProductPanel extends AScaffoldingPanel implements IComponentInitializer {
     /**
      *
      *
@@ -189,8 +190,6 @@ public class ProductPanel extends AScaffoldingPanel implements IComponentInitial
         };
         productScrollPane.scaffoldingTable.initComponents();
         super.initComponents();
-
-        initAction();
     }
 
 
@@ -211,11 +210,22 @@ public class ProductPanel extends AScaffoldingPanel implements IComponentInitial
 
     @Override
     public void initAction() {
-        productCategoryLOV.addActionListener(e -> {
-            LOGGER.info("ACTION PRODUCT CATEGORY");
+        /*productCategoryLOV.addActionListener(e -> {
             Long productCategoryId = productCategoryLOV.getSelectedId(productCategoryLOV.getSelectedIndex());
             productTypeLOV.setContentByParent(productCategoryId);
 
+        });*/
+        productTypeLOV.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                Long productCategoryId = productCategoryLOV.getSelectedId(productCategoryLOV.getSelectedIndex());
+                productTypeLOV.setContentByParent(productCategoryId);
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+
+            }
         });
         super.initAction();
     }

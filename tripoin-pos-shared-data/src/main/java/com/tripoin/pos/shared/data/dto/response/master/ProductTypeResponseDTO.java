@@ -14,7 +14,16 @@ public class ProductTypeResponseDTO extends BaseResponseDTO {
      */
     private static final long serialVersionUID = -4458327710851194936L;
 
+    private String imageUrl;
     private ProductCategoryResponseDTO productCategory;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public ProductCategoryResponseDTO getProductCategory() {
         return productCategory;

@@ -100,7 +100,7 @@ public abstract class ScaffoldingDialogProductStock extends AScaffoldingDialog<P
             productStockResponseDTO.setCode(((JTextField) enabledTextFields.get(1)).getText());
             productStockResponseDTO.setName(((JTextField) enabledTextFields.get(2)).getText());
             productStockResponseDTO.setDisplayStock(Integer.parseInt(((JTextField) enabledTextFields.get(3)).getText()));
-            productStockResponseDTO.setWarehouseStock(Integer.parseInt(((JTextField) enabledTextFields.get(5)).getText()));
+            productStockResponseDTO.setWarehouseStock(Integer.parseInt(((JTextField) enabledTextFields.get(4)).getText()));
             productUnitResponseDTO.setId(((ALOV) enabledTextFields.get(5)).getSelectedId(((ALOV) enabledTextFields.get(5)).getSelectedIndex()));
             productStockResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(6)).getText());
         }else {

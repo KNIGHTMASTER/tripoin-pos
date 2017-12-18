@@ -1,0 +1,33 @@
+package com.tripoin.pos.desktop.swing.component.scrollpane;
+
+import com.tripoin.pos.desktop.swing.component.table.view.TableTransaction;
+import id.co.telkomsigma.tgf.util.IComponentInitializer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.swing.*;
+
+/**
+ * Created on 11/3/17.
+ *
+ * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
+ */
+@Component
+public class TransactionScrollPane extends JScrollPane implements IComponentInitializer {
+    /**
+     *
+     *
+     */
+    private static final long serialVersionUID = 5782555036729246491L;
+
+    @Autowired
+    private TableTransaction tableTransaction;
+
+    @PostConstruct
+    @Override
+    public void initComponents() {
+        setViewportView(tableTransaction);
+    }
+
+}

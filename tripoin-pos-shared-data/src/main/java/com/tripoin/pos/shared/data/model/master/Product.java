@@ -73,7 +73,7 @@ public class Product extends AAuditTrail {
         this.supplier = supplier;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "price_id")
     public Price getPrice() {
         return price;
@@ -83,7 +83,7 @@ public class Product extends AAuditTrail {
         this.price = price;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stock_id")
     public ProductStock getProductStock() {
         return productStock;
@@ -93,7 +93,7 @@ public class Product extends AAuditTrail {
         this.productStock = productStock;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "guarantee_id")
     public ProductGuarantee getProductGuarantee() {
         return productGuarantee;

@@ -1,6 +1,5 @@
 package com.tripoin.pos.desktop.swing.view.panel.internalframe.transaction;
 
-import com.tripoin.pos.desktop.swing.view.panel.internalframe.transaction.PanelTransactionNorth;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,11 +24,19 @@ public class PanelTransaction extends JPanel implements IComponentInitializer {
     @Autowired
     private PanelTransactionNorth panelTransactionNorth;
 
+    @Autowired
+    private PanelTransactionCenter panelTransactionCenter;
+
+    @Autowired
+    private PanelTransactionSouth panelTransactionSouth;
+
     @PostConstruct
     @Override
     public void initComponents() {
-        this.setBackground(Color.RED);
         this.setLayout(new BorderLayout());
+
         this.add(panelTransactionNorth, BorderLayout.NORTH);
+        this.add(panelTransactionCenter, BorderLayout.CENTER);
+        this.add(panelTransactionSouth, BorderLayout.SOUTH);
     }
 }

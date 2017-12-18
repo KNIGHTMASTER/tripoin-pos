@@ -2,10 +2,7 @@ package com.tripoin.pos.shared.data.model.master;
 
 import com.tripoin.scaffolding.data.AAuditTrail;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created on 11/20/17.
@@ -44,7 +41,7 @@ public class ProductGuarantee extends AAuditTrail {
         this.brandGuarantee = brandGuarantee;
     }
 
-    @OneToOne(mappedBy = "productGuarantee")
+    @OneToOne(mappedBy = "productGuarantee", cascade = CascadeType.ALL)
     public Product getProduct() {
         return product;
     }

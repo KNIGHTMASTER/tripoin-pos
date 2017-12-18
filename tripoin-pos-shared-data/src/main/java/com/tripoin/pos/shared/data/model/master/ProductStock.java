@@ -54,7 +54,7 @@ public class ProductStock extends AAuditTrail {
         this.productUnit = productUnit;
     }
 
-    @OneToOne(mappedBy = "productStock")
+    @OneToOne(mappedBy = "productStock", cascade = CascadeType.ALL)
     public Product getProduct() {
         return product;
     }

@@ -21,12 +21,22 @@ public class ProductType extends AAuditTrail {
      */
     private static final long serialVersionUID = -4511414093059596310L;
 
+    private String imageUrl;
     private Set<Product> products;
     private ProductCategory productCategory;
 
     @Override
     public String tableName() {
         return "mst_product_type";
+    }
+
+    @Column(name = "image_url")
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @JsonBackReference(value = "productCategoryProductType")

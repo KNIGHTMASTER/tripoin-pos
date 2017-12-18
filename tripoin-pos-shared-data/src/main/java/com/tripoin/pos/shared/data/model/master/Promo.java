@@ -1,10 +1,12 @@
 package com.tripoin.pos.shared.data.model.master;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.tripoin.pos.shared.data.model.trx.Price;
 import com.tripoin.scaffolding.data.AAuditTrail;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created on 11/20/17.
@@ -23,7 +25,7 @@ public class Promo extends AAuditTrail {
     private Date startDate;
     private Date endDate;
     private Double discountRate;
-    private Price price;
+    private Set<Price> prices;
 
     @Column(name = "start_date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -54,14 +56,16 @@ public class Promo extends AAuditTrail {
         this.discountRate = discountRate;
     }
 
-    @OneToOne(mappedBy = "promo")
-    public Price getPrice() {
-        return price;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "promo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    public Set<Price> getPrices() {
+        return prices;
     }
 
-    public void setPrice(Price price) {
-        this.price = price;
+    public void setPrices(Set<Price> prices) {
+        this.prices = prices;
     }
+
 
     @Override
     public String tableName() {

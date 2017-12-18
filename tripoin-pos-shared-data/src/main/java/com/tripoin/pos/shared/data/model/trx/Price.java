@@ -1,5 +1,6 @@
 package com.tripoin.pos.shared.data.model.trx;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.tripoin.pos.shared.data.model.master.Product;
 import com.tripoin.pos.shared.data.model.master.Promo;
 import com.tripoin.scaffolding.data.AAuditTrail;
@@ -46,7 +47,8 @@ public class Price extends AAuditTrail {
         this.expensePrice = expensePrice;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "promo_id")
     public Promo getPromo() {
         return promo;

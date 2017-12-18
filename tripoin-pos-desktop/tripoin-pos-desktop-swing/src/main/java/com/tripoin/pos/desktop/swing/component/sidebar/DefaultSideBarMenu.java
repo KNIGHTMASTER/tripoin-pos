@@ -53,6 +53,9 @@ public class DefaultSideBarMenu extends JPanel implements IComponentInitializer 
     private ProfileSubSideBarMenu profileSubSideBarMenu;
 
     @Autowired
+    private ReportSubSideBarMenu reportSubSideBarMenu;
+
+    @Autowired
     private MenuHolderDTO menuHolderDTO;
 
     private Toolkit kit = Toolkit.getDefaultToolkit();
@@ -93,6 +96,9 @@ public class DefaultSideBarMenu extends JPanel implements IComponentInitializer 
 
         SidebarSection sectionSecurity = new SidebarSection(sideBar, "Security", securitySubSideBarMenu, iconGlobe24);
         sideBar.addSection(sectionSecurity);
+
+        SidebarSection sectionReport = new SidebarSection(sideBar, "Report", reportSubSideBarMenu, iconGlobe24);
+        sideBar.addSection(sectionReport);
 
         splitPane.setLeftComponent(sideBar);
         splitPane.setRightComponent(desktopPaneMain);

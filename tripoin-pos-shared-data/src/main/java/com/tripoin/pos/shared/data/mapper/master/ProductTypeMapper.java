@@ -20,6 +20,7 @@ public class ProductTypeMapper extends ADATAMapper<ProductType, ProductTypeRespo
     @Override
     public ProductTypeResponseDTO convert(ProductType productType) {
         ProductTypeResponseDTO productTypeResponseDTO = new ProductTypeResponseDTO();
+        productTypeResponseDTO.setImageUrl(productType.getImageUrl());
         productTypeResponseDTO.setId(productType.getId());
         productTypeResponseDTO.setCode(productType.getCode());
         productTypeResponseDTO.setName(productType.getName());
