@@ -27,11 +27,6 @@ public class ThreadRefreshContentChecker {
         Integer newValue = 0;
         while (Objects.equals(newValue, firstValue)) {
             newValue = refreshContentChecker.check();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
         return newValue;
     }

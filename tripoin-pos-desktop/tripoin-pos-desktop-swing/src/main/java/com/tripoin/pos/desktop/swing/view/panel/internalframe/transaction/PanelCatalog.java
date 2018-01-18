@@ -17,7 +17,8 @@ import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created on 10/30/17.
@@ -131,11 +132,21 @@ public class PanelCatalog extends JPanel implements IComponentInitializer {
                                 }
                                 for (int b=0; b<rowResult; b++) {
                                     for (ProductTypeResponseDTO responseDTO : responseRaw.getContent()) {
-                                        if (panelContentCatalogs.get(b).getComponents().length < defaultCatalogCol) {
+                                        if (panelContentCatalogs.get(b).getComponentCount() < defaultCatalogCol) {
                                             panelContentCatalogs.get(b).add(new JButton(responseDTO.getName()));
-                                        } else {
-                                            panelContentCatalogs.get(b+1).add(new JButton(responseDTO.getName()));
                                         }
+                                    }
+                                }
+                                if (modResult > 0) {
+                                    List<ProductTypeResponseDTO> restResponse = responseRaw.getContent().subList((responseRaw.getContent().size()-modResult), responseRaw.getContent().size());
+                                    for (ProductTypeResponseDTO productTypeResponseDTO : restResponse) {
+                                        panelContentCatalogs.get(rowResult).add(new JButton(productTypeResponseDTO.getName()));
+                                    }
+                                    for (int a=0; a<(defaultCatalogCol - modResult); a++) {
+                                        JButton disabledButton = new JButton();
+                                        disabledButton.setEnabled(false);
+                                        disabledButton.setVisible(false);
+                                        panelContentCatalogs.get(rowResult).add(disabledButton);
                                     }
                                 }
                             }

@@ -356,6 +356,7 @@ public abstract class AScaffoldingPanel extends JPanel implements IComponentInit
             getControllerScaffolding().setParam(controllerScaffoldingParam);
             getControllerScaffolding().showUpdateDialog();
         });
+
         panelScaffoldingNorth.panelScaffoldingNorthTop.panelScaffoldingActionButton.buttonDelete.addActionListener(e -> {
             int row = getScaffoldingTable().getSelectedRows().length;
             if (row <= -1) {
@@ -380,6 +381,7 @@ public abstract class AScaffoldingPanel extends JPanel implements IComponentInit
             );
             currentPage = totalPage;
         });
+
         getScaffoldingTable().getSelectionModel().addListSelectionListener(e -> {
             panelScaffoldingNorth.panelScaffoldingNorthTop.panelScaffoldingActionButton.buttonDelete.setEnabled(true);
             int row = getScaffoldingTable().getSelectedRow();
@@ -470,4 +472,16 @@ public abstract class AScaffoldingPanel extends JPanel implements IComponentInit
     }
 
     /*public abstract AScaffoldingDialog getScaffoldingDialog();*/
+
+    public class Test {
+        public void refresh() {
+            refreshContent(
+                    panelScaffoldingNorth.panelScaffoldingNorthBottom.comboBoxDisplayNumberOfData.getSelectedValue(panelScaffoldingNorth.panelScaffoldingNorthBottom.comboBoxDisplayNumberOfData.getSelectedIndex()),
+                    totalPage,
+                    AScaffoldingTable.FindMode.DEFAULT,
+                    Punctuation.EMPTY
+            );
+            currentPage = totalPage;
+        }
+    }
 }

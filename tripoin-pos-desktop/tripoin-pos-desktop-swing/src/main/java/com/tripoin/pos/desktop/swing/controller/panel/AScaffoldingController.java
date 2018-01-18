@@ -93,6 +93,8 @@ public abstract class AScaffoldingController<RESPONSE> implements IParameterized
                     e1.printStackTrace();
                 }
             }
+            /*AScaffoldingPanel.Test test = new AScaffoldingPanel.Test();
+            test.refresh();*/
         }
     }
 

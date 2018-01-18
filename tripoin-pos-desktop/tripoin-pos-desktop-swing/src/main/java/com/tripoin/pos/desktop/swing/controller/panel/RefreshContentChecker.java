@@ -2,7 +2,6 @@ package com.tripoin.pos.desktop.swing.controller.panel;
 
 import com.tripoin.pos.desktop.swing.client.IParameterClient;
 import com.tripoin.pos.shared.data.dto.response.system.ParameterResponseDTO;
-import com.tripoin.scaffolding.data.dto.ResponseData;
 import com.tripoin.scaffolding.data.dto.request.RequestFindByCode;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;
 import org.slf4j.Logger;
@@ -38,16 +37,12 @@ public class RefreshContentChecker {
             GenericListResponseDTO<ParameterResponseDTO> responseDTO = genericListResponseDTOCall.execute().body();
             if (responseDTO.getContent().size() > 0) {
                 ParameterResponseDTO parameterResponseDTO = responseDTO.getContent().get(0);
-                LOGGER.info("PARAMETERRESP "+parameterResponseDTO.getName());
                 if (parameterResponseDTO.getName().equals("1")) {
-                    System.out.println("update to 0");
                     parameterResponseDTO.setName("0");
                 } else {
-                    System.out.println("update to 1");
                     parameterResponseDTO.setName("1");
                 }
-                ResponseData responseDataCall = parameterClient.update(parameterResponseDTO).execute().body();
-                LOGGER.info("RESPONSEDATAUPDATE "+responseDataCall.toString());
+                parameterClient.update(parameterResponseDTO).execute().body();
             }
         } catch (IOException e) {
             LOGGER.error(e.toString());
@@ -62,7 +57,6 @@ public class RefreshContentChecker {
         try {
             GenericListResponseDTO<ParameterResponseDTO> responseDTO = genericListResponseDTOCall.execute().body();
             result = Integer.parseInt(responseDTO.getContent().get(0).getName());
-            LOGGER.info("Check Thread "+result);
         }catch (IOException e) {
             LOGGER.error(e.toString());
         }
