@@ -1,7 +1,10 @@
 package com.tripoin.pos.desktop.swing.view.panel.internalframe.transaction;
 
 import com.tripoin.pos.desktop.swing.client.IProductCategoryClient;
+import com.tripoin.pos.desktop.swing.client.IProductTypeClient;
 import com.tripoin.pos.shared.data.dto.response.master.ProductCategoryResponseDTO;
+import com.tripoin.pos.shared.data.dto.response.master.ProductTypeResponseDTO;
+import com.tripoin.scaffolding.data.dto.request.RequestFindByCode;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.IOException;
+import java.util.*;
 
 /**
  * Created on 10/30/17.
@@ -31,18 +35,21 @@ public class PanelCatalog extends JPanel implements IComponentInitializer {
     @Autowired
     private IProductCategoryClient productCategoryClient;
 
+    @Autowired
+    private IProductTypeClient productTypeClient;
+
     private JButton btHomeCategory = new JButton("Home");
 
     private JPanel panelSearch = new JPanel();
     private JPanel panelSearchTop = new JPanel();
-    private JPanel panelCatalog = new JPanel();
+    private JPanel panelCatalogItem = new JPanel();
 
     private final String SEARCH = "Search";
+
     @PostConstruct
     @Override
     public void initComponents() {
         this.setLayout(new BorderLayout());
-
 
         panelSearch.setLayout(new GridLayout(2, 1));
 
@@ -65,8 +72,13 @@ public class PanelCatalog extends JPanel implements IComponentInitializer {
         });
         panelSearch.add(txtSearch);
 
+        btHomeCategory.addActionListener(x -> {
+            panelCatalogItem.removeAll();
+            panelCatalogItem.revalidate();
+            panelCatalogItem.repaint();
+        });
         this.add(panelSearch, BorderLayout.NORTH);
-        this.add(panelCatalog, BorderLayout.CENTER);
+        this.add(panelCatalogItem, BorderLayout.CENTER);
     }
 
     public void refreshCategory(){
@@ -82,11 +94,58 @@ public class PanelCatalog extends JPanel implements IComponentInitializer {
                 panelSearchTop.removeAll();
             }
             panelSearchTop.setLayout(new GridLayout(1, (productCategoryResponseDTOs.getContent().size() + 1)));
-            btHomeCategory.setSize(20, 100);
             panelSearchTop.add(btHomeCategory);
+            int defaultCatalogRow = 4;
+            int defaultCatalogCol = 5;
             for (ProductCategoryResponseDTO productCategoryResponseDTO : productCategoryResponseDTOs.getContent()) {
                 JButton btCategory = new JButton(productCategoryResponseDTO.getName());
-                btCategory.setSize(20, 100);
+                btCategory.setName(productCategoryResponseDTO.getCode());
+                btCategory.addActionListener(e -> {
+                    RequestFindByCode requestFindByCode = new RequestFindByCode();
+                    requestFindByCode.setCode(productCategoryResponseDTO.getCode());
+                    Call<GenericListResponseDTO<ProductTypeResponseDTO>> listResponseDTOCall = productTypeClient.findByProductCategoryCode(requestFindByCode);
+                    try {
+                        GenericListResponseDTO<ProductTypeResponseDTO> responseRaw = listResponseDTOCall.execute().body();
+                        if (responseRaw.getContent().size() > 0) {
+                            if (panelCatalogItem.getComponents().length > 0) {
+                                panelCatalogItem.removeAll();
+                            }
+                            int modResult = responseRaw.getContent().size() % defaultCatalogCol;
+                            int rowResult = responseRaw.getContent().size() / defaultCatalogCol;
+                            System.out.println("Size : "+responseRaw.getContent().size());
+                            System.out.println("mod res : "+modResult);
+                            System.out.println("row res : "+rowResult);
+                            if (rowResult <= defaultCatalogRow) {
+                                panelCatalogItem.setLayout(new GridLayout(defaultCatalogRow, 1));
+                                java.util.List<JPanel> panelContentCatalogs = new ArrayList<>();
+                                for (int i=0; i<defaultCatalogRow; i++) {
+                                    JPanel panelContentCatalog = new JPanel();
+                                    panelContentCatalog.setLayout(new GridLayout(1, defaultCatalogCol));
+                                    panelContentCatalogs.add(panelContentCatalog);
+
+                                    panelCatalogItem.add(panelContentCatalog);
+                                }
+
+                                if (rowResult <= 0) {
+                                    rowResult = 1;
+                                }
+                                for (int b=0; b<rowResult; b++) {
+                                    for (ProductTypeResponseDTO responseDTO : responseRaw.getContent()) {
+                                        if (panelContentCatalogs.get(b).getComponents().length < defaultCatalogCol) {
+                                            panelContentCatalogs.get(b).add(new JButton(responseDTO.getName()));
+                                        } else {
+                                            panelContentCatalogs.get(b+1).add(new JButton(responseDTO.getName()));
+                                        }
+                                    }
+                                }
+                            }
+                            panelCatalogItem.revalidate();
+                            panelCatalogItem.repaint();
+                        }
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                });
                 panelSearchTop.add(btCategory);
             }
         }

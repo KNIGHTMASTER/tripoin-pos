@@ -86,4 +86,9 @@ public class ProductTypeClientImpl extends ARetrofitRestClient implements IProdu
     public Call<GenericListResponseDTO> selectLOVByProductCategory(SelectLOVProductTypeByProductCategoryRequestDTO productTypeByProductCategoryRequestDTO) {
         return productTypeEndPointClient.selectLOVByProductCategory(productTypeByProductCategoryRequestDTO);
     }
+
+    @Override
+    public Call<GenericListResponseDTO<ProductTypeResponseDTO>> findByProductCategoryCode(RequestFindByCode p_RequestFindByCode) {
+        return productTypeEndPointClient.findByProductCategoryCode(p_RequestFindByCode);
+    }
 }

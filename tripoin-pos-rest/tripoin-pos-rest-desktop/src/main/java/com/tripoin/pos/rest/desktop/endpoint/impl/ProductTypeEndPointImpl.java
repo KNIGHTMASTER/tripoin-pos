@@ -7,6 +7,7 @@ import com.tripoin.pos.shared.data.mapper.master.ProductTypeMapper;
 import com.tripoin.pos.shared.data.model.master.ProductType;
 import com.tripoin.scaffolding.data.constant.EResponseCode;
 import com.tripoin.scaffolding.data.dto.ResponseData;
+import com.tripoin.scaffolding.data.dto.request.RequestFindByCode;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;
 import com.tripoin.scaffolding.endpoint.exception.EndPointException;
 import com.tripoin.scaffolding.endpoint.impl.AScaffoldingEndPoint;
@@ -49,6 +50,21 @@ public class ProductTypeEndPointImpl extends AScaffoldingEndPoint<ProductType> i
         result.setResponseData(new ResponseData(EResponseCode.RC_FAILURE.getResponseCode(), EResponseCode.RC_FAILURE.getResponseMsg()));
         try {
             result = this.scaffoldingResponseConstructor.constructListFindResponse(productTypeService.selectLOVByProductType(Long.valueOf(p_ProductCategoryId.getProductCategoryId())));
+        } catch (EndPointException | ServiceException e) {
+            LOGGER.error(e.toString());
+        }
+
+        return result;
+    }
+
+    @Override
+    public GenericListResponseDTO findByProductCategoryCode(@RequestBody RequestFindByCode p_RequestFindByCode) throws EndPointException {
+        GenericListResponseDTO result = new GenericListResponseDTO();
+        result.setResponseData(new ResponseData(EResponseCode.RC_FAILURE.getResponseCode(), EResponseCode.RC_FAILURE.getResponseMsg()));
+        try {
+            if(this.dataMapperIntegration != null) {
+                result = this.scaffoldingResponseConstructor.constructDTOListFindResponse(this.dataMapperIntegration.mapEntitiesIntoDTOs(this.productTypeService.findByProductCategoryCode(p_RequestFindByCode.getCode())));
+            }
         } catch (EndPointException | ServiceException e) {
             LOGGER.error(e.toString());
         }

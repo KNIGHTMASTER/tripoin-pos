@@ -43,4 +43,15 @@ public class ProductTypeServiceImpl extends AScaffoldingService<ProductType> imp
         }
         return result;
     }
+
+    @Override
+    public List<ProductType> findByProductCategoryCode(String p_Code) throws ServiceException {
+        List<ProductType> result = null;
+        try {
+            result = productTypeDAO.findByProductCategoryCode(p_Code);
+        } catch (DAOException e) {
+            LOGGER.error(e.toString());
+        }
+        return result;
+    }
 }

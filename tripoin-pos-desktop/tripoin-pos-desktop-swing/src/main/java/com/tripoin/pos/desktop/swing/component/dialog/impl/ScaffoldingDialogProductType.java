@@ -29,7 +29,7 @@ public abstract class ScaffoldingDialogProductType extends AScaffoldingDialog<Pr
 
     @Override
     public void initComponents() {
-        preferredHeight = 200;
+        preferredHeight = 220;
         preferredWidth = 400;
         productCategoryLOV = getProductCategoryLOV();
         super.initComponents();
@@ -52,12 +52,14 @@ public abstract class ScaffoldingDialogProductType extends AScaffoldingDialog<Pr
         DisabledTextField txtId = new DisabledTextField();
         DisabledTextField txtCode = new DisabledTextField();
         DisabledTextField txtName = new DisabledTextField();
+        DisabledTextField txtImageUrl = new DisabledTextField();
         DisabledTextArea txtRemarks = new DisabledTextArea();
 
         disabledTextFields.add(txtId);
         disabledTextFields.add(txtCode);
         disabledTextFields.add(txtName);
         disabledTextFields.add(productCategoryLOV);
+        disabledTextFields.add(txtImageUrl);
         disabledTextFields.add(txtRemarks);
 
         return disabledTextFields;
@@ -71,12 +73,14 @@ public abstract class ScaffoldingDialogProductType extends AScaffoldingDialog<Pr
         JTextField txtId = new JTextField();
         JTextField txtCode = new JTextField();
         JTextField txtName = new JTextField();
+        JTextField txtImageUrl = new JTextField();
         JTextArea txtRemarks = new JTextArea();
 
         enabledTextFields.add(txtId);
         enabledTextFields.add(txtCode);
         enabledTextFields.add(txtName);
         enabledTextFields.add(productCategoryLOV);
+        enabledTextFields.add(txtImageUrl);
         enabledTextFields.add(txtRemarks);
 
         return enabledTextFields;
@@ -92,25 +96,34 @@ public abstract class ScaffoldingDialogProductType extends AScaffoldingDialog<Pr
             productTypeResponseDTO.setName(((JTextField) enabledTextFields.get(2)).getText());
             productCategoryResponseDTO.setId(((ALOV) enabledTextFields.get(3)).getSelectedId(((ALOV) enabledTextFields.get(3)).getSelectedIndex()));
             productTypeResponseDTO.setProductCategory(productCategoryResponseDTO);
-            productTypeResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(4)).getText());
+            productTypeResponseDTO.setImageUrl(((JTextField) enabledTextFields.get(4)).getText());
+            productTypeResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(5)).getText());
         }else {
             productTypeResponseDTO.setCode(((JTextField) enabledTextFields.get(0)).getText());
             productTypeResponseDTO.setName(((JTextField) enabledTextFields.get(1)).getText());
             productCategoryResponseDTO.setId(((ALOV) enabledTextFields.get(2)).getSelectedId(((ALOV) enabledTextFields.get(2)).getSelectedIndex()));
             productTypeResponseDTO.setProductCategory(productCategoryResponseDTO);
-            productTypeResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(3)).getText());
+            productTypeResponseDTO.setImageUrl(((JTextField) enabledTextFields.get(3)).getText());
+            productTypeResponseDTO.setRemarks(((JTextArea) enabledTextFields.get(4)).getText());
         }
         return productTypeResponseDTO;
     }
 
     @Override
     public String[] getLabelComponentText() {
-        return new String[] {"Id", "Code", "Name", "Product Category", "Remarks"};
+        return new String[] {"Id", "Code", "Name", "Product Category", "Image Url", "Remarks"};
     }
 
     @Override
     public String[] getParamContentArray() {
-        return new String[] {String.valueOf(getParamContent().getId()), getParamContent().getCode(), getParamContent().getName(), getParamContent().getProductCategory().getName(), getParamContent().getRemarks()};
+        return new String[] {
+                String.valueOf(getParamContent().getId()),
+                getParamContent().getCode(),
+                getParamContent().getName(),
+                getParamContent().getProductCategory().getName(),
+                getParamContent().getImageUrl(),
+                getParamContent().getRemarks()
+        };
     }
 
     public abstract ProductCategoryLOV getProductCategoryLOV();

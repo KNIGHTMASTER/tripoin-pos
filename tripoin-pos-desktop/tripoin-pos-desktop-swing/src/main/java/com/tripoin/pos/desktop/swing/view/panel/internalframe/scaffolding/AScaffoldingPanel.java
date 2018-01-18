@@ -19,6 +19,7 @@ import com.tripoin.pos.desktop.swing.component.label.LabelScaffoldingTitle;
 import com.tripoin.pos.desktop.swing.component.scrollpane.AScaffoldingScrollPane;
 import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import com.tripoin.pos.desktop.swing.controller.panel.AScaffoldingController;
+import com.tripoin.pos.desktop.swing.controller.panel.ThreadRefreshContentChecker;
 import com.tripoin.pos.desktop.swing.dto.param.ControllerScaffoldingParam;
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
 import id.co.telkomsigma.tgf.util.IComponentAction;
@@ -31,6 +32,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created on 11/2/17.
@@ -49,6 +51,9 @@ public abstract class AScaffoldingPanel extends JPanel implements IComponentInit
 
     @Autowired
     protected ICentralizePositionComponent centralizePositionComponent;
+
+    @Autowired
+    private ThreadRefreshContentChecker threadRefreshContentChecker;
 
     @Value("${button.nextpage.imageurl}")
     private String nextPageImageUrl;
@@ -308,8 +313,44 @@ public abstract class AScaffoldingPanel extends JPanel implements IComponentInit
         );
         panelScaffoldingNorth.panelScaffoldingNorthTop.panelScaffoldingActionButton.buttonInsert.addActionListener(e -> {
             getControllerScaffolding().setParam(controllerScaffoldingParam);
+            final Integer[] result = {null};
+            SwingWorker<Integer, Void> worker = new SwingWorker<Integer, Void>(){
+                @Override
+                protected Integer doInBackground() throws Exception {
+                    while (result[0] == null) {
+                        result[0] = threadRefreshContentChecker.check();
+                        try {
+                            Thread.sleep(5);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        if (result[0] != null) {
+                            break;
+                        }
+                    }
+                    return result[0];
+                }
+            };
+            worker.execute();
+
             getControllerScaffolding().showInsertDialog();
+            try {
+                worker.get();
+                if (result[0] == 1) {
+                    refreshContent(
+                            panelScaffoldingNorth.panelScaffoldingNorthBottom.comboBoxDisplayNumberOfData.getSelectedValue(panelScaffoldingNorth.panelScaffoldingNorthBottom.comboBoxDisplayNumberOfData.getSelectedIndex()),
+                            totalPage,
+                            AScaffoldingTable.FindMode.DEFAULT,
+                            Punctuation.EMPTY
+                    );
+                }
+                threadRefreshContentChecker.update();
+            } catch (InterruptedException | ExecutionException e1) {
+                e1.printStackTrace();
+            }
+
         });
+
         panelScaffoldingNorth.panelScaffoldingNorthTop.panelScaffoldingActionButton.buttonUpdate.addActionListener(e -> {
             controllerScaffoldingParam.setSelectedTableRow(getScaffoldingTable().getSelectedRow());
             getControllerScaffolding().setParam(controllerScaffoldingParam);
@@ -331,7 +372,13 @@ public abstract class AScaffoldingPanel extends JPanel implements IComponentInit
                 getControllerScaffolding().setParam(controllerScaffoldingParam);
                 getControllerScaffolding().delete();
             }
-
+            refreshContent(
+                    panelScaffoldingNorth.panelScaffoldingNorthBottom.comboBoxDisplayNumberOfData.getSelectedValue(panelScaffoldingNorth.panelScaffoldingNorthBottom.comboBoxDisplayNumberOfData.getSelectedIndex()),
+                    totalPage,
+                    AScaffoldingTable.FindMode.DEFAULT,
+                    Punctuation.EMPTY
+            );
+            currentPage = totalPage;
         });
         getScaffoldingTable().getSelectionModel().addListSelectionListener(e -> {
             panelScaffoldingNorth.panelScaffoldingNorthTop.panelScaffoldingActionButton.buttonDelete.setEnabled(true);
@@ -417,6 +464,10 @@ public abstract class AScaffoldingPanel extends JPanel implements IComponentInit
     public abstract AScaffoldingController getControllerScaffolding();
 
     public abstract LabelScaffoldingTitle getLabelScaffoldingTitle();
+
+    public PanelScaffoldingNorth getPanelScaffoldingNorth() {
+        return panelScaffoldingNorth;
+    }
 
     /*public abstract AScaffoldingDialog getScaffoldingDialog();*/
 }

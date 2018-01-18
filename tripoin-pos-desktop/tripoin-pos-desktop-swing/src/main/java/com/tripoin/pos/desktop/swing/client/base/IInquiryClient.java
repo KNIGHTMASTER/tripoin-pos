@@ -1,10 +1,7 @@
 package com.tripoin.pos.desktop.swing.client.base;
 
 import com.tripoin.pos.shared.data.ResponseGenericPaginationDTO;
-import com.tripoin.scaffolding.data.dto.request.RequestFindById;
-import com.tripoin.scaffolding.data.dto.request.RequestPaginationAllDTO;
-import com.tripoin.scaffolding.data.dto.request.RequestPaginationByCodeDTO;
-import com.tripoin.scaffolding.data.dto.request.RequestPaginationByNameDTO;
+import com.tripoin.scaffolding.data.dto.request.*;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;
 import com.tripoin.scaffolding.data.dto.response.GenericSingleDATAResponseDTO;
 import retrofit2.Call;

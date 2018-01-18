@@ -2,6 +2,7 @@ package com.tripoin.pos.rest.desktop.endpoint;
 
 import com.tripoin.pos.shared.data.dto.request.SelectLOVProductTypeByProductCategoryRequestDTO;
 import com.tripoin.pos.shared.data.model.master.ProductType;
+import com.tripoin.scaffolding.data.dto.request.RequestFindByCode;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;
 import com.tripoin.scaffolding.endpoint.IScaffoldingEndPoint;
 import com.tripoin.scaffolding.endpoint.exception.EndPointException;
@@ -20,4 +21,10 @@ public interface IProductTypeEndPoint extends IScaffoldingEndPoint<ProductType> 
             value = {"/100030"}
     )
     GenericListResponseDTO selectLOVByProductType(@RequestBody SelectLOVProductTypeByProductCategoryRequestDTO p_ProductCategoryId) throws EndPointException;
+
+    @ResponseBody
+    @PostMapping(
+            value = {"/100031"}
+    )
+    GenericListResponseDTO findByProductCategoryCode(@RequestBody RequestFindByCode p_RequestFindByCode) throws EndPointException;
 }

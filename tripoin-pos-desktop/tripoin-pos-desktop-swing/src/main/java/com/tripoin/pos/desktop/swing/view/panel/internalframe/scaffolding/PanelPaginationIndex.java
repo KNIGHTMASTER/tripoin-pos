@@ -1,5 +1,6 @@
 package com.tripoin.pos.desktop.swing.view.panel.internalframe.scaffolding;
 
+import com.tripoin.pos.desktop.swing.component.label.LabelIndex;
 import id.co.telkomsigma.tgf.util.IComponentInitializer;
 
 import javax.swing.*;
@@ -17,23 +18,22 @@ public class PanelPaginationIndex extends JPanel implements IComponentInitialize
      */
     private static final long serialVersionUID = -2467889427733714865L;
 
-    protected JLabel labelIndex;
+    protected LabelIndex labelIndex;
 
     @Override
     public void initComponents() {
-        labelIndex = new JLabel();
-        labelIndex.setFont(new Font("Serif", Font.PLAIN, 18));
-
+        labelIndex = new LabelIndex();
+        labelIndex.initComponents();
 
         this.setLayout(new BorderLayout());
         this.add(labelIndex);
     }
 
-    public JLabel getLabelIndex() {
+    public LabelIndex getLabelIndex() {
         return labelIndex;
     }
 
-    public void setLabelIndex(JLabel labelIndex) {
+    public void setLabelIndex(LabelIndex labelIndex) {
         this.labelIndex = labelIndex;
     }
 }

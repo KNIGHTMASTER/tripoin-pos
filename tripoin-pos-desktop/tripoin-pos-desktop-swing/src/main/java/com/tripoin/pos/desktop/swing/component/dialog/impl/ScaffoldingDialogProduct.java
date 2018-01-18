@@ -35,7 +35,7 @@ public abstract class ScaffoldingDialogProduct extends AScaffoldingDialog<Produc
     @Override
     public void initComponents() {
         preferredHeight = 600;
-        preferredWidth = 400;
+        preferredWidth = 550;
 
         productCategoryLOV = getProductCategoryLOV();
         productTypeLOV = getProductTypeLOV();

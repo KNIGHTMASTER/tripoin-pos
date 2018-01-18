@@ -31,6 +31,9 @@ public abstract class AScaffoldingController<RESPONSE> implements IParameterized
     @Autowired
     private DialogAutoCloseAlert dialogAutoCloseAlert;
 
+    @Autowired
+    private RefreshContentChecker refreshContentChecker;
+
     private ControllerScaffoldingParam<RESPONSE> controllerScaffoldingParam;
 
     public void refresh() {
@@ -149,7 +152,7 @@ public abstract class AScaffoldingController<RESPONSE> implements IParameterized
             if (responseData.getResponseCode().equals(EResponseCode.RC_SUCCESS.getResponseCode())) {
                 dialogAutoCloseAlert.setMode(DialogAutoCloseAlert.MODE.INFO);
                 dialogAutoCloseAlert.initComponents();
-                getParam().getScaffoldingTable().refreshTableWithWorker(getParam().getComboBoxDisplayNumberOfData().getSelectedValue(getParam().getComboBoxDisplayNumberOfData().getSelectedIndex()), 0, AScaffoldingTable.FindMode.DEFAULT, UIConstant.Common.Punctuation.EMPTY);
+                refreshContentChecker.update();
             }else {
                 dialogAutoCloseAlert.setMode(DialogAutoCloseAlert.MODE.ERROR);
                 dialogAutoCloseAlert.initComponents();
@@ -185,7 +188,6 @@ public abstract class AScaffoldingController<RESPONSE> implements IParameterized
         }
         int firstIndex = responseGenericPaginationDTO.getNumber() * selectedCombo + 1;
         int lastIndex = responseGenericPaginationDTO.getNumber() * selectedCombo + responseGenericPaginationDTO.getNumberOfElements();
-
         if (responseGenericPaginationDTO.getTotalElements() <= 0) {
             firstIndex = 0;
             lastIndex = 0;

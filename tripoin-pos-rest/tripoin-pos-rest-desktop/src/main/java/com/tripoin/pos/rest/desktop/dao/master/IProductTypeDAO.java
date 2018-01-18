@@ -16,4 +16,7 @@ public interface IProductTypeDAO extends IScaffoldingDAO<ProductType> {
 
     @Query("SELECT id, name FROM ProductType a where a.productCategory.id = ?1")
     List<ProductType> selectLOVByProductType(Long p_ProductCategoryId) throws DAOException;
+
+    @Query("SELECT a FROM ProductType a JOIN a.productCategory b WHERE b.code = ?1")
+    List<ProductType> findByProductCategoryCode(String p_Code) throws DAOException;
 }

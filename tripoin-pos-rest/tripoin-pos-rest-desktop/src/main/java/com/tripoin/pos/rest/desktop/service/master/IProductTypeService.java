@@ -13,4 +13,6 @@ import java.util.List;
  */
 public interface IProductTypeService extends IScaffoldingService<ProductType> {
     List<ProductType> selectLOVByProductType(Long p_ProductCategoryId) throws ServiceException;
+
+    List<ProductType> findByProductCategoryCode(String p_Code) throws ServiceException;
 }

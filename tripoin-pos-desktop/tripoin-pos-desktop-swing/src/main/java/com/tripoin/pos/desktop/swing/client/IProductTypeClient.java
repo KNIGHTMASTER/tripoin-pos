@@ -3,6 +3,7 @@ package com.tripoin.pos.desktop.swing.client;
 import com.tripoin.pos.desktop.swing.client.base.IScaffoldingClient;
 import com.tripoin.pos.shared.data.dto.request.SelectLOVProductTypeByProductCategoryRequestDTO;
 import com.tripoin.pos.shared.data.dto.response.master.ProductTypeResponseDTO;
+import com.tripoin.scaffolding.data.dto.request.RequestFindByCode;
 import com.tripoin.scaffolding.data.dto.response.GenericListResponseDTO;
 import retrofit2.Call;
 
@@ -14,4 +15,6 @@ import retrofit2.Call;
 public interface IProductTypeClient extends IScaffoldingClient<ProductTypeResponseDTO> {
 
     Call<GenericListResponseDTO> selectLOVByProductCategory(SelectLOVProductTypeByProductCategoryRequestDTO productTypeByProductCategoryRequestDTO);
+
+    Call<GenericListResponseDTO<ProductTypeResponseDTO>> findByProductCategoryCode(RequestFindByCode p_RequestFindByCode);
 }

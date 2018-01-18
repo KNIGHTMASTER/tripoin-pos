@@ -56,4 +56,7 @@ public interface IProductTypeEndPointClient {
 
     @POST("producttype/100030")
     Call<GenericListResponseDTO> selectLOVByProductCategory(@Body SelectLOVProductTypeByProductCategoryRequestDTO productTypeByProductCategoryRequestDTO);
+
+    @POST("producttype/100031")
+    Call<GenericListResponseDTO<ProductTypeResponseDTO>> findByProductCategoryCode(@Body RequestFindByCode p_RequestFindByCode);
 }

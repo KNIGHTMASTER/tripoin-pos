@@ -6,6 +6,7 @@ import com.tripoin.pos.desktop.swing.component.base.IResourceBundleLocator;
 import com.tripoin.pos.desktop.swing.component.button.base.ButtonClear;
 import com.tripoin.pos.desktop.swing.component.button.base.ButtonSave;
 import com.tripoin.pos.desktop.swing.component.combobox.ComboBoxDisplayNumberOfData;
+import com.tripoin.pos.desktop.swing.component.label.LabelIndex;
 import com.tripoin.pos.desktop.swing.component.table.view.AScaffoldingTable;
 import com.tripoin.pos.desktop.swing.controller.panel.AScaffoldingController;
 import com.tripoin.pos.desktop.swing.dto.param.ControllerScaffoldingParam;
@@ -37,6 +38,8 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
 
     private ComboBoxDisplayNumberOfData comboBoxDisplayNumberOfData;
 
+    private LabelIndex labelIndex;
+
     protected int preferredHeight;
 
     protected int preferredWidth;
@@ -60,6 +63,9 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
     public void initComponents() {
         comboBoxDisplayNumberOfData = new ComboBoxDisplayNumberOfData();
         comboBoxDisplayNumberOfData.initComponents();
+
+        labelIndex = new LabelIndex();
+        labelIndex.initComponents();
 
         buttonClear = new ButtonClear() {
             private static final long serialVersionUID = -8096061925657746600L;
@@ -223,6 +229,7 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
             controllerScaffoldingParam.setData(getDATAtoInsert());
             controllerScaffoldingParam.setScaffoldingDialog(this);
             controllerScaffoldingParam.setScaffoldingTable(getScaffoldingTable());
+            controllerScaffoldingParam.setLabelIndex(labelIndex);
             controllerScaffoldingParam.setComboBoxDisplayNumberOfData(comboBoxDisplayNumberOfData);
             getControllerScaffolding().setParam(controllerScaffoldingParam);
             if (enabledTextFields.size() == getNumberOfComponent()){
@@ -232,9 +239,9 @@ public abstract class AScaffoldingDialog<DATA> extends JDialog implements ICompo
             }
         });
 
-        this.getRootPane().registerKeyboardAction(e -> {
-            this.dispose();
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW);
+        this.getRootPane().registerKeyboardAction(
+                e -> this.dispose(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_IN_FOCUSED_WINDOW
+        );
     }
 
     protected void clearDialogFields() {
